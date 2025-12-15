@@ -26,7 +26,6 @@
             --text-main: #ffffff;
             --text-muted: #a1a1aa;
             --border-light: rgba(255, 255, 255, 0.08);
-            --cursor-size: 20px;
         }
 
         body {
@@ -34,7 +33,7 @@
             background-color: var(--bg-body);
             color: var(--text-main);
             overflow-x: hidden;
-            cursor: none; 
+            /* Cursor padrão restaurado */
         }
 
         h1, h2, h3, h4, h5, .brand-font {
@@ -42,33 +41,11 @@
             letter-spacing: -0.03em;
         }
 
-        /* Gradient Text (Característica do seu design original) */
+        /* Gradient Text */
         .text-gradient-arch {
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-        }
-
-        /* --- CUSTOM CURSOR --- */
-        .cursor-dot, .cursor-outline {
-            position: fixed;
-            top: 0; left: 0;
-            transform: translate(-50%, -50%);
-            border-radius: 50%;
-            z-index: 9999;
-            pointer-events: none;
-        }
-        .cursor-dot { width: 8px; height: 8px; background-color: var(--primary); } /* Dot com a cor primária */
-        .cursor-outline {
-            width: 40px; height: 40px;
-            border: 1px solid rgba(255,255,255,0.3);
-            transition: width 0.2s, height 0.2s, background-color 0.2s;
-        }
-        body.hovering .cursor-outline {
-            width: 60px; height: 60px;
-            background-color: rgba(94, 106, 210, 0.15); /* Glow secundário ao hover */
-            border-color: var(--primary);
-            backdrop-filter: blur(2px);
         }
 
         /* --- NAVBAR --- */
@@ -111,7 +88,7 @@
         }
         .hero h1 b {
             font-weight: 600;
-            color: white; /* Mantido branco para contraste limpo */
+            color: white;
         }
         .hero-img-bg {
             position: absolute;
@@ -119,14 +96,14 @@
             width: 50%; height: 100%;
             background: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop') center/cover;
             opacity: 0.2;
-            mask-image: linear-gradient(to right, transparent, var(--bg-body)); /* Blend com a cor de fundo */
+            mask-image: linear-gradient(to right, transparent, var(--bg-body));
             -webkit-mask-image: linear-gradient(to right, transparent, black);
             z-index: -1;
         }
 
         /* --- BUTTONS --- */
         .btn-minimal {
-            border: 1px solid var(--primary); /* Borda com a cor primária */
+            border: 1px solid var(--primary);
             color: var(--primary);
             padding: 15px 40px;
             border-radius: 100px;
@@ -140,7 +117,7 @@
         }
         .btn-minimal::after {
             content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); /* Gradiente no hover */
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             transform: scaleX(0); transform-origin: right;
             transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             z-index: -1;
@@ -169,7 +146,6 @@
             transition: 0.4s;
         }
         .service-card:hover i {
-            /* Gradiente no ícone ao passar o mouse */
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -215,28 +191,25 @@
 </head>
 <body id="home">
 
-    <div class="cursor-dot" id="cursor-dot"></div>
-    <div class="cursor-outline" id="cursor-outline"></div>
-
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
-            <a class="navbar-brand d-flex align-items-center gap-2 hover-trigger" href="#">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="#">
                 <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" style="height: 32px; stroke: var(--primary); fill: none; stroke-width: 2;">
                     <path d="M32 4 L4 32 H14 V56 H50 V32 H60 L32 4 Z" />
                 </svg>
                 <span class="brand-font fw-bold" style="font-size: 1.1rem; letter-spacing: 1px;">ARCH <span class="text-gradient-arch">CONSTRUTORA</span></span>
             </a>
             
-            <button class="navbar-toggler border-0 hover-trigger" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <i class="fa-solid fa-bars-staggered text-white fs-4"></i>
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav align-items-center">
-                    <li class="nav-item"><a class="nav-link hover-trigger active" href="#home">Home</a></li>
-                    <li class="nav-item"><a class="nav-link hover-trigger" href="#sobre">Conceito</a></li>
-                    <li class="nav-item"><a class="nav-link hover-trigger" href="#servicos">Soluções</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#sobre">Conceito</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#servicos">Soluções</a></li>
                     <li class="nav-item ms-lg-4">
-                        <a href="#contato" class="btn-minimal hover-trigger">Orçamento</a>
+                        <a href="#contato" class="btn-minimal">Orçamento</a>
                     </li>
                 </ul>
             </div>
@@ -258,8 +231,8 @@
                         Transformamos projetos arquitetônicos complexos em realidade através de gestão inteligente e engenharia de alto desempenho.
                     </p>
                     <div class="d-flex gap-4 align-items-center">
-                        <a href="#contato" class="btn-minimal hover-trigger">Iniciar Projeto</a>
-                        <a href="https://instagram.com/arch.construtora" target="_blank" class="text-white text-decoration-none hover-trigger border-bottom border-dark pb-1" style="transition:0.3s;">
+                        <a href="#contato" class="btn-minimal">Iniciar Projeto</a>
+                        <a href="https://instagram.com/arch.construtora" target="_blank" class="text-white text-decoration-none border-bottom border-dark pb-1" style="transition:0.3s;">
                             Portfolio <i class="fa-solid fa-arrow-right ms-2" style="font-size: 0.8em; transform: rotate(-45deg); color: var(--primary);"></i>
                         </a>
                     </div>
@@ -316,21 +289,21 @@
 
             <div class="row g-0 border-top border-secondary border-opacity-25">
                 <div class="col-md-4 border-end border-secondary border-opacity-25" data-aos="fade-up" data-aos-delay="100">
-                    <div class="service-card hover-trigger">
+                    <div class="service-card">
                         <i class="fa-solid fa-house-signal"></i>
                         <h4>Residencial High-End</h4>
                         <p>Casas de alto padrão com integração de automação, fundações complexas e acabamentos finos.</p>
                     </div>
                 </div>
                 <div class="col-md-4 border-end border-secondary border-opacity-25" data-aos="fade-up" data-aos-delay="200">
-                    <div class="service-card hover-trigger">
+                    <div class="service-card">
                         <i class="fa-solid fa-building"></i>
                         <h4>Comercial & Corporativo</h4>
                         <p>Retrofit e construção de espaços comerciais focados em eficiência operacional e identidade visual.</p>
                     </div>
                 </div>
                 <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
-                    <div class="service-card hover-trigger">
+                    <div class="service-card">
                         <i class="fa-solid fa-helmet-safety"></i>
                         <h4>Consultoria Técnica</h4>
                         <p>Laudos, vistorias e gerenciamento de obras para investidores que buscam segurança.</p>
@@ -356,7 +329,7 @@
                         </div>
                         <div>
                             <small class="text-muted d-block mb-1">WhatsApp</small>
-                            <a href="https://wa.me/5531975194481" class="text-white text-decoration-none fs-5 hover-trigger">(31) 97519-4481</a>
+                            <a href="https://wa.me/5531975194481" class="text-white text-decoration-none fs-5">(31) 97519-4481</a>
                         </div>
                     </div>
                 </div>
@@ -366,11 +339,11 @@
                         <div class="row g-4">
                             <div class="col-md-6">
                                 <label class="small text-muted text-uppercase mb-2">Seu Nome</label>
-                                <input type="text" id="nome" class="form-control input-minimal hover-trigger" placeholder="Digite seu nome completo" required>
+                                <input type="text" id="nome" class="form-control input-minimal" placeholder="Digite seu nome completo" required>
                             </div>
                             <div class="col-md-6">
                                 <label class="small text-muted text-uppercase mb-2">Tipo de Projeto</label>
-                                <select id="servico" class="form-select input-minimal hover-trigger bg-transparent text-muted">
+                                <select id="servico" class="form-select input-minimal bg-transparent text-muted">
                                     <option value="" disabled selected>Selecione uma opção</option>
                                     <option value="Residencial" class="text-dark">Construção Residencial</option>
                                     <option value="Comercial" class="text-dark">Reforma Comercial</option>
@@ -379,10 +352,10 @@
                             </div>
                             <div class="col-12">
                                 <label class="small text-muted text-uppercase mb-2">Detalhes</label>
-                                <textarea id="detalhes" class="form-control input-minimal hover-trigger" rows="2" placeholder="Metragem aproximada, localização, etc..." required></textarea>
+                                <textarea id="detalhes" class="form-control input-minimal" rows="2" placeholder="Metragem aproximada, localização, etc..." required></textarea>
                             </div>
                             <div class="col-12 mt-4">
-                                <button type="submit" class="btn-minimal w-100 hover-trigger">
+                                <button type="submit" class="btn-minimal w-100">
                                     Enviar Solicitação
                                 </button>
                             </div>
@@ -400,12 +373,12 @@
                 <span class="small opacity-50">&copy; 2025.</span>
             </div>
             <div class="d-flex gap-4">
-                <a href="https://instagram.com/arch.construtora" target="_blank" class="text-muted text-decoration-none small hover-trigger">Instagram</a>
+                <a href="https://instagram.com/arch.construtora" target="_blank" class="text-muted text-decoration-none small hover-white">Instagram</a>
             </div>
         </div>
     </footer>
 
-    <a href="https://wa.me/5531975194481?text=Olá, vim pelo site novo da ARCH." class="wa-float hover-trigger" target="_blank">
+    <a href="https://wa.me/5531975194481?text=Olá, vim pelo site novo da ARCH." class="wa-float" target="_blank">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
@@ -418,33 +391,6 @@
             duration: 1000,
             once: true,
             easing: 'cubic-bezier(0.16, 1, 0.3, 1)'
-        });
-
-        // --- Custom Cursor Logic ---
-        const cursorDot = document.getElementById("cursor-dot");
-        const cursorOutline = document.getElementById("cursor-outline");
-        const triggers = document.querySelectorAll(".hover-trigger");
-
-        window.addEventListener("mousemove", function (e) {
-            const posX = e.clientX;
-            const posY = e.clientY;
-
-            cursorDot.style.left = `${posX}px`;
-            cursorDot.style.top = `${posY}px`;
-
-            cursorOutline.animate({
-                left: `${posX}px`,
-                top: `${posY}px`
-            }, { duration: 500, fill: "forwards" });
-        });
-
-        triggers.forEach(trigger => {
-            trigger.addEventListener("mouseenter", () => {
-                document.body.classList.add("hovering");
-            });
-            trigger.addEventListener("mouseleave", () => {
-                document.body.classList.remove("hovering");
-            });
         });
 
         // --- WhatsApp Logic ---
