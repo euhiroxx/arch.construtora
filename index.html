@@ -3,73 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>ARCH CONSTRUTORA | Construindo o Futuro</title>
+    <title>ARCH CONSTRUTORA | Engenharia de Alta Performance</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <style>
-        /* --- PALETA ORIGINAL DO INDEX FORNECIDO --- */
         :root {
-            --bg-body: #050505;       /* Cor original de fundo profundo */
-            --bg-card: #0a0a0a;       /* Cor original de superfície */
-            --primary: #00d4ff;       /* Azul Ciano original */
-            --secondary: #5e6ad2;     /* Roxo Indigo original */
+            --bg-body: #030303;
+            --bg-card: #0a0a0c;
+            --primary: #00d4ff;
+            --secondary: #5e6ad2;
+            --accent: #7000ff;
             --text-main: #ffffff;
-            --text-muted: #a1a1aa;
-            --border-light: rgba(255, 255, 255, 0.08);
+            --text-muted: #8e8e93;
+            --border-light: rgba(255, 255, 255, 0.05);
+            --glass: rgba(10, 10, 12, 0.7);
         }
 
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: var(--bg-body);
             color: var(--text-main);
             overflow-x: hidden;
-            /* Cursor padrão do sistema */
+            line-height: 1.6;
         }
 
-        h1, h2, h3, h4, h5, .brand-font {
+        h1, h2, h3, h4, .brand-font {
             font-family: 'Space Grotesk', sans-serif;
-            letter-spacing: -0.03em;
+            letter-spacing: -0.04em;
         }
 
-        /* Gradient Text */
-        .text-gradient-arch {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        /* --- BACKGROUND BLURS --- */
+        .glow-spot {
+            position: absolute;
+            width: 40vw;
+            height: 40vw;
+            background: radial-gradient(circle, rgba(94, 106, 210, 0.12) 0%, rgba(0, 0, 0, 0) 70%);
+            border-radius: 50%;
+            z-index: -1;
+            filter: blur(80px);
         }
 
         /* --- NAVBAR --- */
         .navbar {
-            background: rgba(5, 5, 5, 0.8) !important;
-            backdrop-filter: blur(15px);
+            padding: 1.5rem 0;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            border-bottom: 1px solid transparent;
+        }
+        .navbar.scrolled {
+            padding: 0.8rem 0;
+            background: var(--glass) !important;
+            backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border-light);
-            padding: 1.2rem 0;
-            transition: all 0.4s ease;
         }
+        
         .nav-link {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 0.9rem;
-            text-transform: uppercase;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 1px;
             color: var(--text-muted) !important;
-            margin: 0 10px;
             transition: 0.3s;
-            position: relative;
         }
-        .nav-link:hover, .nav-link.active { color: var(--text-main) !important; }
-        .nav-link::before {
-            content: ''; position: absolute; left: -10px; top: 50%; transform: translateY(-50%);
-            width: 4px; height: 4px; background: var(--primary); border-radius: 50%;
-            opacity: 0; transition: 0.3s;
-        }
-        .nav-link:hover::before { opacity: 1; left: -8px; }
+        .nav-link:hover { color: var(--primary) !important; }
 
         /* --- HERO --- */
         .hero {
@@ -77,137 +78,153 @@
             display: flex;
             align-items: center;
             position: relative;
-            padding-top: 80px;
+            padding-top: 100px;
         }
-        .hero h1 {
-            font-size: clamp(3rem, 6vw, 5.5rem); 
-            font-weight: 300; 
-            line-height: 1.1;
+        .hero-title {
+            font-size: clamp(3rem, 7vw, 6rem);
+            font-weight: 700;
+            line-height: 0.95;
+            margin-bottom: 2rem;
         }
-        .hero h1 b {
-            font-weight: 600;
-            color: white;
-        }
-        .hero-img-bg {
-            position: absolute;
-            right: 0; top: 0;
-            width: 50%; height: 100%;
-            background: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop') center/cover;
-            opacity: 0.2;
-            mask-image: linear-gradient(to right, transparent, var(--bg-body));
-            -webkit-mask-image: linear-gradient(to right, transparent, black);
-            z-index: -1;
+        .text-gradient {
+            background: linear-gradient(to right, var(--primary), var(--secondary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: shine 5s linear infinite;
         }
 
-        /* --- BUTTONS --- */
-        .btn-minimal {
-            border: 1px solid var(--primary);
-            color: var(--primary);
-            padding: 15px 40px;
-            border-radius: 100px;
-            font-family: 'Space Grotesk', sans-serif;
+        @keyframes shine { to { background-position: 200% center; } }
+
+        /* --- BOTÕES --- */
+        .btn-arch {
+            padding: 16px 35px;
+            border-radius: 12px;
+            font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
-            background: transparent;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: all 0.3s ease;
             position: relative;
+            border: 1px solid var(--primary);
+            background: transparent;
+            color: var(--primary);
             overflow: hidden;
+            text-decoration: none;
+            display: inline-block;
         }
-        .btn-minimal::after {
-            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            transform: scaleX(0); transform-origin: right;
-            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            z-index: -1;
+        .btn-arch:hover {
+            background: var(--primary);
+            color: #000;
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.4);
+            transform: translateY(-3px);
         }
-        .btn-minimal:hover { color: white; border-color: transparent; }
-        .btn-minimal:hover::after { transform: scaleX(1); transform-origin: left; }
 
         /* --- CARDS --- */
         .service-card {
-            background: var(--bg-card);
-            padding: 3rem 2rem;
-            height: 100%;
+            background: linear-gradient(145deg, #0d0d0f 0%, #050505 100%);
             border: 1px solid var(--border-light);
-            transition: all 0.4s ease;
-            position: relative;
+            border-radius: 24px;
+            padding: 4rem 2.5rem;
+            height: 100%;
+            transition: all 0.5s ease;
         }
         .service-card:hover {
-            border-color: var(--primary);
-            transform: translateY(-10px);
-            box-shadow: 0 10px 30px -10px rgba(0, 212, 255, 0.1);
+            border-color: rgba(0, 212, 255, 0.3);
+            transform: translateY(-12px);
         }
-        .service-card i {
-            font-size: 2rem;
+        .icon-box {
+            width: 60px;
+            height: 60px;
+            background: rgba(0, 212, 255, 0.1);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             margin-bottom: 2rem;
-            color: var(--text-muted);
-            transition: 0.4s;
+            color: var(--primary);
+            font-size: 1.5rem;
         }
-        .service-card:hover i {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            transform: scale(1.1);
-        }
-        .service-card h4 { font-size: 1.5rem; margin-bottom: 1rem; }
-        .service-card p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; }
 
-        /* --- FORMS --- */
-        .input-minimal {
-            background: transparent;
-            border: none;
-            border-bottom: 1px solid var(--border-light);
-            border-radius: 0;
-            color: white;
-            padding: 15px 0;
-            font-family: 'Space Grotesk', sans-serif;
+        /* --- IMAGENS --- */
+        .img-wrapper {
+            border-radius: 30px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
         }
-        .input-minimal:focus {
-            background: transparent;
+        .img-wrapper img { transition: 1s ease; }
+        .img-wrapper:hover img { transform: scale(1.05); }
+
+        /* --- FORMULÁRIO --- */
+        .form-container {
+            background: var(--bg-card);
+            padding: 3rem;
+            border-radius: 32px;
+            border: 1px solid var(--border-light);
+        }
+        .input-arch {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border-light);
+            border-radius: 12px;
+            padding: 15px 20px;
+            color: white;
+            transition: 0.3s;
+        }
+        .input-arch:focus {
+            background: rgba(255,255,255,0.05);
+            border-color: var(--primary);
             box-shadow: none;
-            border-bottom-color: var(--primary);
             color: white;
         }
-        .input-minimal::placeholder { color: rgba(255,255,255,0.3); }
 
-        /* --- UTILS --- */
-        .text-accent { color: var(--primary); }
-        .ls-2 { letter-spacing: 2px; }
-        .reveal-img { position: relative; overflow: hidden; }
-        .reveal-img img { transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1); }
-        .reveal-img:hover img { transform: scale(1.05); }
-
-        .wa-float {
-            position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px;
-            border: 1px solid rgba(255,255,255,0.2); border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            color: white; transition: 0.3s; background: rgba(0,0,0,0.5);
-            backdrop-filter: blur(5px); z-index: 100;
+        .wa-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: #25d366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
+            z-index: 1000;
+            transition: 0.3s;
         }
-        .wa-float:hover { background: #25d366; border-color: #25d366; color: white; }
+        .wa-button:hover { transform: scale(1.1); color: white; }
     </style>
 </head>
 <body id="home">
 
+    <div class="glow-spot" style="top: -10%; right: -5%;"></div>
+
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
-            <a class="navbar-brand d-flex align-items-center gap-2" href="#">
-                <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" style="height: 32px; stroke: var(--primary); fill: none; stroke-width: 2;">
-                    <path d="M32 4 L4 32 H14 V56 H50 V32 H60 L32 4 Z" />
+            <a class="navbar-brand d-flex align-items-center gap-3" href="#">
+                <svg viewBox="0 0 64 64" width="38" style="fill: none; stroke: var(--primary); stroke-width: 3.5;">
+                    <path d="M32 4 L4 28 H14 V56 H50 V28 H60 L32 4 Z" stroke-linejoin="round"/>
+                    <path d="M22 56 V32 H42 V56" stroke-opacity="0.5"/>
                 </svg>
-                <span class="brand-font fw-bold" style="font-size: 1.1rem; letter-spacing: 1px;">ARCH <span class="text-gradient-arch">CONSTRUTORA</span></span>
+                <div class="d-flex flex-column">
+                    <span class="brand-font fw-bold text-white lh-1" style="letter-spacing: 1.5px; font-size: 1.2rem;">ARCH</span>
+                    <span class="small text-primary fw-light" style="letter-spacing: 4px; font-size: 0.6rem;">CONSTRUTORA</span>
+                </div>
             </a>
             
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <i class="fa-solid fa-bars-staggered text-white fs-4"></i>
+                <i class="fa-solid fa-bars-staggered text-white"></i>
             </button>
+
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                <ul class="navbar-nav align-items-center">
+                <ul class="navbar-nav gap-lg-4 align-items-center">
                     <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="#sobre">Conceito</a></li>
                     <li class="nav-item"><a class="nav-link" href="#servicos">Soluções</a></li>
-                    <li class="nav-item ms-lg-4">
-                        <a href="#contato" class="btn-minimal">Orçamento</a>
+                    <li class="nav-item">
+                        <a href="#contato" class="btn-arch py-2 px-4" style="font-size: 0.75rem;">Orçamento</a>
                     </li>
                 </ul>
             </div>
@@ -215,60 +232,50 @@
     </nav>
 
     <section class="hero">
-        <div class="hero-img-bg"></div>
-        
-        <div class="container position-relative z-2">
-            <div class="row">
-                <div class="col-lg-8" data-aos="fade-up" data-aos-duration="1200">
-                    <p class="text-uppercase ls-2 mb-4" style="font-size: 0.8rem; color: var(--primary);">Curvelo & Região</p>
-                    <h1>
-                        Construção com <br>
-                        <b class="text-gradient-arch">Precisão Cirúrgica.</b>
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8" data-aos="fade-right">
+                    <p class="text-primary text-uppercase fw-bold mb-3 ls-2 small">Curvelo & Região</p>
+                    <h1 class="hero-title">
+                        Construção com <br><span class="text-gradient">Precisão Cirúrgica.</span>
                     </h1>
-                    <p class="text-muted mt-4 mb-5 w-75 fw-light" style="font-size: 1.1rem;">
+                    <p class="lead text-muted mb-5 pe-lg-5 w-75">
                         Transformamos projetos arquitetônicos complexos em realidade através de gestão inteligente e engenharia de alto desempenho.
                     </p>
-                    <div class="d-flex gap-4 align-items-center">
-                        <a href="#contato" class="btn-minimal">Iniciar Projeto</a>
-                        <a href="https://instagram.com/arch.construtora" target="_blank" class="text-white text-decoration-none border-bottom border-dark pb-1" style="transition:0.3s;">
-                            Portfolio <i class="fa-solid fa-arrow-right ms-2" style="font-size: 0.8em; transform: rotate(-45deg); color: var(--primary);"></i>
+                    <div class="d-flex flex-wrap gap-4 align-items-center">
+                        <a href="#contato" class="btn-arch">Iniciar Projeto</a>
+                        <a href="https://instagram.com/arch.construtora" target="_blank" class="text-white text-decoration-none border-bottom pb-1">
+                            Portfolio <i class="fa-solid fa-arrow-up-right-from-square ms-2 small text-primary"></i>
                         </a>
                     </div>
                 </div>
-            </div>
-        </div>
-
-        <div class="position-absolute bottom-0 start-0 p-5 d-none d-md-block">
-            <div class="d-flex align-items-center gap-3 text-muted" style="transform: rotate(-90deg); transform-origin: left bottom;">
-                <span style="width: 40px; height: 1px; background: #333;"></span>
-                <small class="text-uppercase ls-2" style="font-size: 0.7rem;">Scroll Down</small>
             </div>
         </div>
     </section>
 
     <section id="sobre" class="py-5 my-5">
         <div class="container">
-            <div class="row align-items-end gy-5">
-                <div class="col-lg-5" data-aos="fade-right">
-                    <div class="reveal-img">
-                        <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1931&auto=format&fit=crop" class="img-fluid grayscale-hover w-100" style="filter: grayscale(100%); transition: 0.5s;" onmouseover="this.style.filter='grayscale(0%)'" onmouseout="this.style.filter='grayscale(100%)'" alt="Engenharia ARCH">
+            <div class="row g-5 align-items-center">
+                <div class="col-lg-5" data-aos="fade-up">
+                    <div class="img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1931" class="img-fluid" alt="Engenharia">
                     </div>
                 </div>
                 <div class="col-lg-6 offset-lg-1" data-aos="fade-left">
-                    <span class="text-uppercase ls-2 small mb-3 d-block" style="color: var(--secondary);">O Conceito ARCH</span>
-                    <h2 class="display-4 mb-4">Engenharia além <br> do concreto.</h2>
-                    <p class="text-muted mb-4">
-                        A ARCH não apenas executa obras; nós gerenciamos o ciclo de vida do seu investimento. Nascemos para preencher a lacuna entre o design arrojado e a execução técnica perfeita.
+                    <span class="text-secondary text-uppercase ls-2 small fw-bold">O Conceito ARCH</span>
+                    <h2 class="display-4 fw-bold mt-3 mb-4">Engenharia além <br>do concreto.</h2>
+                    <p class="text-muted fs-5 mb-5">
+                        A ARCH CONSTRUTORA não apenas executa obras; nós gerenciamos o ciclo de vida do seu investimento. Nascemos para preencher a lacuna entre o design arrojado e a execução técnica perfeita.
                     </p>
                     
-                    <div class="row g-4 mt-2">
-                        <div class="col-6 border-start border-secondary ps-4">
-                            <h5 class="fw-bold text-white mb-1">Gestão BIM</h5>
-                            <small class="text-muted">Compatibilização de projetos.</small>
+                    <div class="row g-4">
+                        <div class="col-sm-6 border-start border-primary border-3 ps-4">
+                            <h5 class="mb-1">Gestão BIM</h5>
+                            <p class="small text-muted mb-0">Compatibilização de projetos em tempo real.</p>
                         </div>
-                        <div class="col-6 border-start border-secondary ps-4">
-                            <h5 class="fw-bold text-white mb-1">Cronograma Ágil</h5>
-                            <small class="text-muted">Metodologias lean.</small>
+                        <div class="col-sm-6 border-start border-secondary border-3 ps-4">
+                            <h5 class="mb-1">Cronograma Ágil</h5>
+                            <p class="small text-muted mb-0">Metodologias lean para zero atrasos.</p>
                         </div>
                     </div>
                 </div>
@@ -276,107 +283,104 @@
         </div>
     </section>
 
-    <section id="servicos" class="py-5 my-5">
+    <section id="servicos" class="py-5">
         <div class="container">
             <div class="d-flex justify-content-between align-items-end mb-5" data-aos="fade-up">
                 <div>
-                    <span class="text-uppercase ls-2 small" style="color: var(--primary);">Expertise</span>
-                    <h2 class="display-5 mt-2">Nossas Soluções</h2>
+                    <span class="text-primary text-uppercase ls-2 small fw-bold">Expertise</span>
+                    <h2 class="display-5 fw-bold mt-2">Nossas Soluções</h2>
                 </div>
             </div>
 
-            <div class="row g-0 border-top border-secondary border-opacity-25">
-                <div class="col-md-4 border-end border-secondary border-opacity-25" data-aos="fade-up" data-aos-delay="100">
+            <div class="row g-4">
+                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
                     <div class="service-card">
-                        <i class="fa-solid fa-house-signal"></i>
+                        <div class="icon-box"><i class="fa-solid fa-house-signal"></i></div>
                         <h4>Residencial High-End</h4>
-                        <p>Casas de alto padrão com integração de automação, fundações complexas e acabamentos finos.</p>
+                        <p class="text-muted">Casas de alto padrão com integração de automação, fundações complexas e acabamentos finos.</p>
                     </div>
                 </div>
-                <div class="col-md-4 border-end border-secondary border-opacity-25" data-aos="fade-up" data-aos-delay="200">
+                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
                     <div class="service-card">
-                        <i class="fa-solid fa-building"></i>
+                        <div class="icon-box" style="color: var(--secondary); background: rgba(94,106,210,0.1);"><i class="fa-solid fa-building"></i></div>
                         <h4>Comercial & Corporativo</h4>
-                        <p>Retrofit e construção de espaços comerciais focados em eficiência operacional e identidade visual.</p>
+                        <p class="text-muted">Retrofit e construção de espaços comerciais focados em eficiência operacional e identidade visual.</p>
                     </div>
                 </div>
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
                     <div class="service-card">
-                        <i class="fa-solid fa-helmet-safety"></i>
+                        <div class="icon-box" style="color: var(--accent); background: rgba(112,0,255,0.1);"><i class="fa-solid fa-helmet-safety"></i></div>
                         <h4>Consultoria Técnica</h4>
-                        <p>Laudos, vistorias e gerenciamento de obras para investidores que buscam segurança.</p>
+                        <p class="text-muted">Laudos, vistorias e gerenciamento de obras para investidores que buscam segurança e redução de riscos.</p>
                     </div>
                 </div>
             </div>
-            <div class="border-bottom border-secondary border-opacity-25 w-100"></div>
         </div>
     </section>
 
     <section id="contato" class="py-5 my-5">
         <div class="container">
-            <div class="row g-5">
-                <div class="col-lg-4" data-aos="fade-right">
-                    <h2 class="mb-4">Vamos construir <br>o futuro?</h2>
-                    <p class="text-muted">Preencha o formulário para receber uma consultoria inicial via WhatsApp.</p>
-                    
-                    <div class="mt-5">
-                        <div class="mb-3">
-                            <small class="text-muted d-block mb-1">Localização</small>
-                            <span class="text-white fs-5">Curvelo - MG</span>
-                            <small class="text-muted d-block">Atendemos toda a região</small>
+            <div class="form-container">
+                <div class="row g-5">
+                    <div class="col-lg-5">
+                        <h2 class="display-6 fw-bold mb-4">Vamos construir <br>o futuro?</h2>
+                        <p class="text-muted mb-5">Preencha o formulário para receber uma consultoria inicial via WhatsApp.</p>
+                        
+                        <div class="mb-4">
+                            <small class="text-primary text-uppercase ls-2 fw-bold d-block mb-2">Localização</small>
+                            <h5 class="mb-0">Curvelo - MG</h5>
+                            <p class="small text-muted">Atendemos toda a região central</p>
                         </div>
                         <div>
-                            <small class="text-muted d-block mb-1">WhatsApp</small>
-                            <a href="https://wa.me/5531975194481" class="text-white text-decoration-none fs-5">(31) 97519-4481</a>
+                            <small class="text-primary text-uppercase ls-2 fw-bold d-block mb-2">WhatsApp</small>
+                            <h5 class="mb-0">(31) 97519-4481</h5>
                         </div>
                     </div>
-                </div>
 
-                <div class="col-lg-7 offset-lg-1" data-aos="fade-left">
-                    <form id="formOrcamento">
-                        <div class="row g-4">
+                    <div class="col-lg-7">
+                        <form id="formOrcamento" class="row g-4">
                             <div class="col-md-6">
-                                <label class="small text-muted text-uppercase mb-2">Seu Nome</label>
-                                <input type="text" id="nome" class="form-control input-minimal" placeholder="Digite seu nome completo" required>
+                                <label class="small text-muted mb-2">SEU NOME</label>
+                                <input type="text" id="nome" class="form-control input-arch" placeholder="Ex: João Silva" required>
                             </div>
                             <div class="col-md-6">
-                                <label class="small text-muted text-uppercase mb-2">Tipo de Projeto</label>
-                                <select id="servico" class="form-select input-minimal bg-transparent text-muted">
-                                    <option value="" disabled selected>Selecione uma opção</option>
-                                    <option value="Residencial" class="text-dark">Construção Residencial</option>
-                                    <option value="Comercial" class="text-dark">Reforma Comercial</option>
-                                    <option value="Consultoria" class="text-dark">Consultoria / Outros</option>
+                                <label class="small text-muted mb-2">TIPO DE PROJETO</label>
+                                <select id="servico" class="form-select input-arch">
+                                    <option value="Residencial">Construção Residencial</option>
+                                    <option value="Comercial">Reforma Comercial</option>
+                                    <option value="Consultoria">Consultoria / Outros</option>
                                 </select>
                             </div>
                             <div class="col-12">
-                                <label class="small text-muted text-uppercase mb-2">Detalhes</label>
-                                <textarea id="detalhes" class="form-control input-minimal" rows="2" placeholder="Metragem aproximada, localização, etc..." required></textarea>
+                                <label class="small text-muted mb-2">DETALHES</label>
+                                <textarea id="detalhes" class="form-control input-arch" rows="3" placeholder="Metragem, localização ou dúvidas..." required></textarea>
                             </div>
                             <div class="col-12 mt-4">
-                                <button type="submit" class="btn-minimal w-100">
-                                    Enviar Solicitação
-                                </button>
+                                <button type="submit" class="btn-arch w-100">Enviar Solicitação</button>
                             </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <footer class="py-5 border-top border-secondary border-opacity-10">
-        <div class="container d-flex justify-content-between align-items-center flex-column flex-md-row gap-3">
-            <div class="d-flex align-items-center gap-2 text-muted">
-                <span class="fw-bold text-white small">ARCH CONSTRUTORA <i class="fa-solid fa-house ms-2" style="color: var(--primary);"></i></span>
-                <span class="small opacity-50">&copy; 2025.</span>
-            </div>
-            <div class="d-flex gap-4">
-                <a href="https://instagram.com/arch.construtora" target="_blank" class="text-muted text-decoration-none small hover-white">Instagram</a>
+        <div class="container text-center text-md-start">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-4">
+                <div class="d-flex align-items-center gap-2">
+                    <span class="fw-bold text-white small">ARCH CONSTRUTORA</span>
+                    <span class="text-muted small">| &copy; 2026</span>
+                </div>
+                <div class="d-flex gap-4">
+                    <a href="https://instagram.com/arch.construtora" target="_blank" class="text-muted text-decoration-none small hover-white">Instagram</a>
+                    <a href="#" class="text-muted text-decoration-none small hover-white">LinkedIn</a>
+                </div>
             </div>
         </div>
     </footer>
 
-    <a href="https://wa.me/5531975194481?text=Olá, vim pelo site novo da ARCH." class="wa-float" target="_blank">
+    <a href="https://wa.me/5531975194481?text=Olá, vim pelo site da ARCH CONSTRUTORA." class="wa-button" target="_blank">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
@@ -384,20 +388,18 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     
     <script>
-        AOS.init({
-            offset: 30,
-            duration: 1000,
-            once: true,
-            easing: 'cubic-bezier(0.16, 1, 0.3, 1)'
+        AOS.init({ duration: 1000, once: true });
+
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('.navbar');
+            window.scrollY > 50 ? nav.classList.add('scrolled') : nav.classList.remove('scrolled');
         });
 
-        // --- WhatsApp Logic ---
         document.getElementById('formOrcamento').addEventListener('submit', function(e) {
             e.preventDefault();
             const nome = document.getElementById('nome').value;
             const servico = document.getElementById('servico').value;
             const detalhes = document.getElementById('detalhes').value;
-            
             const msg = `*NOVA SOLICITAÇÃO VIA SITE*%0A%0A👤 *Cliente:* ${nome}%0A🏗 *Interesse:* ${servico}%0A📄 *Detalhes:* ${detalhes}`;
             window.open(`https://wa.me/5531975194481?text=${msg}`, '_blank');
         });
