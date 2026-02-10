@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ARCH CONSTRUTORA | Engenharia de Alta Performance</title>
+    <title>ARCH CONSTRUTORA | Mão de Obra Especializada</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,15 +15,14 @@
 
     <style>
         :root {
-            --bg-body: #030303;
-            --bg-card: #0a0a0c;
-            --primary: #00d4ff;
-            --secondary: #5e6ad2;
-            --accent: #7000ff;
+            --bg-body: #050505;
+            --bg-card: #0f0f12;
+            --primary: #59CBE8; /* Ajustado para o tom exato da imagem (Azul Piscina) */
+            --secondary: #25D366; 
             --text-main: #ffffff;
-            --text-muted: #8e8e93;
-            --border-light: rgba(255, 255, 255, 0.05);
-            --glass: rgba(10, 10, 12, 0.7);
+            --text-muted: #a0a0a5;
+            --border-light: rgba(255, 255, 255, 0.08);
+            --glass: rgba(15, 15, 18, 0.8);
         }
 
         body {
@@ -36,151 +35,136 @@
 
         h1, h2, h3, h4, .brand-font {
             font-family: 'Space Grotesk', sans-serif;
-            letter-spacing: -0.04em;
-        }
-
-        /* --- BACKGROUND BLURS --- */
-        .glow-spot {
-            position: absolute;
-            width: 40vw;
-            height: 40vw;
-            background: radial-gradient(circle, rgba(94, 106, 210, 0.12) 0%, rgba(0, 0, 0, 0) 70%);
-            border-radius: 50%;
-            z-index: -1;
-            filter: blur(80px);
+            letter-spacing: -0.02em;
         }
 
         /* --- NAVBAR --- */
         .navbar {
-            padding: 1.5rem 0;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            border-bottom: 1px solid transparent;
-        }
-        .navbar.scrolled {
-            padding: 0.8rem 0;
-            background: var(--glass) !important;
-            backdrop-filter: blur(20px);
+            padding: 1rem 0;
+            background: var(--bg-body);
             border-bottom: 1px solid var(--border-light);
         }
         
         .nav-link {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             font-weight: 500;
-            letter-spacing: 1px;
             color: var(--text-muted) !important;
             transition: 0.3s;
         }
-        .nav-link:hover { color: var(--primary) !important; }
+        .nav-link:hover, .nav-link.active { color: var(--primary) !important; }
 
         /* --- HERO --- */
         .hero {
-            min-height: 100vh;
+            min-height: 90vh;
             display: flex;
             align-items: center;
             position: relative;
-            padding-top: 100px;
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.9)), url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2070');
+            background-size: cover;
+            background-position: center;
         }
         .hero-title {
-            font-size: clamp(3rem, 7vw, 6rem);
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
             font-weight: 700;
-            line-height: 0.95;
-            margin-bottom: 2rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
         }
-        .text-gradient {
-            background: linear-gradient(to right, var(--primary), var(--secondary), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-size: 200% auto;
-            animation: shine 5s linear infinite;
+        .highlight {
+            color: var(--primary);
         }
-
-        @keyframes shine { to { background-position: 200% center; } }
 
         /* --- BOTÕES --- */
         .btn-arch {
-            padding: 16px 35px;
-            border-radius: 12px;
-            font-weight: 600;
+            padding: 14px 30px;
+            border-radius: 50px;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
             transition: all 0.3s ease;
-            position: relative;
-            border: 1px solid var(--primary);
-            background: transparent;
-            color: var(--primary);
-            overflow: hidden;
-            text-decoration: none;
-            display: inline-block;
-        }
-        .btn-arch:hover {
             background: var(--primary);
             color: #000;
-            box-shadow: 0 0 30px rgba(0, 212, 255, 0.4);
+            border: none;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(89, 203, 232, 0.3);
+        }
+        .btn-arch:hover {
+            background: #fff;
             transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
         }
 
         /* --- CARDS --- */
         .service-card {
-            background: linear-gradient(145deg, #0d0d0f 0%, #050505 100%);
-            border: 1px solid var(--border-light);
-            border-radius: 24px;
-            padding: 4rem 2.5rem;
-            height: 100%;
-            transition: all 0.5s ease;
-        }
-        .service-card:hover {
-            border-color: rgba(0, 212, 255, 0.3);
-            transform: translateY(-12px);
-        }
-        .icon-box {
-            width: 60px;
-            height: 60px;
-            background: rgba(0, 212, 255, 0.1);
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 2rem;
-            color: var(--primary);
-            font-size: 1.5rem;
-        }
-
-        /* --- IMAGENS --- */
-        .img-wrapper {
-            border-radius: 30px;
-            overflow: hidden;
-            position: relative;
-            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
-        }
-        .img-wrapper img { transition: 1s ease; }
-        .img-wrapper:hover img { transform: scale(1.05); }
-
-        /* --- FORMULÁRIO --- */
-        .form-container {
             background: var(--bg-card);
-            padding: 3rem;
-            border-radius: 32px;
             border: 1px solid var(--border-light);
-        }
-        .input-arch {
-            background: rgba(255,255,255,0.03);
-            border: 1px solid var(--border-light);
-            border-radius: 12px;
-            padding: 15px 20px;
-            color: white;
+            border-radius: 16px;
+            padding: 2.5rem 2rem;
+            height: 100%;
             transition: 0.3s;
         }
-        .input-arch:focus {
-            background: rgba(255,255,255,0.05);
+        .service-card:hover {
             border-color: var(--primary);
-            box-shadow: none;
-            color: white;
+            transform: translateY(-5px);
+        }
+        .icon-box {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
         }
 
+        /* --- CALCULADORA --- */
+        .calc-box {
+            background: #15151a;
+            border: 1px solid var(--border-light);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+        .form-control, .form-select {
+            background: #222;
+            border: 1px solid #333;
+            color: white;
+            padding: 12px;
+        }
+        .form-control:focus, .form-select:focus {
+            background: #2a2a2a;
+            border-color: var(--primary);
+            color: white;
+            box-shadow: none;
+        }
+
+        /* --- PORTFOLIO --- */
+        .portfolio-item {
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+        }
+        .portfolio-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: 0.5s;
+        }
+        .portfolio-item:hover img { transform: scale(1.05); }
+        .tag-price {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            background: var(--primary);
+            color: #000;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+
+        /* --- WHATSAPP --- */
         .wa-button {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
+            bottom: 25px;
+            right: 25px;
             width: 60px;
             height: 60px;
             background: #25d366;
@@ -189,94 +173,71 @@
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 1.8rem;
-            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
+            font-size: 2rem;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
             z-index: 1000;
             transition: 0.3s;
+            animation: pulse 2s infinite;
         }
-        .wa-button:hover { transform: scale(1.1); color: white; }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
     </style>
 </head>
 <body id="home">
 
-    <div class="glow-spot" style="top: -10%; right: -5%;"></div>
-
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center gap-3" href="#">
-                <svg viewBox="0 0 576 512" width="38" style="fill: var(--primary);">
-                    <path d="M575.8 255.5c0 18-15 32.1-32 32.1h-32l.7 160.2c0 2.7-.2 5.4-.5 8.1V472c0 22.1-17.9 40-40 40H456c-1.1 0-2.2 0-3.3-.1c-1.4 .1-2.8 .1-4.2 .1H416 392c-22.1 0-40-17.9-40-40V448 384c0-17.7-14.3-32-32-32H256c-17.7 0-32 14.3-32 32v64 24c0 22.1-17.9 40-40 40H160 128.1c-1.5 0-3-.1-4.5-.2c-1.2 .1-2.4 .2-3.6 .2H104c-22.1 0-40-17.9-40-40V360c0-.9 0-1.9 .1-2.8V287.6H32c-18 0-32-14-32-32.1c0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7L564.8 231.5c8 7 12 15 11 24z"/>
+                <svg width="45" height="45" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15 45 L50 15 L85 45 V80 C85 85 80 90 75 90 H25 C20 90 15 85 15 80 V45 Z" 
+                          stroke="#59CBE8" 
+                          stroke-width="12" 
+                          stroke-linejoin="round" 
+                          stroke-linecap="round"/>
                 </svg>
-                
+
                 <div class="d-flex flex-column">
-                    <span class="brand-font fw-bold text-white lh-1" style="letter-spacing: 1.5px; font-size: 1.2rem;">ARCH</span>
-                    <span class="small text-primary fw-light" style="letter-spacing: 4px; font-size: 0.6rem;">CONSTRUTORA</span>
+                    <span class="brand-font fw-bold text-white lh-1" style="font-size: 1.4rem;">ARCH</span>
+                    <span class="small text-muted" style="font-size: 0.7rem; letter-spacing: 2px;">CONSTRUTORA</span>
                 </div>
             </a>
             
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <i class="fa-solid fa-bars-staggered text-white"></i>
+                <i class="fa-solid fa-bars text-white"></i>
             </button>
 
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                <ul class="navbar-nav gap-lg-4 align-items-center">
-                    <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#sobre">Conceito</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#servicos">Soluções</a></li>
-                    <li class="nav-item">
-                        <a href="#contato" class="btn-arch py-2 px-4" style="font-size: 0.75rem;">Orçamento</a>
-                    </li>
+                <ul class="navbar-nav align-items-center gap-3">
+                    <li class="nav-item"><a class="nav-link" href="#home">Início</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#servicos">Serviços</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#portfolio">Obras</a></li>
+                    <li class="nav-item"><a class="btn-arch py-2 px-4 ms-2" href="#simulador">Orçamento Mão de Obra</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
     <section class="hero">
-        <div class="container">
+        <div class="container text-center text-lg-start">
             <div class="row align-items-center">
-                <div class="col-lg-8" data-aos="fade-right">
-                    <p class="text-primary text-uppercase fw-bold mb-3 ls-2 small">Curvelo & Região</p>
+                <div class="col-lg-8" data-aos="fade-up">
+                    <span class="badge bg-primary text-black mb-3 px-3 py-2">Especialistas em Construção Econômica</span>
                     <h1 class="hero-title">
-                        Construção com <br><span class="text-gradient">Precisão Cirúrgica.</span>
+                        Mão de obra qualificada <br>para a sua <span class="highlight">obra.</span>
                     </h1>
-                    <p class="lead text-muted mb-5 pe-lg-5 w-75">
-                        Transformamos projetos arquitetônicos complexos em realidade através de gestão inteligente e engenharia de alto desempenho.
+                    <p class="lead text-white-50 mb-5 w-75 mx-auto mx-lg-0">
+                        Equipe pronta para executar desde a fundação até o acabamento. Preço justo, sem desperdício e entrega no prazo.
                     </p>
-                    <div class="d-flex flex-wrap gap-4 align-items-center">
-                        <a href="#contato" class="btn-arch">Iniciar Projeto</a>
-                        <a href="https://instagram.com/arch.construtora" target="_blank" class="text-white text-decoration-none border-bottom pb-1">
-                            Portfolio <i class="fa-solid fa-arrow-up-right-from-square ms-2 small text-primary"></i>
+                    <div class="d-flex flex-wrap gap-3 justify-content-center justify-content-lg-start">
+                        <a href="https://wa.me/5531975194481?text=Olá,%20preciso%20de%20mão%20de%20obra" class="btn-arch">
+                            <i class="fa-brands fa-whatsapp me-2"></i> Contratar Equipe
                         </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="sobre" class="py-5 my-5">
-        <div class="container">
-            <div class="row g-5 align-items-center">
-                <div class="col-lg-5" data-aos="fade-up">
-                    <div class="img-wrapper">
-                        <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1931" class="img-fluid" alt="Engenharia">
-                    </div>
-                </div>
-                <div class="col-lg-6 offset-lg-1" data-aos="fade-left">
-                    <span class="text-secondary text-uppercase ls-2 small fw-bold">O Conceito ARCH</span>
-                    <h2 class="display-4 fw-bold mt-3 mb-4">Engenharia além <br>do concreto.</h2>
-                    <p class="text-muted fs-5 mb-5">
-                        A ARCH CONSTRUTORA não apenas executa obras; nós gerenciamos o ciclo de vida do seu investimento. Nascemos para preencher a lacuna entre o design arrojado e a execução técnica perfeita.
-                    </p>
-                    
-                    <div class="row g-4">
-                        <div class="col-sm-6 border-start border-primary border-3 ps-4">
-                            <h5 class="mb-1">Gestão BIM</h5>
-                            <p class="small text-muted mb-0">Compatibilização de projetos em tempo real.</p>
-                        </div>
-                        <div class="col-sm-6 border-start border-secondary border-3 ps-4">
-                            <h5 class="mb-1">Cronograma Ágil</h5>
-                            <p class="small text-muted mb-0">Metodologias lean para zero atrasos.</p>
-                        </div>
+                        <a href="#simulador" class="btn btn-outline-light rounded-pill px-4 py-3 fw-bold">
+                            Simular Custo de Pedreiro
+                        </a>
                     </div>
                 </div>
             </div>
@@ -285,78 +246,74 @@
 
     <section id="servicos" class="py-5">
         <div class="container">
-            <div class="d-flex justify-content-between align-items-end mb-5" data-aos="fade-up">
-                <div>
-                    <span class="text-primary text-uppercase ls-2 small fw-bold">Expertise</span>
-                    <h2 class="display-5 fw-bold mt-2">Nossas Soluções</h2>
-                </div>
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Nossa Equipe Resolve</h2>
+                <p class="text-muted">Trabalhamos por empreitada ou administração.</p>
             </div>
 
             <div class="row g-4">
-                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="service-card">
-                        <div class="icon-box"><i class="fa-solid fa-house-signal"></i></div>
-                        <h4>Residencial High-End</h4>
-                        <p class="text-muted">Casas de alto padrão com integração de automação, fundações complexas e acabamentos finos.</p>
+                <div class="col-md-4" data-aos="fade-up">
+                    <div class="service-card text-center">
+                        <div class="icon-box"><i class="fa-solid fa-trowel"></i></div>
+                        <h4>Alvenaria e Reboco</h4>
+                        <p class="text-muted small">Levante de paredes, chapisco e reboco com prumo e esquadro garantidos.</p>
                     </div>
                 </div>
-                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="service-card">
-                        <div class="icon-box" style="color: var(--secondary); background: rgba(94,106,210,0.1);"><i class="fa-solid fa-building"></i></div>
-                        <h4>Comercial & Corporativo</h4>
-                        <p class="text-muted">Retrofit e construção de espaços comerciais focados em eficiência operacional e identidade visual.</p>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-card text-center">
+                        <div class="icon-box"><i class="fa-solid fa-paint-roller"></i></div>
+                        <h4>Acabamento Fino</h4>
+                        <p class="text-muted small">Assentamento de porcelanato, cerâmica, bancadas e pintura completa.</p>
                     </div>
                 </div>
-                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
-                    <div class="service-card">
-                        <div class="icon-box" style="color: var(--accent); background: rgba(112,0,255,0.1);"><i class="fa-solid fa-helmet-safety"></i></div>
-                        <h4>Consultoria Técnica</h4>
-                        <p class="text-muted">Laudos, vistorias e gerenciamento de obras para investidores que buscam segurança e redução de riscos.</p>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-card text-center">
+                        <div class="icon-box"><i class="fa-solid fa-hammer"></i></div>
+                        <h4>Fundação e Estrutura</h4>
+                        <p class="text-muted small">Baldrames, colunas e lajes executadas conforme normas de segurança.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="contato" class="py-5 my-5">
+    <section id="simulador" class="py-5 my-5">
         <div class="container">
-            <div class="form-container">
-                <div class="row g-5">
-                    <div class="col-lg-5">
-                        <h2 class="display-6 fw-bold mb-4">Vamos construir <br>o futuro?</h2>
-                        <p class="text-muted mb-5">Preencha o formulário para receber uma consultoria inicial via WhatsApp.</p>
-                        
-                        <div class="mb-4">
-                            <small class="text-primary text-uppercase ls-2 fw-bold d-block mb-2">Localização</small>
-                            <h5 class="mb-0">Curvelo - MG</h5>
-                            <p class="small text-muted">Atendemos toda a região central</p>
-                        </div>
-                        <div>
-                            <small class="text-primary text-uppercase ls-2 fw-bold d-block mb-2">WhatsApp</small>
-                            <h5 class="mb-0">(31) 97519-4481</h5>
-                        </div>
-                    </div>
+            <div class="row align-items-center">
+                <div class="col-lg-5 mb-4 mb-lg-0">
+                    <h2 class="display-6 fw-bold mb-3">Simulador de <br>Mão de Obra</h2>
+                    <p class="text-muted mb-4">Descubra quanto vai custar apenas o serviço da nossa equipe. Valores estimados por metro quadrado construído.</p>
+                    
+                    <ul class="list-unstyled text-muted small">
+                        <li class="mb-2"><i class="fa-solid fa-check text-primary me-2"></i> Pedreiros e Serventes inclusos</li>
+                        <li class="mb-2"><i class="fa-solid fa-check text-primary me-2"></i> Acompanhamento técnico</li>
+                        <li class="mb-2"><i class="fa-solid fa-xmark text-danger me-2"></i> <strong>Não inclui materiais</strong></li>
+                    </ul>
+                </div>
 
-                    <div class="col-lg-7">
-                        <form id="formOrcamento" class="row g-4">
-                            <div class="col-md-6">
-                                <label class="small text-muted mb-2">SEU NOME</label>
-                                <input type="text" id="nome" class="form-control input-arch" placeholder="Ex: João Silva" required>
-                            </div>
-                            <div class="col-md-6">
-                                <label class="small text-muted mb-2">TIPO DE PROJETO</label>
-                                <select id="servico" class="form-select input-arch">
-                                    <option value="Residencial">Construção Residencial</option>
-                                    <option value="Comercial">Reforma Comercial</option>
-                                    <option value="Consultoria">Consultoria / Outros</option>
-                                </select>
-                            </div>
-                            <div class="col-12">
-                                <label class="small text-muted mb-2">DETALHES</label>
-                                <textarea id="detalhes" class="form-control input-arch" rows="3" placeholder="Metragem, localização ou dúvidas..." required></textarea>
-                            </div>
-                            <div class="col-12 mt-4">
-                                <button type="submit" class="btn-arch w-100">Enviar Solicitação</button>
+                <div class="col-lg-6 offset-lg-1">
+                    <div class="calc-box">
+                        <form id="calcForm">
+                            <label class="mb-2 fw-bold text-uppercase small text-muted">Área a Construir (m²)</label>
+                            <input type="number" id="areaInput" class="form-control mb-4" placeholder="Ex: 70" required>
+
+                            <label class="mb-2 fw-bold text-uppercase small text-muted">Tipo de Serviço</label>
+                            <select id="padraoSelect" class="form-select mb-4">
+                                <option value="510" selected>Construção Popular (Econômico)</option>
+                                <option value="550">Fase Cinza (Alvenaria/Reboco)</option>
+                                <option value="950">Obra Completa (Do início ao acabamento)</option>
+                                <option value="400">Apenas Acabamento</option>
+                            </select>
+
+                            <button type="button" onclick="calcular()" class="btn-arch w-100">Calcular Valor da Equipe</button>
+
+                            <div id="result" class="mt-4 text-center d-none border-top border-secondary pt-3">
+                                <span class="text-muted small">Investimento em Mão de Obra:</span>
+                                <h3 class="fw-bold text-primary" id="valorTotal">R$ 0,00</h3>
+                                <p class="small text-muted mt-2">
+                                    Valor estimado da empreitada (apenas mão de obra).
+                                </p>
+                                <a href="#contato" class="btn btn-outline-light btn-sm mt-2 rounded-pill">Fechar Contrato</a>
                             </div>
                         </form>
                     </div>
@@ -365,43 +322,94 @@
         </div>
     </section>
 
-    <footer class="py-5 border-top border-secondary border-opacity-10">
-        <div class="container text-center text-md-start">
-            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-4">
-                <div class="d-flex align-items-center gap-2">
-                    <span class="fw-bold text-white small">ARCH CONSTRUTORA</span>
-                    <span class="text-muted small">| &copy; 2026</span>
-                </div>
-                <div class="d-flex gap-4">
-                    <a href="https://instagram.com/arch.construtora" target="_blank" class="text-muted text-decoration-none small hover-white">Instagram</a>
-                    <a href="#" class="text-muted text-decoration-none small hover-white">LinkedIn</a>
+    <section id="contato" class="py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h2 class="fw-bold mb-4">Tem o terreno e o material?</h2>
+                    <p class="text-muted mb-5">Nós entramos com a mão de obra. Preencha abaixo para agendar uma visita técnica.</p>
+                    
+                    <form id="whatsappForm" class="bg-card p-4 rounded-4 border border-secondary border-opacity-25 text-start">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label text-muted small">Seu Nome</label>
+                                <input type="text" id="nome" class="form-control" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label text-muted small">Local da Obra</label>
+                                <input type="text" id="local" class="form-control">
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label text-muted small">Estágio da Obra</label>
+                                <select id="interesse" class="form-select">
+                                    <option>Vou começar do zero</option>
+                                    <option>Já tenho paredes, preciso de acabamento</option>
+                                    <option>Reforma / Ampliação</option>
+                                </select>
+                            </div>
+                            <div class="col-12 mt-4">
+                                <button type="submit" class="btn-arch w-100">Solicitar Visita</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
+    </section>
+
+    <footer class="py-4 border-top border-secondary border-opacity-25 mt-5">
+        <div class="container text-center">
+            <p class="small text-muted mb-0">&copy; 2026 Grupo Arch. Construção e Climatização.</p>
+        </div>
     </footer>
 
-    <a href="https://wa.me/5531975194481?text=Olá, vim pelo site da ARCH CONSTRUTORA." class="wa-button" target="_blank">
+    <a href="https://wa.me/5531975194481" class="wa-button" target="_blank">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    
     <script>
-        AOS.init({ duration: 1000, once: true });
+        AOS.init();
 
-        window.addEventListener('scroll', function() {
-            const nav = document.querySelector('.navbar');
-            window.scrollY > 50 ? nav.classList.add('scrolled') : nav.classList.remove('scrolled');
-        });
+        function calcular() {
+            const area = document.getElementById('areaInput').value;
+            const custo = document.getElementById('padraoSelect').value;
+            
+            if(area) {
+                const total = area * custo;
+                // Formatação em Real Brasileiro
+                document.getElementById('valorTotal').innerText = total.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
+                
+                // Mostrar resultado
+                const resultDiv = document.getElementById('result');
+                resultDiv.classList.remove('d-none');
+                
+                // Scroll suave até o resultado em telas pequenas
+                if(window.innerWidth < 768) {
+                    resultDiv.scrollIntoView({behavior: "smooth"});
+                }
+            } else {
+                alert("Por favor, digite a metragem da obra.");
+            }
+        }
 
-        document.getElementById('formOrcamento').addEventListener('submit', function(e) {
+        document.getElementById('whatsappForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const nome = document.getElementById('nome').value;
-            const servico = document.getElementById('servico').value;
-            const detalhes = document.getElementById('detalhes').value;
-            const msg = `*NOVA SOLICITAÇÃO VIA SITE*%0A%0A👤 *Cliente:* ${nome}%0A🏗 *Interesse:* ${servico}%0A📄 *Detalhes:* ${detalhes}`;
-            window.open(`https://wa.me/5531975194481?text=${msg}`, '_blank');
+            const interesse = document.getElementById('interesse').value;
+            const local = document.getElementById('local').value;
+            
+            // Verifica se houve simulação
+            const valorSimulado = document.getElementById('valorTotal').innerText;
+            let textoSimulacao = "";
+            
+            if(document.getElementById('result').classList.contains('d-none') === false) {
+                textoSimulacao = `%0A💰 *Simulei Mão de Obra:* ${valorSimulado}`;
+            }
+
+            const texto = `Olá, meu nome é *${nome}*.%0AEstou precisando de equipe para: *${interesse}*.%0ALocal: *${local}*.${textoSimulacao}`;
+            window.open(`https://wa.me/5531975194481?text=${texto}`, '_blank');
         });
     </script>
 </body>
