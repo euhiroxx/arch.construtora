@@ -1,28 +1,66 @@
 <!DOCTYPE html>
-<html lang="pt-br" data-bs-theme="dark">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arch Construtora</title>
+    <title>ARCH Construtora | Engenharia de Climatização & Construção</title>
+    <meta name="description" content="Especialistas em cálculo térmico de climatização e mão de obra qualificada para construção civil.">
 
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600&family=Space+Grotesk:wght@300;500;700;800&display=swap" rel="stylesheet">
     
+    <!-- Bootstrap & Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS Animations -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <style>
+        /* --- TEMA CLARO (Padrão) --- */
         :root {
-            --bg-body: #050505;
-            --bg-card: #0f0f12;
-            --primary: #59CBE8; 
-            --secondary: #25D366; 
-            --text-main: #ffffff;
-            --text-muted: #a0a0a5;
-            --border-light: rgba(255, 255, 255, 0.08);
-            --glass: rgba(15, 15, 18, 0.8);
+            --bg-body: #f8fafc;
+            --bg-card: #ffffff;
+            --bg-section: #f1f5f9;
+            --bg-input: #ffffff;
+            
+            /* Cores Divisão Climatização (Azul Claro) */
+            --clima-color: #0ea5e9; 
+            --clima-glow: rgba(14, 165, 233, 0.3);
+            
+            /* Cores Divisão Construção (Azul Escuro) */
+            --const-color: #1d4ed8; 
+            --const-glow: rgba(29, 78, 216, 0.3);
+
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --border-light: rgba(0, 0, 0, 0.08);
+            
+            --hero-bg: linear-gradient(rgba(248, 250, 252, 0.9), rgba(248, 250, 252, 0.95));
+            --nav-bg: rgba(255, 255, 255, 0.95);
+        }
+
+        /* --- TEMA ESCURO (Automático) --- */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-body: #050505;
+                --bg-card: #0f0f12;
+                --bg-section: #0a0a0d;
+                --bg-input: #1a1a20;
+
+                /* Ajuste sutil nas cores para brilhar no escuro */
+                --clima-color: #38bdf8; 
+                --const-color: #3b82f6; 
+
+                --text-main: #ffffff;
+                --text-muted: #a0a0a5;
+                --border-light: rgba(255, 255, 255, 0.08);
+                
+                --hero-bg: linear-gradient(rgba(5, 5, 5, 0.85), rgba(5, 5, 5, 0.95));
+                --nav-bg: rgba(5, 5, 5, 0.95);
+            }
         }
 
         body {
@@ -31,189 +69,153 @@
             color: var(--text-main);
             overflow-x: hidden;
             line-height: 1.6;
+            transition: background-color 0.3s, color 0.3s;
         }
 
         h1, h2, h3, h4, .brand-font {
             font-family: 'Space Grotesk', sans-serif;
             letter-spacing: -0.02em;
+            color: var(--text-main);
         }
+
+        .text-main { color: var(--text-main) !important; }
+        .text-muted { color: var(--text-muted) !important; }
 
         /* --- NAVBAR --- */
         .navbar {
             padding: 1rem 0;
-            background: var(--bg-body);
+            background: var(--nav-bg);
+            backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--border-light);
+            transition: background-color 0.3s, border-color 0.3s;
         }
-        
-        .nav-link {
-            font-size: 0.9rem;
-            font-weight: 500;
-            color: var(--text-muted) !important;
-            transition: 0.3s;
-        }
-        .nav-link:hover, .nav-link.active { color: var(--primary) !important; }
+        .nav-link { font-size: 0.9rem; font-weight: 500; color: var(--text-muted) !important; transition: 0.3s; }
+        .nav-link:hover { color: var(--clima-color) !important; }
 
         /* --- HERO --- */
         .hero {
-            min-height: 90vh;
+            min-height: 100vh;
             display: flex;
             align-items: center;
             position: relative;
-            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.9)), url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2070');
+            background: var(--hero-bg), url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2071');
             background-size: cover;
             background-position: center;
+            background-attachment: fixed;
+            padding-top: 80px;
+            transition: background 0.3s;
         }
-        .hero-title {
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
-            font-weight: 700;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-        }
-        .highlight {
-            color: var(--primary);
-        }
+        .hero-title { font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 800; line-height: 1.1; margin-bottom: 1.5rem; }
+        .text-clima { color: var(--clima-color); }
+        .text-const { color: var(--const-color); }
 
-        /* --- BOTÕES --- */
-        .btn-arch {
-            padding: 14px 30px;
-            border-radius: 50px;
-            font-weight: 700;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-            letter-spacing: 0.5px;
-            transition: all 0.3s ease;
-            background: var(--primary);
-            color: #000;
-            border: none;
-            text-decoration: none;
-            display: inline-block;
-            box-shadow: 0 4px 15px rgba(89, 203, 232, 0.3);
-            cursor: pointer;
+        /* --- BOTOES --- */
+        .btn-custom {
+            padding: 14px 28px; border-radius: 50px; font-weight: 700; text-transform: uppercase;
+            font-size: 0.85rem; letter-spacing: 0.5px; transition: all 0.3s ease; text-decoration: none;
+            display: inline-flex; align-items: center; justify-content: center; gap: 8px; border: none;
         }
-        .btn-arch:hover {
-            background: #fff;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
-            color: #000;
-        }
+        .btn-clima { background: var(--clima-color); color: #fff; box-shadow: 0 4px 15px var(--clima-glow); }
+        .btn-clima:hover { opacity: 0.9; color: #fff; transform: translateY(-3px); }
+        
+        .btn-const { background: var(--const-color); color: #fff; box-shadow: 0 4px 15px var(--const-glow); }
+        .btn-const:hover { opacity: 0.9; color: #fff; transform: translateY(-3px); }
+
+        .btn-outline-custom { border: 1px solid var(--text-main); color: var(--text-main); background: transparent; }
+        .btn-outline-custom:hover { background: var(--text-main); color: var(--bg-body); }
 
         /* --- CARDS --- */
         .service-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-light);
-            border-radius: 16px;
-            padding: 2.5rem 2rem;
-            height: 100%;
-            transition: 0.3s;
+            background: var(--bg-card); border: 1px solid var(--border-light);
+            border-radius: 16px; padding: 2rem; height: 100%; transition: 0.4s; position: relative; overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
         }
-        .service-card:hover {
-            border-color: var(--primary);
-            transform: translateY(-5px);
-        }
-        .icon-box {
-            font-size: 2rem;
-            color: var(--primary);
-            margin-bottom: 1.5rem;
+        .card-clima:hover { border-color: var(--clima-color); transform: translateY(-8px); box-shadow: 0 15px 30px -10px var(--clima-glow); }
+        .card-const:hover { border-color: var(--const-color); transform: translateY(-8px); box-shadow: 0 15px 30px -10px var(--const-glow); }
+        
+        .icon-box { font-size: 2.2rem; margin-bottom: 1.5rem; }
+        .popular-badge {
+            position: absolute; top: 15px; right: -35px; color: #fff; font-size: 0.7rem; font-weight: 700;
+            padding: 5px 40px; transform: rotate(45deg); letter-spacing: 1px; background: var(--clima-color);
         }
 
-        /* --- CALCULADORA --- */
+        /* --- CALCULADORAS --- */
         .calc-box {
-            background: #15151a;
-            border: 1px solid var(--border-light);
-            border-radius: 20px;
-            padding: 2rem;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            background: var(--bg-section); border-radius: 20px; padding: 2.5rem; height: 100%;
+            transition: background-color 0.3s;
         }
+        .calc-clima { border: 1px solid var(--clima-color); box-shadow: 0 20px 40px var(--clima-glow); }
+        .calc-const { border: 1px solid var(--const-color); box-shadow: 0 20px 40px var(--const-glow); }
+        
         .form-control, .form-select {
-            background: #222;
-            border: 1px solid #333;
-            color: white;
-            padding: 12px;
+            background: var(--bg-input); border: 1px solid var(--border-light); color: var(--text-main); padding: 14px; border-radius: 8px;
         }
-        .form-control:focus, .form-select:focus {
-            background: #2a2a2a;
-            border-color: var(--primary);
-            color: white;
-            box-shadow: none;
-        }
+        .form-control:focus, .form-select:focus { background: var(--bg-card); color: var(--text-main); box-shadow: none; border-color: var(--clima-color); }
 
-        /* --- WHATSAPP --- */
+        /* --- WHATSAPP FLOAT --- */
         .wa-button {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            width: 60px;
-            height: 60px;
-            background: #25d366;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 2rem;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
-            z-index: 1000;
-            transition: 0.3s;
-            animation: pulse 2s infinite;
-            text-decoration: none;
+            position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px;
+            background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            color: white; font-size: 2rem; box-shadow: 0 10px 20px rgba(0,0,0,0.2); z-index: 1000;
+            transition: 0.3s; text-decoration: none;
         }
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
-        }
+        .wa-button:hover { transform: scale(1.1); color: white; }
     </style>
 </head>
 <body id="home">
 
+    <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center gap-3" href="#">
-                <svg width="45" height="45" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M15 45 L50 15 L85 45 V80 C85 85 80 90 75 90 H25 C20 90 15 85 15 80 V45 Z" 
-                          stroke="#59CBE8" 
-                          stroke-width="12" 
-                          stroke-linejoin="round" 
-                          stroke-linecap="round"/>
-                </svg>
-
-                <div class="d-flex flex-column">
-                    <span class="brand-font fw-bold text-white lh-1" style="font-size: 1.4rem;">ARCH</span>
-                    <span class="small text-muted" style="font-size: 0.7rem; letter-spacing: 2px;">CONSTRUTORA</span>
+                <!-- Logo Prédio -->
+                <i class="fa-solid fa-building fs-3 text-clima"></i>
+                <div class="d-flex flex-column text-start">
+                    <span class="brand-font fw-bold text-main lh-1" style="font-size: 1.3rem;">ARCH CONSTRUTORA</span>
+                    <span class="small text-muted" style="font-size: 0.65rem; letter-spacing: 2px;">ENGENHARIA & OBRAS</span>
                 </div>
             </a>
             
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <i class="fa-solid fa-bars text-white"></i>
+                <i class="fa-solid fa-bars text-main"></i>
             </button>
 
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav align-items-center gap-3">
-                    <li class="nav-item"><a class="nav-link" href="#home">Início</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#servicos">Serviços</a></li>
-                    <li class="nav-item"><a class="btn-arch py-2 px-4 ms-2" href="#simulador">Orçamento Mão de Obra</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#climatizacao">Climatização</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#construcao">Construção</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#diferenciais">Diferenciais</a></li>
+                    <li class="nav-item"><a class="btn-custom btn-clima py-2 px-4 ms-2 text-white" href="#simulador">Simuladores</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
+    <!-- HERO SECTION -->
     <section class="hero">
         <div class="container text-center text-lg-start">
             <div class="row align-items-center">
                 <div class="col-lg-8" data-aos="fade-up">
-                    <span class="badge bg-primary text-black mb-3 px-3 py-2">Especialistas em Construção Econômica</span>
-                    <h1 class="hero-title">
-                        Mão de obra qualificada <br>para a sua <span class="highlight">obra.</span>
+                    <div class="d-inline-flex gap-2 mb-4 flex-wrap">
+                        <span class="badge bg-transparent border text-main px-3 py-2 rounded-pill" style="border-color: var(--border-light) !important;">
+                            <i class="fa-solid fa-snowflake text-clima me-2"></i> Projetos Térmicos
+                        </span>
+                        <span class="badge bg-transparent border text-main px-3 py-2 rounded-pill" style="border-color: var(--border-light) !important;">
+                            <i class="fa-solid fa-helmet-safety text-const me-2"></i> Execução de Obras
+                        </span>
+                    </div>
+                    <h1 class="hero-title text-main">
+                        Da <span class="text-const">fundação</span> ao <span class="text-clima">clima perfeito.</span><br>Tudo sob controle.
                     </h1>
-                    <p class="lead text-white-50 mb-5 w-75 mx-auto mx-lg-0">
-                        Equipe pronta para executar desde a fundação até o acabamento. Preço justo, sem desperdício e entrega no prazo.
+                    <p class="lead text-muted mb-5 w-75 mx-auto mx-lg-0">
+                        A ARCH une a precisão da engenharia de climatização com a excelência da mão de obra para construção civil. Esqueça as dores de cabeça na sua obra.
                     </p>
                     <div class="d-flex flex-wrap gap-3 justify-content-center justify-content-lg-start">
-                        <a href="https://wa.me/5531975194481?text=Olá,%20preciso%20de%20mão%20de%20obra" class="btn-arch">
-                            <i class="fa-brands fa-whatsapp me-2"></i> Contratar Equipe
+                        <a href="#construcao" class="btn-custom btn-const">
+                            <i class="fa-solid fa-trowel"></i> Serviços de Obra
                         </a>
-                        <a href="https://instagram.com/arch.construtora" target="_blank" class="btn btn-outline-light rounded-pill px-4 py-3 fw-bold">
-                            <i class="fa-brands fa-instagram me-2"></i> Ver Fotos
+                        <a href="#climatizacao" class="btn-custom btn-clima">
+                            <i class="fa-solid fa-wind"></i> Projetos de Ar-Condicionado
                         </a>
                     </div>
                 </div>
@@ -221,76 +223,166 @@
         </div>
     </section>
 
-    <section id="servicos" class="py-5">
-        <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="fw-bold">Nossa Equipe Resolve</h2>
-                <p class="text-muted">Trabalhamos por empreitada ou administração.</p>
+    <!-- SEÇÃO CLIMATIZAÇÃO -->
+    <section id="climatizacao" class="py-5" style="background-color: var(--bg-section);">
+        <div class="container py-5">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h6 class="text-clima fw-bold tracking-wide text-uppercase mb-2">Divisão de Engenharia</h6>
+                <h2 class="fw-bold text-main">Projetos de Climatização</h2>
+                <p class="text-muted">Não chute o BTU. Nós calculamos e projetamos para você economizar energia e ter segurança.</p>
             </div>
 
             <div class="row g-4">
-                <div class="col-md-4" data-aos="fade-up">
-                    <div class="service-card text-center">
-                        <div class="icon-box"><i class="fa-solid fa-trowel"></i></div>
-                        <h4>Alvenaria e Reboco</h4>
-                        <p class="text-muted small">Levante de paredes, chapisco e reboco com prumo e esquadro garantidos.</p>
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="0">
+                    <div class="service-card card-clima">
+                        <div class="popular-badge">POPULAR</div>
+                        <h4 class="fw-bold text-main">Consultoria Express</h4>
+                        <div class="my-3"><span class="fs-3 fw-bold text-main">R$ 97</span><span class="text-muted small">/ambiente</span></div>
+                        <ul class="list-unstyled text-muted small mb-4 border-top pt-3 mt-3" style="border-color: var(--border-light) !important;">
+                            <li class="mb-2"><i class="fa-solid fa-check text-clima me-2"></i> Cálculo de Carga Térmica</li>
+                            <li class="mb-2"><i class="fa-solid fa-check text-clima me-2"></i> Especificação da Máquina</li>
+                        </ul>
+                        <button onclick="zap('Olá, quero a Consultoria Express de Climatização (R$97)')" class="btn btn-outline-custom w-100 rounded-pill btn-sm py-2">Solicitar</button>
                     </div>
                 </div>
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="service-card text-center">
-                        <div class="icon-box"><i class="fa-solid fa-paint-roller"></i></div>
-                        <h4>Acabamento Fino</h4>
-                        <p class="text-muted small">Assentamento de porcelanato, cerâmica, bancadas e pintura completa.</p>
+
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-card card-clima">
+                        <h4 class="fw-bold text-main">Projeto Residencial</h4>
+                        <div class="my-3"><span class="fs-3 fw-bold text-main">R$ 350</span><span class="text-muted small">/projeto</span></div>
+                        <ul class="list-unstyled text-muted small mb-4 border-top pt-3 mt-3" style="border-color: var(--border-light) !important;">
+                            <li class="mb-2"><i class="fa-solid fa-check text-clima me-2"></i> Planta de Locação</li>
+                            <li class="mb-2"><i class="fa-solid fa-check text-clima me-2"></i> Detalhamento de Drenos</li>
+                        </ul>
+                        <button onclick="zap('Gostaria de um Projeto Residencial de Climatização')" class="btn btn-outline-custom w-100 rounded-pill btn-sm py-2">Cotar</button>
                     </div>
                 </div>
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="service-card text-center">
-                        <div class="icon-box"><i class="fa-solid fa-hammer"></i></div>
-                        <h4>Fundação e Estrutura</h4>
-                        <p class="text-muted small">Baldrames, colunas e lajes executadas conforme normas de segurança.</p>
+
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-card card-clima">
+                        <h4 class="fw-bold text-main">Para Arquitetos</h4>
+                        <div class="my-3"><span class="fs-3 fw-bold text-main">R$ 25</span><span class="text-muted small">/m²</span></div>
+                        <ul class="list-unstyled text-muted small mb-4 border-top pt-3 mt-3" style="border-color: var(--border-light) !important;">
+                            <li class="mb-2"><i class="fa-solid fa-check text-clima me-2"></i> Planta de Tubulação</li>
+                            <li class="mb-2"><i class="fa-solid fa-check text-clima me-2"></i> Cortes de Gesso</li>
+                        </ul>
+                        <button onclick="zap('Sou Arquiteto e busco parceria em projetos térmicos')" class="btn btn-outline-custom w-100 rounded-pill btn-sm py-2">Parceria</button>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-card card-clima">
+                        <h4 class="fw-bold text-main">Corporativo/PMOC</h4>
+                        <div class="my-3"><span class="fs-5 fw-bold text-main">Sob Consulta</span></div>
+                        <ul class="list-unstyled text-muted small mb-4 border-top pt-3 mt-3" style="border-color: var(--border-light) !important;">
+                            <li class="mb-2"><i class="fa-solid fa-check text-clima me-2"></i> PMOC (Doc. ANVISA)</li>
+                            <li class="mb-2"><i class="fa-solid fa-check text-clima me-2"></i> Sistemas VRF/Cassete</li>
+                        </ul>
+                        <button onclick="zap('Preciso de um Laudo Técnico / PMOC')" class="btn btn-outline-custom w-100 rounded-pill btn-sm py-2">Falar com Eng.</button>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- SEÇÃO CONSTRUÇÃO -->
+    <section id="construcao" class="py-5" style="background-color: var(--bg-body); border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light);">
+        <div class="container py-5">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h6 class="text-const fw-bold tracking-wide text-uppercase mb-2">Divisão de Obras</h6>
+                <h2 class="fw-bold text-main">Mão de Obra Qualificada</h2>
+                <p class="text-muted">Equipe pronta para executar por empreitada. Preço justo, sem desperdício e entrega no prazo.</p>
+            </div>
+
+            <div class="row justify-content-center g-4">
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="0">
+                    <div class="service-card card-const text-center">
+                        <div class="icon-box text-const"><i class="fa-solid fa-trowel"></i></div>
+                        <h4 class="fw-bold text-main">Alvenaria e Reboco</h4>
+                        <p class="text-muted small mt-3">Levante de paredes, chapisco e reboco com prumo e esquadro garantidos.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-card card-const text-center">
+                        <div class="icon-box text-const"><i class="fa-solid fa-paint-roller"></i></div>
+                        <h4 class="fw-bold text-main">Acabamento Fino</h4>
+                        <p class="text-muted small mt-3">Assentamento de porcelanato, cerâmica, bancadas e pintura completa.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-card card-const text-center">
+                        <div class="icon-box text-const"><i class="fa-solid fa-hammer"></i></div>
+                        <h4 class="fw-bold text-main">Fundação e Estrutura</h4>
+                        <p class="text-muted small mt-3">Baldrames, colunas e lajes executadas conforme normas de segurança.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO SIMULADORES DUPLOS -->
     <section id="simulador" class="py-5 my-5">
         <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-5 mb-4 mb-lg-0">
-                    <h2 class="display-6 fw-bold mb-3">Simulador de <br>Mão de Obra</h2>
-                    <p class="text-muted mb-4">Descubra quanto vai custar apenas o serviço da nossa equipe. Valores estimados por metro quadrado construído.</p>
-                    
-                    <ul class="list-unstyled text-muted small">
-                        <li class="mb-2"><i class="fa-solid fa-check text-primary me-2"></i> Pedreiros e Serventes inclusos</li>
-                        <li class="mb-2"><i class="fa-solid fa-check text-primary me-2"></i> Acompanhamento técnico</li>
-                        <li class="mb-2"><i class="fa-solid fa-xmark text-danger me-2"></i> <strong>Não inclui materiais</strong></li>
-                    </ul>
-                </div>
+            <div class="text-center mb-5">
+                <h2 class="fw-bold text-main">Simuladores Online</h2>
+                <p class="text-muted">Descubra os valores estimados para o seu projeto instantaneamente.</p>
+            </div>
 
-                <div class="col-lg-6 offset-lg-1">
-                    <div class="calc-box">
-                        <form id="calcForm">
-                            <label class="mb-2 fw-bold text-uppercase small text-muted">Área a Construir (m²)</label>
-                            <input type="number" id="areaInput" class="form-control mb-4" placeholder="Ex: 70" required>
+            <div class="row g-4 align-items-stretch">
+                <!-- Calc Climatização -->
+                <div class="col-lg-6" data-aos="fade-right">
+                    <div class="calc-box calc-clima position-relative">
+                        <span class="position-absolute top-0 start-0 text-white px-3 py-1 rounded-bottom-end fw-bold small" style="background: var(--clima-color);">PROJETOS TÉRMICOS</span>
+                        
+                        <h3 class="fw-bold mb-4 mt-3 text-main">Engenharia de <br><span class="text-clima">Climatização</span></h3>
+                        <form id="formClima">
+                            <label class="mb-2 fw-bold small text-muted">Metragem do Ambiente (m²)</label>
+                            <input type="number" id="areaClima" class="form-control mb-3" placeholder="Ex: 45">
 
-                            <label class="mb-2 fw-bold text-uppercase small text-muted">Tipo de Serviço</label>
-                            <select id="padraoSelect" class="form-select mb-4">
-                                <option value="510" selected>Construção Popular (Econômico)</option>
-                                <option value="550">Fase Cinza (Alvenaria/Reboco)</option>
-                                <option value="950">Obra Completa (Do início ao acabamento)</option>
-                                <option value="400">Apenas Acabamento</option>
+                            <label class="mb-2 fw-bold small text-muted">Tipo de Demanda</label>
+                            <select id="tipoClima" class="form-select mb-4">
+                                <option value="97" data-tipo="fixo">Apenas 1 Ambiente (Express)</option>
+                                <option value="350" data-tipo="fixo">Projeto Residencial Padrão</option>
+                                <option value="25" data-tipo="m2">Projeto Arquitetônico (R$ 25/m²)</option>
+                                <option value="0" data-tipo="consulta">Corporativo/PMOC</option>
                             </select>
 
-                            <button type="button" onclick="calcular()" class="btn-arch w-100">Calcular Valor da Equipe</button>
+                            <button type="button" onclick="calcularClima()" class="btn-custom btn-clima w-100">Simular Projeto</button>
 
-                            <div id="result" class="mt-4 text-center d-none border-top border-secondary pt-3">
-                                <span class="text-muted small">Investimento em Mão de Obra:</span>
-                                <h3 class="fw-bold text-primary" id="valorTotal">R$ 0,00</h3>
-                                <p class="small text-muted mt-2">
-                                    Valor estimado da empreitada (apenas mão de obra).
-                                </p>
-                                <a href="#contato" class="btn btn-outline-light btn-sm mt-2 rounded-pill">Fechar Contrato</a>
+                            <div id="resClima" class="mt-4 text-center d-none p-3 rounded" style="background: rgba(14, 165, 233, 0.1);">
+                                <span class="text-muted small">Investimento em Projeto:</span>
+                                <h3 class="fw-bold text-clima mt-1" id="valorClima">R$ 0,00</h3>
+                                <button type="button" onclick="zap('Simulei um projeto de Climatização no site e quero prosseguir.')" class="btn btn-outline-custom btn-sm mt-2 rounded-pill">Enviar WhatsApp</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Calc Construção -->
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="calc-box calc-const position-relative">
+                        <span class="position-absolute top-0 start-0 text-white px-3 py-1 rounded-bottom-end fw-bold small" style="background: var(--const-color);">MÃO DE OBRA</span>
+                        
+                        <h3 class="fw-bold mb-4 mt-3 text-main">Execução de <br><span class="text-const">Obras (Casas)</span></h3>
+                        <form id="formConstrucao">
+                            <label class="mb-2 fw-bold small text-muted">Área a Construir/Reformar (m²)</label>
+                            <input type="number" id="areaConst" class="form-control mb-3" placeholder="Ex: 70">
+
+                            <label class="mb-2 fw-bold small text-muted">Tipo de Serviço</label>
+                            <select id="tipoConst" class="form-select mb-4">
+                                <option value="510">Construção Popular (Econômico)</option>
+                                <option value="550">Fase Cinza (Apenas Alvenaria/Reboco)</option>
+                                <option value="400">Apenas Acabamento Fino</option>
+                                <option value="950">Obra Completa (Do início ao acabamento)</option>
+                            </select>
+
+                            <button type="button" onclick="calcularConstrucao()" class="btn-custom btn-const w-100">Simular Empreitada</button>
+
+                            <div id="resConst" class="mt-4 text-center d-none p-3 rounded" style="background: rgba(29, 78, 216, 0.1);">
+                                <span class="text-muted small">Mão de Obra (Estimativa):</span>
+                                <h3 class="fw-bold text-const mt-1" id="valorConst">R$ 0,00</h3>
+                                <p class="small text-muted m-0" style="font-size: 0.75rem;">*Não inclui materiais de construção.</p>
+                                <button type="button" onclick="zap('Simulei a mão de obra para minha casa no site e quero agendar visita.')" class="btn btn-outline-custom btn-sm mt-2 rounded-pill">Agendar Visita</button>
                             </div>
                         </form>
                     </div>
@@ -299,95 +391,106 @@
         </div>
     </section>
 
-    <section id="contato" class="py-5">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-8 text-center">
-                    <h2 class="fw-bold mb-4">Tem o terreno e o material?</h2>
-                    <p class="text-muted mb-5">Nós entramos com a mão de obra. Preencha abaixo para agendar uma visita técnica.</p>
-                    
-                    <form id="whatsappForm" class="bg-card p-4 rounded-4 border border-secondary border-opacity-25 text-start">
-                        <div class="row g-3">
-                            <div class="col-md-6">
-                                <label class="form-label text-muted small">Seu Nome</label>
-                                <input type="text" id="nome" class="form-control" required>
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label text-muted small">Local da Obra</label>
-                                <input type="text" id="local" class="form-control">
-                            </div>
-                            <div class="col-12">
-                                <label class="form-label text-muted small">Estágio da Obra</label>
-                                <select id="interesse" class="form-select">
-                                    <option>Vou começar do zero</option>
-                                    <option>Já tenho paredes, preciso de acabamento</option>
-                                    <option>Reforma / Ampliação</option>
-                                </select>
-                            </div>
-                            <div class="col-12 mt-4">
-                                <button type="submit" class="btn-arch w-100">Solicitar Visita</button>
-                            </div>
-                        </div>
-                    </form>
+    <!-- DIFERENCIAIS -->
+    <section id="diferenciais" class="py-5" style="background-color: var(--bg-section); border-top: 1px solid var(--border-light);">
+        <div class="container py-4">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold text-main">Por que escolher a ARCH?</h2>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4 text-center px-4" data-aos="fade-up">
+                    <i class="fa-solid fa-scale-balanced fs-1 text-clima mb-3"></i>
+                    <h4 class="fw-bold text-main">Imparcialidade Técnica</h4>
+                    <p class="text-muted small">Não vendemos peças nem empurramos equipamentos. Nossas indicações na climatização são baseadas em matemática e engenharia.</p>
+                </div>
+                <div class="col-md-4 text-center px-4" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fa-solid fa-hard-hat fs-1 text-const mb-3"></i>
+                    <h4 class="fw-bold text-main">Execução Especializada</h4>
+                    <p class="text-muted small">Pedreiros, serventes e acabadores acompanhados de perto. Profissionais que respeitam o prumo, o nível e o prazo.</p>
+                </div>
+                <div class="col-md-4 text-center px-4" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fa-solid fa-piggy-bank fs-1 text-main mb-3"></i>
+                    <h4 class="fw-bold text-main">Economia Real</h4>
+                    <p class="text-muted small">Com projeto certo e mão de obra eficiente, você não desperdiça material na obra e não compra ar-condicionado superdimensionado.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="py-4 border-top border-secondary border-opacity-25 mt-5">
+    <!-- FOOTER -->
+    <footer class="py-5 mt-5" style="background: var(--bg-body); border-top: 1px solid var(--border-light);">
         <div class="container text-center">
-            <p class="small text-muted mb-0">&copy; 2026 Grupo Arch. Construção e Climatização.</p>
+            
+            <div class="d-flex align-items-center justify-content-center gap-3 mb-4">
+                <i class="fa-solid fa-building fs-2 text-clima"></i>
+                <div class="d-flex flex-column text-start">
+                    <span class="brand-font fw-bold text-main lh-1" style="font-size: 1.5rem;">ARCH CONSTRUTORA</span>
+                    <span class="small text-muted" style="font-size: 0.75rem; letter-spacing: 2px;">ENGENHARIA & OBRAS</span>
+                </div>
+            </div>
+
+            <p class="text-main mb-2">&copy; 2026 Todos os direitos reservados.</p>
+            <p class="small text-muted mx-auto" style="max-width: 600px;">
+                Nota legal: A divisão de climatização trabalha exclusivamente com projetos técnicos, sem vínculo de venda de aparelhos. A divisão de obras atua por empreitada na mão de obra, sem fornecimento de insumos básicos (cimento, tijolos, etc).
+            </p>
         </div>
     </footer>
 
-    <a href="https://wa.me/5531975194481" class="wa-button" target="_blank">
+    <!-- WHATSAPP FLOAT -->
+    <a href="https://wa.me/5531975194481" class="wa-button" target="_blank" title="Falar no WhatsApp">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
+    <!-- SCRIPTS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init();
+        AOS.init({ once: true, duration: 800 });
 
-        function calcular() {
-            const area = document.getElementById('areaInput').value;
-            const custo = document.getElementById('padraoSelect').value;
-            
-            if(area) {
-                const total = area * custo;
-                // Formatação em Real Brasileiro
-                document.getElementById('valorTotal').innerText = total.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
-                
-                // Mostrar resultado
-                const resultDiv = document.getElementById('result');
-                resultDiv.classList.remove('d-none');
-                
-                // Scroll suave até o resultado em telas pequenas
-                if(window.innerWidth < 768) {
-                    resultDiv.scrollIntoView({behavior: "smooth"});
-                }
-            } else {
-                alert("Por favor, digite a metragem da obra.");
-            }
+        function zap(msg) {
+            const phone = "5531975194481"; 
+            const url = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
+            window.open(url, '_blank');
         }
 
-        document.getElementById('whatsappForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const nome = document.getElementById('nome').value;
-            const interesse = document.getElementById('interesse').value;
-            const local = document.getElementById('local').value;
+        // --- Simulador Climatização ---
+        function calcularClima() {
+            const area = document.getElementById('areaClima').value;
+            const select = document.getElementById('tipoClima');
+            const option = select.options[select.selectedIndex];
             
-            // Verifica se houve simulação
-            const valorSimulado = document.getElementById('valorTotal').innerText;
-            let textoSimulacao = "";
-            
-            if(document.getElementById('result').classList.contains('d-none') === false) {
-                textoSimulacao = `%0A💰 *Simulei Mão de Obra:* ${valorSimulado}`;
+            const tipo = option.getAttribute('data-tipo');
+            const valor = parseFloat(option.value);
+            const resDiv = document.getElementById('resClima');
+            const valorStr = document.getElementById('valorClima');
+
+            if(tipo === 'fixo') {
+                valorStr.innerText = valor.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
+            } else if (tipo === 'm2') {
+                if(!area || area <= 0) { alert("Informe a metragem para projetos por m²."); return; }
+                valorStr.innerText = (area * valor).toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
+            } else {
+                valorStr.innerText = "Sob Consulta";
+            }
+            resDiv.classList.remove('d-none');
+        }
+
+        // --- Simulador Construção ---
+        function calcularConstrucao() {
+            const area = document.getElementById('areaConst').value;
+            const custo = parseFloat(document.getElementById('tipoConst').value);
+            const resDiv = document.getElementById('resConst');
+            const valorStr = document.getElementById('valorConst');
+
+            if(!area || area <= 0) {
+                alert("Por favor, informe a metragem quadrada da obra.");
+                return;
             }
 
-            const texto = `Olá, meu nome é *${nome}*.%0AEstou precisando de equipe para: *${interesse}*.%0ALocal: *${local}*.${textoSimulacao}`;
-            window.open(`https://wa.me/5531975194481?text=${texto}`, '_blank');
-        });
+            const total = area * custo;
+            valorStr.innerText = total.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
+            resDiv.classList.remove('d-none');
+        }
     </script>
 </body>
 </html>
