@@ -26,7 +26,6 @@
             --bg-section: #f1f5f9;
             --bg-input: #ffffff;
             
-            /* Ajustado para um tom levemente mais claro/cyan se desejar combinar com a imagem, mas mantendo a sobriedade */
             --brand-color: #1d4ed8; 
             --brand-glow: rgba(29, 78, 216, 0.3);
             --brand-light: #eff6ff;
@@ -36,6 +35,9 @@
             --border-light: rgba(0, 0, 0, 0.08);
             
             --nav-bg: rgba(255, 255, 255, 0.85);
+            
+            /* Overlay claro para deixar a imagem de fundo fraca */
+            --hero-bg: linear-gradient(rgba(248, 250, 252, 0.92), rgba(248, 250, 252, 0.97));
         }
 
         /* --- TEMA ESCURO (Acionado via JS) --- */
@@ -45,7 +47,7 @@
             --bg-section: #121216;
             --bg-input: #1a1a20;
 
-            --brand-color: #38bdf8; /* Azul claro estilo cyan no dark mode */
+            --brand-color: #38bdf8;
             --brand-light: rgba(56, 189, 248, 0.1);
 
             --text-main: #ffffff;
@@ -53,6 +55,9 @@
             --border-light: rgba(255, 255, 255, 0.08);
             
             --nav-bg: rgba(10, 10, 13, 0.85);
+            
+            /* Overlay escuro para deixar a imagem de fundo fraca e no tom correto */
+            --hero-bg: linear-gradient(rgba(10, 10, 13, 0.90), rgba(10, 10, 13, 0.96));
         }
 
         body {
@@ -92,31 +97,18 @@
         }
         .theme-toggle:hover { background: var(--brand-light); color: var(--brand-color); }
 
-        /* --- HERO (TECH BACKGROUND) --- */
+        /* --- HERO (COM IMAGEM DE FUNDO) --- */
         .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
             position: relative;
+            background: var(--hero-bg), url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2071');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
             padding-top: 80px;
-            overflow: hidden;
-        }
-        /* Fundo estilo Blueprint Animado */
-        .hero::before {
-            content: "";
-            position: absolute;
-            top: -50%; left: -50%; width: 200%; height: 200%;
-            background-image: 
-                linear-gradient(var(--border-light) 1px, transparent 1px),
-                linear-gradient(90deg, var(--border-light) 1px, transparent 1px);
-            background-size: 40px 40px;
-            transform: rotate(-15deg);
-            animation: panBg 40s linear infinite;
-            z-index: -1;
-        }
-        @keyframes panBg {
-            0% { transform: translateY(0) rotate(-15deg); }
-            100% { transform: translateY(-500px) rotate(-15deg); }
+            transition: background 0.4s ease;
         }
 
         .hero-title { font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 800; line-height: 1.1; margin-bottom: 1.5rem; }
