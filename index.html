@@ -1,355 +1,416 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ARCH Construtora | Mão de Obra Especializada</title>
+    <title>ARCH CONSTRUTORA | Gestão em Mão de Obra</title>
     <meta name="description" content="Especialistas em mão de obra para construção civil: residências populares e obras comerciais.">
 
-    <!-- Favicon (Ícone da Aba do Navegador) -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2338bdf8' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 10L12 2.5L21 10V20.5C21 21.3284 20.3284 22 19.5 22H4.5C3.67157 22 3 21.3284 3 20.5V10Z'/%3E%3C/svg%3E">
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2369818D' stroke-width='3' stroke-linecap='square' stroke-linejoin='round'%3E%3Cpath d='M3 10L12 2.5L21 10V20.5C21 21.3284 20.3284 22 19.5 22H4.5C3.67157 22 3 21.3284 3 20.5V10Z'/%3E%3C/svg%3E">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600&family=Space+Grotesk:wght@300;500;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
     
-    <!-- Bootstrap & Icons -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Icons (FontAwesome) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- AOS Animations -->
+    <!-- CSS Libraries -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        arch: {
+                            base: '#0D1F23',
+                            surface: '#132E35',
+                            border: '#2D4A53',
+                            text: '#ffffff',
+                            muted: '#AFB3B7',
+                            accent: '#69818D',
+                            accentHover: '#5A636A'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Inter"', 'sans-serif'],
+                        display: ['"Outfit"', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'soft': '0 10px 40px rgba(13, 31, 35, 0.5)',
+                        'glow': '0 0 20px rgba(105, 129, 141, 0.15)',
+                    }
+                }
+            }
+        }
+    </script>
 
     <style>
-        /* --- VARIÁVEIS CSS (TEMA CLARO PADRÃO) --- */
-        :root {
-            --bg-body: #f8fafc;
-            --bg-card: rgba(255, 255, 255, 0.7);
-            --bg-section: #f1f5f9;
-            --bg-input: #ffffff;
-            
-            --brand-color: #1d4ed8; 
-            --brand-glow: rgba(29, 78, 216, 0.3);
-            --brand-light: #eff6ff;
-
-            --text-main: #0f172a;
-            --text-muted: #64748b;
-            --border-light: rgba(0, 0, 0, 0.08);
-            
-            --nav-bg: rgba(255, 255, 255, 0.85);
-            
-            /* Overlay claro para deixar a imagem de fundo fraca */
-            --hero-bg: linear-gradient(rgba(248, 250, 252, 0.92), rgba(248, 250, 252, 0.97));
-        }
-
-        /* --- TEMA ESCURO (Acionado via JS) --- */
-        body.dark-mode {
-            --bg-body: #0a0a0d;
-            --bg-card: rgba(20, 20, 25, 0.7);
-            --bg-section: #121216;
-            --bg-input: #1a1a20;
-
-            --brand-color: #38bdf8;
-            --brand-light: rgba(56, 189, 248, 0.1);
-
-            --text-main: #ffffff;
-            --text-muted: #94a3b8;
-            --border-light: rgba(255, 255, 255, 0.08);
-            
-            --nav-bg: rgba(10, 10, 13, 0.85);
-            
-            /* Overlay escuro para deixar a imagem de fundo fraca e no tom correto */
-            --hero-bg: linear-gradient(rgba(10, 10, 13, 0.90), rgba(10, 10, 13, 0.96));
-        }
-
         body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: var(--bg-body);
-            color: var(--text-main);
+            background-color: #0D1F23;
+            color: #ffffff;
+            -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
-            line-height: 1.6;
-            transition: background-color 0.4s ease, color 0.4s ease;
         }
 
-        h1, h2, h3, h4, .brand-font {
-            font-family: 'Space Grotesk', sans-serif;
-            letter-spacing: -0.02em;
-            color: var(--text-main);
+        ::selection { background-color: #69818D; color: #ffffff; }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0D1F23; }
+        ::-webkit-scrollbar-thumb { background: #2D4A53; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #69818D; }
+
+        /* Custom Range Input */
+        input[type=range] {
+            -webkit-appearance: none; width: 100%; background: transparent;
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%; height: 6px; background: #2D4A53; border-radius: 10px;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            height: 24px; width: 24px; border-radius: 50%; background: #69818D;
+            cursor: pointer; -webkit-appearance: none; margin-top: -9px;
+            border: 4px solid #132E35; box-shadow: 0 0 10px rgba(105, 129, 141, 0.4);
+            transition: transform 0.1s;
+        }
+        input[type=range]::-webkit-slider-thumb:active {
+            transform: scale(1.15); background: #AFB3B7;
         }
 
-        .text-main { color: var(--text-main) !important; }
-        .text-muted { color: var(--text-muted) !important; }
-
-        /* --- NAVBAR & DARK MODE TOGGLE --- */
-        .navbar {
-            padding: 1rem 0;
-            background: var(--nav-bg);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border-light);
-            transition: background-color 0.4s ease, border-color 0.4s ease;
+        /* UI Cards - Baseados na Referência */
+        .ui-card {
+            background-color: #132E35;
+            border: 1px solid #2D4A53;
+            border-radius: 2rem;
+            transition: all 0.3s ease;
         }
-        .nav-link { font-size: 0.9rem; font-weight: 600; color: var(--text-muted) !important; transition: 0.3s; }
-        .nav-link:hover { color: var(--brand-color) !important; }
-
-        .theme-toggle {
-            background: transparent; border: 1px solid var(--border-light);
-            color: var(--text-main); padding: 8px 12px; border-radius: 50px;
-            cursor: pointer; transition: 0.3s; display: flex; align-items: center; justify-content: center;
-        }
-        .theme-toggle:hover { background: var(--brand-light); color: var(--brand-color); }
-
-        /* --- HERO (COM IMAGEM DE FUNDO) --- */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            background: var(--hero-bg), url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2071');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            padding-top: 80px;
-            transition: background 0.4s ease;
-        }
-
-        .hero-title { font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 800; line-height: 1.1; margin-bottom: 1.5rem; }
-        .text-brand { color: var(--brand-color); }
-
-        /* --- BOTOES --- */
-        .btn-custom {
-            padding: 14px 30px; border-radius: 50px; font-weight: 700; text-transform: uppercase;
-            font-size: 0.85rem; letter-spacing: 0.5px; transition: all 0.3s ease; text-decoration: none;
-            display: inline-flex; align-items: center; justify-content: center; gap: 8px; border: none;
-            background: var(--brand-color); color: #fff; box-shadow: 0 4px 15px var(--brand-glow);
-        }
-        .btn-custom:hover { transform: translateY(-3px); color: #fff; box-shadow: 0 8px 25px var(--brand-glow); }
-
-        /* --- CARDS (GLASSMORPHISM) --- */
-        .service-card {
-            background: var(--bg-card); border: 1px solid var(--border-light);
-            border-radius: 20px; padding: 2.5rem; height: 100%; transition: 0.4s;
-            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-            box-shadow: 0 8px 32px rgba(0,0,0,0.02);
-        }
-        .service-card:hover { border-color: var(--brand-color); transform: translateY(-8px); }
-        .icon-box { font-size: 2.5rem; margin-bottom: 1.5rem; color: var(--brand-color); }
-
-        /* --- CALCULADORA DINÂMICA --- */
-        .calc-box {
-            background: var(--bg-section); border-radius: 24px; padding: 3rem; 
-            border: 1px solid var(--brand-color); box-shadow: 0 20px 50px var(--brand-glow);
+        .ui-card:hover {
+            border-color: #69818D;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transform: translateY(-4px);
         }
         
-        /* Custom Range Slider */
-        .range-slider {
-            -webkit-appearance: none; width: 100%; height: 8px; border-radius: 5px;
-            background: var(--border-light); outline: none; transition: 0.2s;
+        .ui-card-dark {
+            background-color: #0D1F23;
+            border: 1px solid #2D4A53;
+            border-radius: 2rem;
         }
-        .range-slider::-webkit-slider-thumb {
-            -webkit-appearance: none; appearance: none;
-            width: 24px; height: 24px; border-radius: 50%;
-            background: var(--brand-color); cursor: pointer;
-            box-shadow: 0 0 10px var(--brand-glow);
-        }
-        .range-slider::-moz-range-thumb {
-            width: 24px; height: 24px; border-radius: 50%;
-            background: var(--brand-color); cursor: pointer;
-        }
-        
-        .form-select {
-            background: var(--bg-input); border: 1px solid var(--border-light); color: var(--text-main); padding: 14px; border-radius: 12px;
-        }
-        .form-select:focus { background: var(--bg-card); color: var(--text-main); box-shadow: 0 0 0 3px var(--brand-light); border-color: var(--brand-color); }
-
-        .result-box {
-            background: var(--brand-light); border-radius: 16px; padding: 20px;
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-        }
-
-        /* --- WHATSAPP FLOAT --- */
-        .wa-button {
-            position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px;
-            background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            color: white; font-size: 2rem; box-shadow: 0 10px 20px rgba(0,0,0,0.2); z-index: 1000;
-            transition: 0.3s; text-decoration: none;
-        }
-        .wa-button:hover { transform: scale(1.1); color: white; }
     </style>
 </head>
-<body>
+<body class="font-sans relative">
 
-    <!-- NAVBAR -->
-    <nav class="navbar navbar-expand-lg fixed-top">
-        <div class="container">
-            <a class="navbar-brand d-flex align-items-center gap-3" href="#">
-                <!-- SVG Casinha Arredondada (Logo) -->
-                <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="var(--brand-color)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0">
-                    <path d="M3 10L12 2.5L21 10V20.5C21 21.3284 20.3284 22 19.5 22H4.5C3.67157 22 3 21.3284 3 20.5V10Z"/>
-                </svg>
+    <!-- Fundo Gradiente Sutil -->
+    <div class="fixed inset-0 pointer-events-none z-[-1] bg-[radial-gradient(ellipse_at_top_right,_#2D4A53_0%,_#0D1F23_60%)] opacity-20"></div>
+
+    <!-- NAVBAR FIXED -->
+    <nav class="fixed w-full z-50 bg-arch-base/80 backdrop-blur-md border-b border-arch-border transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
                 
-                <div class="d-flex flex-column text-start">
-                    <span class="brand-font fw-bold text-main lh-1" style="font-size: 1.3rem;">ARCH CONSTRUTORA</span>
-                    <span class="small text-muted" style="font-size: 0.65rem; letter-spacing: 2px;">MÃO DE OBRA ESPECIALIZADA</span>
-                </div>
-            </a>
-            
-            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <i class="fa-solid fa-bars text-main"></i>
-            </button>
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square" class="text-arch-accent group-hover:text-arch-text transition-colors">
+                        <path d="M3 10L12 2.5L21 10V20.5C21 21.3284 20.3284 22 19.5 22H4.5C3.67157 22 3 21.3284 3 20.5V10Z"/>
+                    </svg>
+                    <div class="flex flex-col">
+                        <span class="font-display font-extrabold text-arch-text text-xl tracking-tight leading-none">ARCH CONSTRUTORA</span>
+                        <span class="text-arch-muted text-[0.65rem] tracking-[0.2em] font-medium mt-1 uppercase">Gestão em Mão de Obra</span>
+                    </div>
+                </a>
 
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                <ul class="navbar-nav align-items-center gap-3">
-                    <li class="nav-item"><a class="nav-link" href="#servicos">Especialidades</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#diferenciais">Por que a ARCH?</a></li>
-                    <li class="nav-item">
-                        <button class="theme-toggle" id="themeBtn" title="Alternar Tema">
-                            <i class="fa-solid fa-moon"></i>
-                        </button>
-                    </li>
-                    <li class="nav-item"><a class="btn-custom py-2 px-4 ms-2" href="#simulador">Orçamento Rápido</a></li>
-                </ul>
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center gap-8 bg-arch-surface border border-arch-border px-6 py-2 rounded-full">
+                    <a href="#escopo" class="text-arch-muted hover:text-arch-text text-sm font-semibold transition-colors">Escopo</a>
+                    <a href="#simulador" class="text-arch-muted hover:text-arch-text text-sm font-semibold transition-colors">Simulador</a>
+                    <a href="#metodologia" class="text-arch-muted hover:text-arch-text text-sm font-semibold transition-colors">Metodologia</a>
+                </div>
+
+                <!-- CTA -->
+                <div class="hidden md:flex">
+                    <button onclick="zapOrcamento()" class="bg-arch-text text-arch-base hover:bg-arch-muted px-6 py-2.5 rounded-full text-sm font-bold transition-all shadow-glow flex items-center gap-2">
+                        <i class="fa-brands fa-whatsapp text-lg"></i> Contato
+                    </button>
+                </div>
+
+                <!-- Mobile Toggle -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-arch-text p-2 focus:outline-none bg-arch-surface border border-arch-border rounded-xl">
+                        <i class="fa-solid fa-bars-staggered text-lg"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-arch-surface border-b border-arch-border absolute w-full shadow-lg origin-top transition-transform">
+            <div class="px-6 pt-4 pb-6 space-y-2 flex flex-col">
+                <a href="#escopo" class="text-arch-text font-display font-semibold text-lg py-3 border-b border-arch-border/50">Escopo</a>
+                <a href="#simulador" class="text-arch-text font-display font-semibold text-lg py-3 border-b border-arch-border/50">Simulador</a>
+                <a href="#metodologia" class="text-arch-text font-display font-semibold text-lg py-3 border-b border-arch-border/50">Metodologia</a>
+                <button onclick="zapOrcamento()" class="mt-4 text-center bg-arch-text text-arch-base font-bold py-3 rounded-full flex items-center justify-center gap-2">
+                    <i class="fa-brands fa-whatsapp"></i> Falar com Engenheiro
+                </button>
             </div>
         </div>
     </nav>
 
     <!-- HERO SECTION -->
-    <section class="hero">
-        <div class="container text-center">
-            <div class="row justify-content-center">
-                <div class="col-lg-9" data-aos="fade-up">
-                    <div class="d-inline-flex gap-2 mb-4 flex-wrap justify-content-center">
-                        <span class="badge bg-transparent border text-main px-3 py-2 rounded-pill" style="border-color: var(--brand-color) !important; color: var(--brand-color) !important;">
-                            <i class="fa-solid fa-house-chimney me-2"></i> Casas Populares
-                        </span>
-                        <span class="badge bg-transparent border text-main px-3 py-2 rounded-pill" style="border-color: var(--brand-color) !important; color: var(--brand-color) !important;">
-                            <i class="fa-solid fa-store me-2"></i> Obras Comerciais
-                        </span>
-                    </div>
-                    <h1 class="hero-title text-main">
-                        Construção <span class="text-brand">eficiente</span>. <br>Mão de obra que entrega.
-                    </h1>
-                    <p class="lead text-muted mb-5 mx-auto" style="max-width: 700px;">
-                        Focamos no que importa: execução rápida e bem feita para residências de baixo custo e espaços comerciais. Sem desperdício, com preço justo.
-                    </p>
-                    <a href="#simulador" class="btn-custom btn-lg">
-                        <i class="fa-solid fa-calculator"></i> Simular Custo da Obra
+    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden flex items-center">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            
+            <div data-aos="fade-up" class="flex flex-col items-center">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-arch-surface border border-arch-border text-arch-muted text-xs font-bold uppercase tracking-widest mb-8 shadow-inner">
+                    <span class="w-2 h-2 rounded-full bg-arch-accent animate-pulse"></span>
+                    Especialistas em Casa Popular
+                </div>
+                
+                <h1 class="font-display font-extrabold text-5xl sm:text-6xl lg:text-7xl leading-[1.1] mb-6 text-arch-text tracking-tight">
+                    Construção ágil. <br>
+                    <span class="text-arch-accent">Gestão sem falhas.</span>
+                </h1>
+                
+                <p class="text-lg text-arch-muted mb-10 max-w-2xl mx-auto leading-relaxed">
+                    Fornecemos mão de obra altamente qualificada para execução de residências e obras comerciais. Orçamento 100% previsível e entrega garantida no prazo.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center w-full sm:w-auto">
+                    <a href="#simulador" class="inline-flex justify-center items-center gap-3 bg-arch-accent border border-arch-accent hover:bg-arch-accentHover hover:border-arch-accentHover text-white px-8 py-4 rounded-full font-bold transition-all shadow-glow w-full sm:w-auto">
+                        <i class="fa-solid fa-calculator"></i> Calcular Custo de Obra
                     </a>
                 </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- SEÇÃO SERVIÇOS -->
-    <section id="servicos" class="py-5" style="background-color: var(--bg-body); position: relative; z-index: 2;">
-        <div class="container py-5">
-            <div class="text-center mb-5" data-aos="fade-up">
-                <h6 class="text-brand fw-bold tracking-wide text-uppercase mb-2">Nossas Especialidades</h6>
-                <h2 class="fw-bold text-main">Foco em Resultado</h2>
-                <p class="text-muted">Não vendemos material, vendemos a garantia de que sua obra sairá do papel no prazo.</p>
-            </div>
-
-            <div class="row g-4">
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="0">
-                    <div class="service-card text-center">
-                        <div class="icon-box"><i class="fa-solid fa-house-chimney-window"></i></div>
-                        <h4 class="fw-bold text-main">Residências Populares</h4>
-                        <p class="text-muted small mt-3">Especialistas em casas de baixo padrão. Velocidade na alvenaria, cobertura e acabamento básico para quem precisa morar ou alugar rápido.</p>
+                <!-- Estatísticas Hero -->
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-8 mt-16 pt-8 border-t border-arch-border w-full max-w-3xl mx-auto">
+                    <div class="ui-card-dark p-6 text-center">
+                        <span class="block font-display font-extrabold text-3xl text-arch-text">100%</span>
+                        <span class="text-xs text-arch-muted font-medium uppercase tracking-wider mt-1 block">Empreitada</span>
                     </div>
-                </div>
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="service-card text-center">
-                        <div class="icon-box"><i class="fa-solid fa-shop"></i></div>
-                        <h4 class="fw-bold text-main">Obras Comerciais</h4>
-                        <p class="text-muted small mt-3">Construção e reforma de lojas, galpões e salas comerciais. Execução focada no cronograma para o seu negócio não parar.</p>
+                    <div class="ui-card-dark p-6 text-center">
+                        <span class="block font-display font-extrabold text-3xl text-arch-text">R$ 510</span>
+                        <span class="text-xs text-arch-muted font-medium uppercase tracking-wider mt-1 block">Média m²</span>
                     </div>
-                </div>
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="service-card text-center">
-                        <div class="icon-box"><i class="fa-solid fa-hammer"></i></div>
-                        <h4 class="fw-bold text-main">Alvenaria e Estrutura</h4>
-                        <p class="text-muted small mt-3">Fundação segura, levantamento de paredes em bloco ou tijolo, chapisco e reboco alinhados. A base perfeita para a sua obra.</p>
+                    <div class="ui-card-dark p-6 text-center">
+                        <span class="block font-display font-extrabold text-3xl text-arch-text"><i class="fa-solid fa-location-dot text-2xl text-arch-accent"></i></span>
+                        <span class="text-xs text-arch-muted font-medium uppercase tracking-wider mt-1 block">Curvelo-MG</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SEÇÃO SIMULADOR DINÂMICO -->
-    <section id="simulador" class="py-5 my-5">
-        <div class="container">
-            <div class="text-center mb-5" data-aos="fade-up">
-                <h2 class="fw-bold text-main">Calculadora de Mão de Obra</h2>
-                <p class="text-muted">Arraste o controle abaixo para estimar o valor da empreitada instantaneamente.</p>
+    <!-- ESCOPO -->
+    <section id="escopo" class="py-24 bg-arch-surface/30 border-t border-arch-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6" data-aos="fade-up">
+                <div class="max-w-2xl">
+                    <h2 class="font-display font-extrabold text-4xl text-arch-text mb-4">Nosso Escopo</h2>
+                    <p class="text-arch-muted">Não vendemos material. Vendemos a garantia técnica de que sua obra será levantada exatamente de acordo com o projeto estrutural.</p>
+                </div>
+                <div class="px-4 py-2 rounded-full border border-arch-border bg-arch-surface text-xs font-bold text-arch-muted uppercase tracking-widest flex items-center gap-2 shrink-0">
+                    <i class="fa-solid fa-layer-group"></i> 3 Modalidades
+                </div>
             </div>
 
-            <div class="row justify-content-center">
-                <div class="col-lg-8" data-aos="zoom-in">
-                    <div class="calc-box position-relative">
-                        <div class="row align-items-center">
-                            <!-- Controles -->
-                            <div class="col-md-7 pe-md-4">
-                                <label class="d-flex justify-content-between mb-3 fw-bold text-main">
-                                    Área da Obra: <span id="areaLabel" class="text-brand fs-5">70 m²</span>
-                                </label>
-                                <input type="range" id="areaRange" class="range-slider mb-4" min="20" max="300" step="5" value="70">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Card 1 -->
+                <div class="ui-card p-8 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="0">
+                    <div>
+                        <div class="w-14 h-14 bg-arch-base border border-arch-border rounded-[14px] flex items-center justify-center mb-6 text-arch-accent">
+                            <i class="fa-solid fa-house text-2xl"></i>
+                        </div>
+                        <h4 class="font-display font-bold text-xl mb-3 text-arch-text">Casas Populares</h4>
+                        <p class="text-arch-muted text-sm leading-relaxed mb-6">Execução ágil de casas de baixo padrão. Velocidade na alvenaria, cobertura e acabamentos essenciais para moradia.</p>
+                    </div>
+                    <span class="text-xs font-bold text-arch-text flex items-center gap-2 border-t border-arch-border pt-4">
+                        <i class="fa-solid fa-check text-arch-accent"></i> Especialidade Principal
+                    </span>
+                </div>
+                
+                <!-- Card 2 -->
+                <div class="ui-card p-8 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="100">
+                    <div>
+                        <div class="w-14 h-14 bg-arch-base border border-arch-border rounded-[14px] flex items-center justify-center mb-6 text-arch-accent">
+                            <i class="fa-solid fa-industry text-2xl"></i>
+                        </div>
+                        <h4 class="font-display font-bold text-xl mb-3 text-arch-text">Obras Comerciais</h4>
+                        <p class="text-arch-muted text-sm leading-relaxed mb-6">Levantamento de lojas, galpões e salas comerciais. Alinhamento total ao cronograma para não atrasar seu negócio.</p>
+                    </div>
+                    <span class="text-xs font-bold text-arch-text flex items-center gap-2 border-t border-arch-border pt-4">
+                        <i class="fa-solid fa-check text-arch-accent"></i> Prazo Rigoroso
+                    </span>
+                </div>
+                
+                <!-- Card 3 -->
+                <div class="ui-card p-8 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="200">
+                    <div>
+                        <div class="w-14 h-14 bg-arch-base border border-arch-border rounded-[14px] flex items-center justify-center mb-6 text-arch-accent">
+                            <i class="fa-solid fa-ruler-combined text-2xl"></i>
+                        </div>
+                        <h4 class="font-display font-bold text-xl mb-3 text-arch-text">Alvenaria Estrutural</h4>
+                        <p class="text-arch-muted text-sm leading-relaxed mb-6">Fundações seguras, paredes no prumo perfeito, chapisco e reboco. A base sólida para a segurança da edificação.</p>
+                    </div>
+                    <span class="text-xs font-bold text-arch-text flex items-center gap-2 border-t border-arch-border pt-4">
+                        <i class="fa-solid fa-check text-arch-accent"></i> Qualidade Técnica
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                                <label class="mb-2 fw-bold small text-muted">Perfil do Serviço</label>
-                                <select id="tipoConst" class="form-select mb-4">
-                                    <option value="510">Construção Casa Popular (R$ 510/m²)</option>
-                                    <option value="480">Ponto Comercial / Galpão (R$ 480/m²)</option>
-                                    <option value="350">Apenas Alvenaria e Cobertura (R$ 350/m²)</option>
-                                </select>
+    <!-- SIMULADOR -->
+    <section id="simulador" class="py-24">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Simulador Wrapper (UI Card gigante) -->
+            <div class="ui-card overflow-hidden p-2 sm:p-4" data-aos="zoom-in">
+                <div class="grid grid-cols-1 lg:grid-cols-12 rounded-[1.5rem] overflow-hidden">
+                    
+                    <!-- Controles (Esquerda) -->
+                    <div class="lg:col-span-7 bg-arch-surface p-8 lg:p-12">
+                        <div class="flex items-center gap-3 mb-8 border-b border-arch-border pb-6">
+                            <div class="w-12 h-12 bg-arch-base rounded-[14px] border border-arch-border flex items-center justify-center text-arch-accent">
+                                <i class="fa-solid fa-calculator text-xl"></i>
+                            </div>
+                            <div>
+                                <h2 class="font-display font-extrabold text-2xl text-arch-text">Orçamento Base</h2>
+                                <p class="text-arch-muted text-xs">Simulador de Mão de Obra</p>
+                            </div>
+                        </div>
+
+                        <div class="space-y-10">
+                            <!-- Select Tipo -->
+                            <div>
+                                <label class="block font-medium text-arch-muted mb-3 text-xs uppercase tracking-wider">Perfil Construtivo</label>
+                                <div class="relative">
+                                    <select id="tipoConst" class="w-full bg-arch-base border border-arch-border text-arch-text p-4 rounded-2xl font-medium focus:outline-none focus:border-arch-accent appearance-none cursor-pointer hover:border-arch-accent/50 transition-colors">
+                                        <option value="510">Construção Casa Popular (R$ 510/m²)</option>
+                                        <option value="480">Ponto Comercial / Galpão (R$ 480/m²)</option>
+                                        <option value="350">Apenas Alvenaria e Cobertura (R$ 350/m²)</option>
+                                    </select>
+                                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-5 text-arch-muted">
+                                        <i class="fa-solid fa-chevron-down"></i>
+                                    </div>
+                                </div>
                             </div>
 
-                            <!-- Resultado -->
-                            <div class="col-md-5 mt-4 mt-md-0">
-                                <div class="result-box h-100 text-center">
-                                    <span class="text-main fw-bold small mb-2 text-uppercase">Custo Estimado</span>
-                                    <h2 class="fw-bold text-brand m-0" id="valorTotal">R$ 0,00</h2>
-                                    <p class="small text-muted mt-2 mb-4" style="font-size: 0.75rem; line-height: 1.2;">
-                                        *Cálculo exclusivo de mão de obra.<br>Materiais não inclusos.
-                                    </p>
-                                    <button type="button" onclick="zapOrcamento()" class="btn-custom w-100 py-2 fs-6">
-                                        <i class="fa-brands fa-whatsapp"></i> Fechar Negócio
-                                    </button>
+                            <!-- Slider Área -->
+                            <div class="ui-card-dark p-6">
+                                <div class="flex justify-between items-center mb-6">
+                                    <label class="font-medium text-arch-muted text-xs uppercase tracking-wider">Área Total</label>
+                                    <div class="bg-arch-surface border border-arch-border px-4 py-1.5 rounded-xl">
+                                        <span id="areaLabel" class="font-display text-arch-text text-xl font-bold">70 m²</span>
+                                    </div>
+                                </div>
+                                <input type="range" id="areaRange" min="20" max="300" step="5" value="70">
+                                <div class="flex justify-between text-[10px] text-arch-muted mt-4 font-bold uppercase tracking-wider">
+                                    <span>Min 20</span>
+                                    <span>Max 300</span>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+                    <!-- Resultados & Gráfico (Direita) -->
+                    <div class="lg:col-span-5 bg-arch-base p-8 lg:p-12 flex flex-col relative border-t lg:border-t-0 lg:border-l border-arch-border">
+                        
+                        <div class="flex-1 flex flex-col justify-center items-center text-center relative z-10 mb-8">
+                            <span class="text-arch-muted font-bold text-xs uppercase tracking-widest mb-4">Investimento Estimado</span>
+                            <h2 class="font-display font-extrabold text-5xl sm:text-6xl text-arch-text mb-8" id="valorTotal">R$ 0</h2>
+                            
+                            <!-- Chart Wrapper -->
+                            <div class="w-full max-w-[200px] relative">
+                                <canvas id="costChart"></canvas>
+                                <!-- Legendas Internas -->
+                                <div class="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
+                                    <span class="text-[10px] text-arch-muted font-bold uppercase">Distribuição</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Info Box -->
+                        <div class="bg-arch-surface/50 border border-arch-border rounded-2xl p-4 mb-6">
+                            <p class="text-arch-muted text-xs leading-relaxed text-center">
+                                <i class="fa-solid fa-circle-info text-arch-accent mr-1"></i>
+                                Materiais <strong>não inclusos</strong>. Valores sujeitos à análise do terreno.
+                            </p>
+                        </div>
+
+                        <button onclick="zapOrcamento()" class="w-full bg-arch-text hover:bg-arch-muted text-arch-base py-4 rounded-2xl font-bold transition-colors flex items-center justify-center gap-2 shadow-soft text-sm">
+                            <i class="fa-brands fa-whatsapp text-lg"></i> Enviar Proposta para Engenharia
+                        </button>
+                    </div>
                 </div>
             </div>
+
         </div>
     </section>
 
-    <!-- DIFERENCIAIS -->
-    <section id="diferenciais" class="py-5" style="background-color: var(--bg-section); border-top: 1px solid var(--border-light);">
-        <div class="container py-4">
-            <div class="row g-4 align-items-center">
-                <div class="col-lg-5" data-aos="fade-right">
-                    <h2 class="fw-bold text-main mb-4">A matemática da obra perfeita.</h2>
-                    <p class="text-muted">A ARCH Construtora atua com gestão rigorosa na mão de obra. Entendemos que em obras comerciais e casas populares, cada dia e cada saco de cimento contam.</p>
-                    <ul class="list-unstyled mt-4 text-main">
-                        <li class="mb-3"><i class="fa-solid fa-check-circle text-brand me-2"></i> Profissionais alinhados com o projeto.</li>
-                        <li class="mb-3"><i class="fa-solid fa-check-circle text-brand me-2"></i> Metodologia para evitar desperdício de insumos.</li>
-                        <li class="mb-3"><i class="fa-solid fa-check-circle text-brand me-2"></i> Transparência do início da fundação à entrega.</li>
-                    </ul>
+    <!-- METODOLOGIA -->
+    <section id="metodologia" class="py-24 bg-arch-surface/30 border-t border-arch-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                
+                <div data-aos="fade-right">
+                    <h2 class="font-display font-extrabold text-4xl text-arch-text mb-6">Engenharia de Resultados.</h2>
+                    <p class="text-arch-muted text-base leading-relaxed mb-10">Nossa gestão foca exclusivamente na performance da mão de obra. Entendemos que em obras comerciais e populares, cada dia de atraso custa muito caro.</p>
+                    
+                    <div class="space-y-4">
+                        <div class="ui-card-dark p-5 flex items-center gap-4 hover:border-arch-accent transition-colors cursor-default">
+                            <div class="w-12 h-12 rounded-[12px] bg-arch-surface border border-arch-border flex items-center justify-center text-arch-accent shrink-0">
+                                01
+                            </div>
+                            <div>
+                                <h5 class="text-arch-text font-bold text-sm mb-1">Mão de Obra Alinhada</h5>
+                                <p class="text-arch-muted text-xs">Profissionais que executam o que o projeto técnico determina.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="ui-card-dark p-5 flex items-center gap-4 hover:border-arch-accent transition-colors cursor-default">
+                            <div class="w-12 h-12 rounded-[12px] bg-arch-surface border border-arch-border flex items-center justify-center text-arch-accent shrink-0">
+                                02
+                            </div>
+                            <div>
+                                <h5 class="text-arch-text font-bold text-sm mb-1">Controle de Insumos</h5>
+                                <p class="text-arch-muted text-xs">Metodologia no canteiro para evitar desperdício de material.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="ui-card-dark p-5 flex items-center gap-4 hover:border-arch-accent transition-colors cursor-default">
+                            <div class="w-12 h-12 rounded-[12px] bg-arch-surface border border-arch-border flex items-center justify-center text-arch-accent shrink-0">
+                                03
+                            </div>
+                            <div>
+                                <h5 class="text-arch-text font-bold text-sm mb-1">Transparência Total</h5>
+                                <p class="text-arch-muted text-xs">Acompanhamento diário da fundação à entrega das chaves.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-lg-7" data-aos="fade-left">
-                    <div class="row g-3 text-center">
-                        <div class="col-6">
-                            <div class="p-4 rounded-4" style="background: var(--bg-card); border: 1px solid var(--border-light);">
-                                <i class="fa-solid fa-stopwatch fs-1 text-brand mb-3"></i>
-                                <h5 class="fw-bold text-main">Agilidade</h5>
-                            </div>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6" data-aos="fade-left">
+                    <div class="ui-card p-8">
+                        <div class="w-14 h-14 bg-arch-base border border-arch-border rounded-full flex items-center justify-center mb-6">
+                            <i class="fa-solid fa-stopwatch text-2xl text-arch-accent"></i>
                         </div>
-                        <div class="col-6">
-                            <div class="p-4 rounded-4" style="background: var(--bg-card); border: 1px solid var(--border-light);">
-                                <i class="fa-solid fa-coins fs-1 text-brand mb-3"></i>
-                                <h5 class="fw-bold text-main">Baixo Custo</h5>
-                            </div>
+                        <h5 class="font-display font-bold text-lg text-arch-text mb-2">Prazos Cumpridos</h5>
+                        <p class="text-arch-muted text-sm leading-relaxed">Foco extremo em produtividade para garantir a entrega sem atrasos.</p>
+                    </div>
+                    
+                    <div class="ui-card p-8 sm:translate-y-12">
+                        <div class="w-14 h-14 bg-arch-base border border-arch-border rounded-full flex items-center justify-center mb-6">
+                            <i class="fa-solid fa-scale-balanced text-2xl text-arch-accent"></i>
                         </div>
+                        <h5 class="font-display font-bold text-lg text-arch-text mb-2">Preço Fixo</h5>
+                        <p class="text-arch-muted text-sm leading-relaxed">Contratação por empreitada global garante valor exato do início ao fim.</p>
                     </div>
                 </div>
             </div>
@@ -357,96 +418,163 @@
     </section>
 
     <!-- FOOTER -->
-    <footer class="py-5 mt-5" style="background: var(--bg-body); border-top: 1px solid var(--border-light);">
-        <div class="container text-center">
-            <div class="d-flex align-items-center justify-content-center gap-3 mb-4">
-                
-                <!-- SVG Casinha Arredondada (Logo Footer) -->
-                <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 24 24" fill="none" stroke="var(--brand-color)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0">
+    <footer class="border-t border-arch-border py-12 bg-arch-base">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            
+            <div class="flex items-center gap-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square" class="text-arch-accent">
                     <path d="M3 10L12 2.5L21 10V20.5C21 21.3284 20.3284 22 19.5 22H4.5C3.67157 22 3 21.3284 3 20.5V10Z"/>
                 </svg>
-
-                <div class="d-flex flex-column text-start">
-                    <span class="brand-font fw-bold text-main lh-1" style="font-size: 1.5rem;">ARCH CONSTRUTORA</span>
-                    <span class="small text-muted" style="font-size: 0.75rem; letter-spacing: 2px;">MÃO DE OBRA ESPECIALIZADA</span>
+                <div class="flex flex-col text-left">
+                    <span class="font-display font-extrabold text-arch-text text-sm leading-none">ARCH CONSTRUTORA</span>
+                    <span class="text-arch-muted text-[0.55rem] tracking-[0.2em] font-medium mt-1 uppercase">Gestão em Mão de Obra</span>
                 </div>
             </div>
-            <p class="text-main mb-2">&copy; 2026 Todos os direitos reservados.</p>
-            <p class="small text-muted mx-auto" style="max-width: 600px;">
-                Nota legal: Atuamos exclusivamente por empreitada na prestação de serviços de mão de obra. O fornecimento de insumos e materiais de construção (cimento, tijolos, ferragens, etc.) é de responsabilidade do contratante.
-            </p>
+            
+            <div class="text-center md:text-right">
+                <p class="text-arch-muted text-sm font-medium mb-1">&copy; 2026 ARCH Construtora. Direitos reservados.</p>
+                <p class="text-arch-accent text-xs font-bold uppercase tracking-widest flex items-center justify-center md:justify-end gap-2 mt-2">
+                    <i class="fa-solid fa-location-dot"></i> Curvelo e Região - MG
+                </p>
+            </div>
         </div>
     </footer>
 
-    <!-- WHATSAPP FLOAT -->
-    <a href="https://wa.me/5531975194481" class="wa-button" target="_blank" title="Falar no WhatsApp">
-        <i class="fa-brands fa-whatsapp"></i>
-    </a>
-
     <!-- SCRIPTS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <script>
-        // Inicializa animações
-        AOS.init({ once: true, duration: 800 });
+        // Inicializa AOS
+        AOS.init({ once: true, duration: 800, offset: 50 });
 
-        // Função WhatsApp com captura dos valores atuais
-        function zapOrcamento() {
-            const area = document.getElementById('areaRange').value;
-            const select = document.getElementById('tipoConst');
-            const nomeServico = select.options[select.selectedIndex].text;
-            const valorTotal = document.getElementById('valorTotal').innerText;
-            
-            const msg = `Olá ARCH Construtora! Fiz uma simulação no site:\n\n*Serviço:* ${nomeServico}\n*Área:* ${area}m²\n*Custo Estimado da Mão de Obra:* ${valorTotal}\n\nGostaria de agendar uma visita/conversar sobre a obra.`;
-            
-            const phone = "5531975194481"; 
-            const url = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
-            window.open(url, '_blank');
-        }
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                navbar.classList.add('shadow-soft', 'bg-arch-base/90');
+            } else {
+                navbar.classList.remove('shadow-soft', 'bg-arch-base/90');
+            }
+        });
 
-        // --- Lógica da Calculadora Dinâmica ---
+        // Mobile Menu Toggle
+        const btnMenu = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const icon = btnMenu.querySelector('i');
+        
+        btnMenu.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+            icon.classList.replace(menu.classList.contains('hidden') ? 'fa-xmark' : 'fa-bars-staggered', menu.classList.contains('hidden') ? 'fa-bars-staggered' : 'fa-xmark');
+        });
+
+        menu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+                icon.classList.replace('fa-xmark', 'fa-bars-staggered');
+            });
+        });
+
+        // Gráfico (Chart.js) - Distribuição de Custos
+        const ctx = document.getElementById('costChart').getContext('2d');
+        const costChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Alvenaria (45%)', 'Fundação (35%)', 'Cobertura (20%)'],
+                datasets: [{
+                    data: [45, 35, 20],
+                    backgroundColor: ['#69818D', '#AFB3B7', '#2D4A53'],
+                    borderWidth: 0,
+                    hoverOffset: 5
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '80%', // Deixa o doughnut mais fino
+                plugins: {
+                    legend: { display: false }, // Legenda customizada fora do chart se necessário
+                    tooltip: {
+                        backgroundColor: '#132E35',
+                        titleFont: { family: 'Inter', size: 12 },
+                        bodyFont: { family: 'Inter', size: 13, weight: 'bold' },
+                        padding: 10,
+                        cornerRadius: 8,
+                        displayColors: true
+                    }
+                }
+            }
+        });
+
+        // Calculadora
         const areaRange = document.getElementById('areaRange');
         const areaLabel = document.getElementById('areaLabel');
         const tipoConst = document.getElementById('tipoConst');
         const valorTotal = document.getElementById('valorTotal');
+        
+        function formatarMoeda(valor) {
+            return valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL', maximumFractionDigits: 0 });
+        }
 
         function atualizarCalculo() {
             const area = parseFloat(areaRange.value);
             const custoM2 = parseFloat(tipoConst.value);
             const total = area * custoM2;
             
-            // Atualiza UI
             areaLabel.innerText = `${area} m²`;
-            valorTotal.innerText = total.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
+            
+            // Animação leve de opacidade na mudança
+            valorTotal.style.opacity = 0.5;
+            setTimeout(() => {
+                valorTotal.innerText = formatarMoeda(total);
+                valorTotal.style.opacity = 1;
+            }, 150);
+            
+            // Dá um refresh sutil no gráfico
+            costChart.update();
         }
 
-        // Listeners para atualizar em tempo real
         areaRange.addEventListener('input', atualizarCalculo);
         tipoConst.addEventListener('change', atualizarCalculo);
-        
-        // Calcula na primeira carga
         atualizarCalculo();
 
-
-        // --- Lógica do Tema Escuro (Dark Mode Toggle) ---
-        const themeBtn = document.getElementById('themeBtn');
-        const body = document.body;
-        const icon = themeBtn.querySelector('i');
-
-        // Checa preferência do sistema ou local storage
-        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            body.classList.add('dark-mode');
-            icon.classList.replace('fa-moon', 'fa-sun');
+        // Integração SweetAlert2 e WhatsApp
+        function zapOrcamento() {
+            const area = areaRange.value;
+            const nomeServicoFull = tipoConst.options[tipoConst.selectedIndex].text;
+            const nomeServico = nomeServicoFull.split(' (')[0]; 
+            const totalEstimado = valorTotal.innerText;
+            
+            Swal.fire({
+                title: 'Nova Simulação',
+                text: 'Por favor, informe seu nome para contato:',
+                input: 'text',
+                inputPlaceholder: 'Digite seu nome...',
+                background: '#132E35',
+                color: '#fff',
+                confirmButtonColor: '#ffffff',
+                cancelButtonColor: '#2D4A53',
+                showCancelButton: true,
+                confirmButtonText: '<span style="color:#0D1F23">Ir para WhatsApp</span>',
+                cancelButtonText: 'Cancelar',
+                customClass: {
+                    popup: 'border border-arch-border rounded-[2rem]',
+                    input: 'bg-arch-base border-arch-border text-white focus:ring-arch-accent rounded-xl',
+                    confirmButton: 'rounded-full px-6 font-bold',
+                    cancelButton: 'rounded-full px-6 font-bold text-arch-text'
+                }
+            }).then((result) => {
+                if (result.isConfirmed && result.value) {
+                    const nome = result.value;
+                    const msg = `Olá, ARCH Construtora. Meu nome é *${nome}*.\n\nFiz uma simulação pelo site:\n\n*Modalidade:* ${nomeServico}\n*Área:* ${area}m²\n*Estimativa MO:* ${totalEstimado}\n\nGostaria de falar com o engenheiro.`;
+                    
+                    const phone = "5531975194481"; 
+                    const url = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
+                    window.open(url, '_blank');
+                }
+            });
         }
-
-        themeBtn.addEventListener('click', () => {
-            body.classList.toggle('dark-mode');
-            if (body.classList.contains('dark-mode')) {
-                icon.classList.replace('fa-moon', 'fa-sun');
-            } else {
-                icon.classList.replace('fa-sun', 'fa-moon');
-            }
-        });
     </script>
 </body>
 </html>
