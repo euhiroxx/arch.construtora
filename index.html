@@ -59,12 +59,13 @@
             color: #ffffff;
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
+            width: 100%;
         }
 
         ::selection { background-color: #69818D; color: #ffffff; }
 
         /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: #0D1F23; }
         ::-webkit-scrollbar-thumb { background: #2D4A53; border-radius: 10px; }
         ::-webkit-scrollbar-thumb:hover { background: #69818D; }
@@ -86,12 +87,15 @@
             transform: scale(1.15); background: #AFB3B7;
         }
 
-        /* UI Cards - Baseados na Referência */
+        /* UI Cards */
         .ui-card {
             background-color: #132E35;
             border: 1px solid #2D4A53;
-            border-radius: 2rem;
+            border-radius: 1.5rem;
             transition: all 0.3s ease;
+        }
+        @media (min-width: 640px) {
+            .ui-card { border-radius: 2rem; }
         }
         .ui-card:hover {
             border-color: #69818D;
@@ -102,7 +106,10 @@
         .ui-card-dark {
             background-color: #0D1F23;
             border: 1px solid #2D4A53;
-            border-radius: 2rem;
+            border-radius: 1.5rem;
+        }
+        @media (min-width: 640px) {
+            .ui-card-dark { border-radius: 2rem; }
         }
     </style>
 </head>
@@ -112,23 +119,23 @@
     <div class="fixed inset-0 pointer-events-none z-[-1] bg-[radial-gradient(ellipse_at_top_right,_#2D4A53_0%,_#0D1F23_60%)] opacity-20"></div>
 
     <!-- NAVBAR FIXED -->
-    <nav class="fixed w-full z-50 bg-arch-base/80 backdrop-blur-md border-b border-arch-border transition-all duration-300" id="navbar">
+    <nav class="fixed w-full z-50 bg-arch-base/90 backdrop-blur-md border-b border-arch-border transition-all duration-300" id="navbar">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 
                 <!-- Logo -->
-                <a href="#" class="flex items-center gap-3 group">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square" class="text-arch-accent group-hover:text-arch-text transition-colors">
+                <a href="#" class="flex items-center gap-2 sm:gap-3 group">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square" class="text-arch-accent group-hover:text-arch-text transition-colors flex-shrink-0">
                         <path d="M3 10L12 2.5L21 10V20.5C21 21.3284 20.3284 22 19.5 22H4.5C3.67157 22 3 21.3284 3 20.5V10Z"/>
                     </svg>
                     <div class="flex flex-col">
-                        <span class="font-display font-extrabold text-arch-text text-xl tracking-tight leading-none">ARCH CONSTRUTORA</span>
-                        <span class="text-arch-muted text-[0.65rem] tracking-[0.2em] font-medium mt-1 uppercase">Gestão em Mão de Obra</span>
+                        <span class="font-display font-extrabold text-arch-text text-base sm:text-xl tracking-tight leading-none">ARCH CONSTRUTORA</span>
+                        <span class="text-arch-muted text-[0.60rem] sm:text-[0.65rem] tracking-[0.15em] sm:tracking-[0.2em] font-medium mt-1 uppercase">Gestão em Mão de Obra</span>
                     </div>
                 </a>
 
                 <!-- Desktop Menu -->
-                <div class="hidden md:flex items-center gap-8 bg-arch-surface border border-arch-border px-6 py-2 rounded-full">
+                <div class="hidden md:flex items-center gap-6 lg:gap-8 bg-arch-surface border border-arch-border px-6 py-2 rounded-full">
                     <a href="#escopo" class="text-arch-muted hover:text-arch-text text-sm font-semibold transition-colors">Escopo</a>
                     <a href="#simulador" class="text-arch-muted hover:text-arch-text text-sm font-semibold transition-colors">Simulador</a>
                     <a href="#metodologia" class="text-arch-muted hover:text-arch-text text-sm font-semibold transition-colors">Metodologia</a>
@@ -136,7 +143,7 @@
 
                 <!-- CTA -->
                 <div class="hidden md:flex">
-                    <button onclick="zapOrcamento()" class="bg-arch-text text-arch-base hover:bg-arch-muted px-6 py-2.5 rounded-full text-sm font-bold transition-all shadow-glow flex items-center gap-2">
+                    <button onclick="zapOrcamento()" class="bg-arch-text text-arch-base hover:bg-arch-muted px-5 lg:px-6 py-2.5 rounded-full text-sm font-bold transition-all shadow-glow flex items-center gap-2">
                         <i class="fa-brands fa-whatsapp text-lg"></i> Contato
                     </button>
                 </div>
@@ -151,12 +158,12 @@
         </div>
         
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-arch-surface border-b border-arch-border absolute w-full shadow-lg origin-top transition-transform">
-            <div class="px-6 pt-4 pb-6 space-y-2 flex flex-col">
+        <div id="mobile-menu" class="hidden md:hidden bg-arch-surface border-b border-arch-border absolute w-full shadow-xl origin-top transition-transform">
+            <div class="px-6 pt-4 pb-8 space-y-2 flex flex-col">
                 <a href="#escopo" class="text-arch-text font-display font-semibold text-lg py-3 border-b border-arch-border/50">Escopo</a>
                 <a href="#simulador" class="text-arch-text font-display font-semibold text-lg py-3 border-b border-arch-border/50">Simulador</a>
                 <a href="#metodologia" class="text-arch-text font-display font-semibold text-lg py-3 border-b border-arch-border/50">Metodologia</a>
-                <button onclick="zapOrcamento()" class="mt-4 text-center bg-arch-text text-arch-base font-bold py-3 rounded-full flex items-center justify-center gap-2">
+                <button onclick="zapOrcamento()" class="mt-6 text-center bg-arch-text text-arch-base font-bold py-3.5 rounded-full flex items-center justify-center gap-2 w-full">
                     <i class="fa-brands fa-whatsapp"></i> Falar com Engenheiro
                 </button>
             </div>
@@ -164,43 +171,45 @@
     </nav>
 
     <!-- HERO SECTION -->
-    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden flex items-center">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+    <section class="relative pt-32 pb-16 sm:pt-40 sm:pb-24 lg:pt-48 lg:pb-32 overflow-hidden flex items-center min-h-[90vh]">
+        <div class="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
             
-            <div data-aos="fade-up" class="flex flex-col items-center">
-                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-arch-surface border border-arch-border text-arch-muted text-xs font-bold uppercase tracking-widest mb-8 shadow-inner">
+            <div data-aos="fade-up" class="flex flex-col items-center w-full">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-arch-surface border border-arch-border text-arch-muted text-[10px] sm:text-xs font-bold uppercase tracking-widest mb-6 sm:mb-8 shadow-inner">
                     <span class="w-2 h-2 rounded-full bg-arch-accent animate-pulse"></span>
                     Especialistas em Casa Popular
                 </div>
                 
-                <h1 class="font-display font-extrabold text-5xl sm:text-6xl lg:text-7xl leading-[1.1] mb-6 text-arch-text tracking-tight">
-                    Construção ágil. <br>
+                <h1 class="font-display font-extrabold text-4xl sm:text-6xl lg:text-7xl leading-[1.1] mb-6 text-arch-text tracking-tight w-full">
+                    Construção ágil. <br class="hidden sm:block">
                     <span class="text-arch-accent">Gestão sem falhas.</span>
                 </h1>
                 
-                <p class="text-lg text-arch-muted mb-10 max-w-2xl mx-auto leading-relaxed">
+                <p class="text-base sm:text-lg text-arch-muted mb-8 sm:mb-10 max-w-2xl mx-auto leading-relaxed w-full">
                     Fornecemos mão de obra altamente qualificada para execução de residências e obras comerciais. Orçamento 100% previsível e entrega garantida no prazo.
                 </p>
                 
-                <div class="flex flex-col sm:flex-row gap-4 justify-center w-full sm:w-auto">
-                    <a href="#simulador" class="inline-flex justify-center items-center gap-3 bg-arch-accent border border-arch-accent hover:bg-arch-accentHover hover:border-arch-accentHover text-white px-8 py-4 rounded-full font-bold transition-all shadow-glow w-full sm:w-auto">
+                <div class="flex justify-center w-full">
+                    <a href="#simulador" class="inline-flex justify-center items-center gap-3 bg-arch-accent border border-arch-accent hover:bg-arch-accentHover hover:border-arch-accentHover text-white px-6 sm:px-8 py-3.5 sm:py-4 rounded-full font-bold transition-all shadow-glow w-full max-w-xs sm:w-auto text-sm sm:text-base">
                         <i class="fa-solid fa-calculator"></i> Calcular Custo de Obra
                     </a>
                 </div>
 
                 <!-- Estatísticas Hero -->
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-8 mt-16 pt-8 border-t border-arch-border w-full max-w-3xl mx-auto">
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mt-12 sm:mt-16 pt-8 border-t border-arch-border w-full max-w-3xl mx-auto">
                     <div class="ui-card-dark p-6 text-center">
-                        <span class="block font-display font-extrabold text-3xl text-arch-text">100%</span>
-                        <span class="text-xs text-arch-muted font-medium uppercase tracking-wider mt-1 block">Empreitada</span>
+                        <span class="block font-display font-extrabold text-3xl sm:text-4xl text-arch-text">100%</span>
+                        <span class="text-[10px] sm:text-xs text-arch-muted font-medium uppercase tracking-wider mt-1 block">Empreitada</span>
                     </div>
                     <div class="ui-card-dark p-6 text-center">
-                        <span class="block font-display font-extrabold text-3xl text-arch-text">R$ 510</span>
-                        <span class="text-xs text-arch-muted font-medium uppercase tracking-wider mt-1 block">Média m²</span>
+                        <span class="block font-display font-extrabold text-3xl sm:text-4xl text-arch-text">R$ 510</span>
+                        <span class="text-[10px] sm:text-xs text-arch-muted font-medium uppercase tracking-wider mt-1 block">Média m²</span>
                     </div>
                     <div class="ui-card-dark p-6 text-center">
-                        <span class="block font-display font-extrabold text-3xl text-arch-text"><i class="fa-solid fa-location-dot text-2xl text-arch-accent"></i></span>
-                        <span class="text-xs text-arch-muted font-medium uppercase tracking-wider mt-1 block">Curvelo-MG</span>
+                        <span class="block font-display font-extrabold text-3xl sm:text-4xl text-arch-text flex justify-center items-center h-[36px] sm:h-[40px]">
+                            <i class="fa-solid fa-location-dot text-2xl sm:text-3xl text-arch-accent"></i>
+                        </span>
+                        <span class="text-[10px] sm:text-xs text-arch-muted font-medium uppercase tracking-wider mt-1 block">Curvelo-MG</span>
                     </div>
                 </div>
             </div>
@@ -208,26 +217,26 @@
     </section>
 
     <!-- ESCOPO -->
-    <section id="escopo" class="py-24 bg-arch-surface/30 border-t border-arch-border">
+    <section id="escopo" class="py-16 sm:py-24 bg-arch-surface/30 border-t border-arch-border">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6" data-aos="fade-up">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 sm:mb-16 gap-6" data-aos="fade-up">
                 <div class="max-w-2xl">
-                    <h2 class="font-display font-extrabold text-4xl text-arch-text mb-4">Nosso Escopo</h2>
-                    <p class="text-arch-muted">Não vendemos material. Vendemos a garantia técnica de que sua obra será levantada exatamente de acordo com o projeto estrutural.</p>
+                    <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-arch-text mb-4">Nosso Escopo</h2>
+                    <p class="text-arch-muted text-sm sm:text-base">Não vendemos material. Vendemos a garantia técnica de que sua obra será levantada exatamente de acordo com o projeto estrutural.</p>
                 </div>
-                <div class="px-4 py-2 rounded-full border border-arch-border bg-arch-surface text-xs font-bold text-arch-muted uppercase tracking-widest flex items-center gap-2 shrink-0">
+                <div class="px-4 py-2 rounded-full border border-arch-border bg-arch-surface text-[10px] sm:text-xs font-bold text-arch-muted uppercase tracking-widest flex items-center gap-2 shrink-0 self-start md:self-auto">
                     <i class="fa-solid fa-layer-group"></i> 3 Modalidades
                 </div>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <!-- Card 1 -->
-                <div class="ui-card p-8 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="0">
+                <div class="ui-card p-6 sm:p-8 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="0">
                     <div>
-                        <div class="w-14 h-14 bg-arch-base border border-arch-border rounded-[14px] flex items-center justify-center mb-6 text-arch-accent">
-                            <i class="fa-solid fa-house text-2xl"></i>
+                        <div class="w-12 h-12 sm:w-14 sm:h-14 bg-arch-base border border-arch-border rounded-xl sm:rounded-[14px] flex items-center justify-center mb-5 sm:mb-6 text-arch-accent">
+                            <i class="fa-solid fa-house text-xl sm:text-2xl"></i>
                         </div>
-                        <h4 class="font-display font-bold text-xl mb-3 text-arch-text">Casas Populares</h4>
+                        <h4 class="font-display font-bold text-lg sm:text-xl mb-3 text-arch-text">Casas Populares</h4>
                         <p class="text-arch-muted text-sm leading-relaxed mb-6">Execução ágil de casas de baixo padrão. Velocidade na alvenaria, cobertura e acabamentos essenciais para moradia.</p>
                     </div>
                     <span class="text-xs font-bold text-arch-text flex items-center gap-2 border-t border-arch-border pt-4">
@@ -236,12 +245,12 @@
                 </div>
                 
                 <!-- Card 2 -->
-                <div class="ui-card p-8 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="100">
+                <div class="ui-card p-6 sm:p-8 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="100">
                     <div>
-                        <div class="w-14 h-14 bg-arch-base border border-arch-border rounded-[14px] flex items-center justify-center mb-6 text-arch-accent">
-                            <i class="fa-solid fa-industry text-2xl"></i>
+                        <div class="w-12 h-12 sm:w-14 sm:h-14 bg-arch-base border border-arch-border rounded-xl sm:rounded-[14px] flex items-center justify-center mb-5 sm:mb-6 text-arch-accent">
+                            <i class="fa-solid fa-industry text-xl sm:text-2xl"></i>
                         </div>
-                        <h4 class="font-display font-bold text-xl mb-3 text-arch-text">Obras Comerciais</h4>
+                        <h4 class="font-display font-bold text-lg sm:text-xl mb-3 text-arch-text">Obras Comerciais</h4>
                         <p class="text-arch-muted text-sm leading-relaxed mb-6">Levantamento de lojas, galpões e salas comerciais. Alinhamento total ao cronograma para não atrasar seu negócio.</p>
                     </div>
                     <span class="text-xs font-bold text-arch-text flex items-center gap-2 border-t border-arch-border pt-4">
@@ -250,12 +259,12 @@
                 </div>
                 
                 <!-- Card 3 -->
-                <div class="ui-card p-8 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="200">
+                <div class="ui-card p-6 sm:p-8 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="200">
                     <div>
-                        <div class="w-14 h-14 bg-arch-base border border-arch-border rounded-[14px] flex items-center justify-center mb-6 text-arch-accent">
-                            <i class="fa-solid fa-ruler-combined text-2xl"></i>
+                        <div class="w-12 h-12 sm:w-14 sm:h-14 bg-arch-base border border-arch-border rounded-xl sm:rounded-[14px] flex items-center justify-center mb-5 sm:mb-6 text-arch-accent">
+                            <i class="fa-solid fa-ruler-combined text-xl sm:text-2xl"></i>
                         </div>
-                        <h4 class="font-display font-bold text-xl mb-3 text-arch-text">Alvenaria Estrutural</h4>
+                        <h4 class="font-display font-bold text-lg sm:text-xl mb-3 text-arch-text">Alvenaria Estrutural</h4>
                         <p class="text-arch-muted text-sm leading-relaxed mb-6">Fundações seguras, paredes no prumo perfeito, chapisco e reboco. A base sólida para a segurança da edificação.</p>
                     </div>
                     <span class="text-xs font-bold text-arch-text flex items-center gap-2 border-t border-arch-border pt-4">
@@ -267,51 +276,50 @@
     </section>
 
     <!-- SIMULADOR -->
-    <section id="simulador" class="py-24">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="simulador" class="py-16 sm:py-24 w-full">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
             
-            <!-- Simulador Wrapper (UI Card gigante) -->
-            <div class="ui-card overflow-hidden p-2 sm:p-4" data-aos="zoom-in">
-                <div class="grid grid-cols-1 lg:grid-cols-12 rounded-[1.5rem] overflow-hidden">
+            <div class="ui-card overflow-hidden p-0 w-full" data-aos="zoom-in">
+                <div class="flex flex-col lg:flex-row w-full rounded-[1.5rem] sm:rounded-[2rem] overflow-hidden">
                     
                     <!-- Controles (Esquerda) -->
-                    <div class="lg:col-span-7 bg-arch-surface p-8 lg:p-12">
-                        <div class="flex items-center gap-3 mb-8 border-b border-arch-border pb-6">
-                            <div class="w-12 h-12 bg-arch-base rounded-[14px] border border-arch-border flex items-center justify-center text-arch-accent">
-                                <i class="fa-solid fa-calculator text-xl"></i>
+                    <div class="w-full lg:w-[58%] bg-arch-surface p-6 sm:p-8 lg:p-12">
+                        <div class="flex items-center gap-3 mb-6 sm:mb-8 border-b border-arch-border pb-5 sm:pb-6">
+                            <div class="w-10 h-10 sm:w-12 sm:h-12 bg-arch-base rounded-xl sm:rounded-[14px] border border-arch-border flex items-center justify-center text-arch-accent flex-shrink-0">
+                                <i class="fa-solid fa-calculator text-lg sm:text-xl"></i>
                             </div>
-                            <div>
-                                <h2 class="font-display font-extrabold text-2xl text-arch-text">Orçamento Base</h2>
-                                <p class="text-arch-muted text-xs">Simulador de Mão de Obra</p>
+                            <div class="overflow-hidden w-full">
+                                <h2 class="font-display font-extrabold text-xl sm:text-2xl text-arch-text truncate">Orçamento Base</h2>
+                                <p class="text-arch-muted text-[10px] sm:text-xs">Simulador de Mão de Obra</p>
                             </div>
                         </div>
 
-                        <div class="space-y-10">
+                        <div class="space-y-6 sm:space-y-10 w-full">
                             <!-- Select Tipo -->
-                            <div>
-                                <label class="block font-medium text-arch-muted mb-3 text-xs uppercase tracking-wider">Perfil Construtivo</label>
-                                <div class="relative">
-                                    <select id="tipoConst" class="w-full bg-arch-base border border-arch-border text-arch-text p-4 rounded-2xl font-medium focus:outline-none focus:border-arch-accent appearance-none cursor-pointer hover:border-arch-accent/50 transition-colors">
+                            <div class="w-full">
+                                <label class="block font-medium text-arch-muted mb-2 sm:mb-3 text-[10px] sm:text-xs uppercase tracking-wider">Perfil Construtivo</label>
+                                <div class="relative w-full">
+                                    <select id="tipoConst" class="w-full bg-arch-base border border-arch-border text-arch-text p-3 sm:p-4 rounded-xl sm:rounded-2xl text-sm sm:text-base font-medium focus:outline-none focus:border-arch-accent appearance-none cursor-pointer truncate pr-10">
                                         <option value="510">Construção Casa Popular (R$ 510/m²)</option>
                                         <option value="480">Ponto Comercial / Galpão (R$ 480/m²)</option>
                                         <option value="350">Apenas Alvenaria e Cobertura (R$ 350/m²)</option>
                                     </select>
-                                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-5 text-arch-muted">
+                                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 sm:px-5 text-arch-muted">
                                         <i class="fa-solid fa-chevron-down"></i>
                                     </div>
                                 </div>
                             </div>
 
                             <!-- Slider Área -->
-                            <div class="ui-card-dark p-6">
-                                <div class="flex justify-between items-center mb-6">
-                                    <label class="font-medium text-arch-muted text-xs uppercase tracking-wider">Área Total</label>
-                                    <div class="bg-arch-surface border border-arch-border px-4 py-1.5 rounded-xl">
-                                        <span id="areaLabel" class="font-display text-arch-text text-xl font-bold">70 m²</span>
+                            <div class="ui-card-dark p-5 sm:p-6 w-full">
+                                <div class="flex justify-between items-center mb-5 sm:mb-6">
+                                    <label class="font-medium text-arch-muted text-[10px] sm:text-xs uppercase tracking-wider">Área Total</label>
+                                    <div class="bg-arch-surface border border-arch-border px-3 sm:px-4 py-1.5 rounded-lg sm:rounded-xl">
+                                        <span id="areaLabel" class="font-display text-arch-text text-lg sm:text-xl font-bold">70 m²</span>
                                     </div>
                                 </div>
-                                <input type="range" id="areaRange" min="20" max="300" step="5" value="70">
-                                <div class="flex justify-between text-[10px] text-arch-muted mt-4 font-bold uppercase tracking-wider">
+                                <input type="range" id="areaRange" min="20" max="300" step="5" value="70" class="w-full">
+                                <div class="flex justify-between text-[10px] text-arch-muted mt-3 sm:mt-4 font-bold uppercase tracking-wider">
                                     <span>Min 20</span>
                                     <span>Max 300</span>
                                 </div>
@@ -320,32 +328,32 @@
                     </div>
 
                     <!-- Resultados & Gráfico (Direita) -->
-                    <div class="lg:col-span-5 bg-arch-base p-8 lg:p-12 flex flex-col relative border-t lg:border-t-0 lg:border-l border-arch-border">
+                    <div class="w-full lg:w-[42%] bg-arch-base p-6 sm:p-8 lg:p-12 flex flex-col relative border-t lg:border-t-0 lg:border-l border-arch-border">
                         
-                        <div class="flex-1 flex flex-col justify-center items-center text-center relative z-10 mb-8">
-                            <span class="text-arch-muted font-bold text-xs uppercase tracking-widest mb-4">Investimento Estimado</span>
-                            <h2 class="font-display font-extrabold text-5xl sm:text-6xl text-arch-text mb-8" id="valorTotal">R$ 0</h2>
+                        <div class="flex-1 flex flex-col justify-center items-center text-center relative z-10 mb-6 sm:mb-8 w-full">
+                            <span class="text-arch-muted font-bold text-[10px] sm:text-xs uppercase tracking-widest mb-3 sm:mb-4 w-full truncate">Investimento Estimado</span>
+                            <h2 class="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl text-arch-text mb-6 sm:mb-8 w-full truncate" id="valorTotal">R$ 0</h2>
                             
                             <!-- Chart Wrapper -->
-                            <div class="w-full max-w-[200px] relative">
+                            <div class="w-[140px] h-[140px] sm:w-[180px] sm:h-[180px] lg:w-[200px] lg:h-[200px] relative mx-auto">
                                 <canvas id="costChart"></canvas>
                                 <!-- Legendas Internas -->
                                 <div class="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
-                                    <span class="text-[10px] text-arch-muted font-bold uppercase">Distribuição</span>
+                                    <span class="text-[8px] sm:text-[10px] text-arch-muted font-bold uppercase">Distribuição</span>
                                 </div>
                             </div>
                         </div>
 
                         <!-- Info Box -->
-                        <div class="bg-arch-surface/50 border border-arch-border rounded-2xl p-4 mb-6">
-                            <p class="text-arch-muted text-xs leading-relaxed text-center">
+                        <div class="bg-arch-surface/50 border border-arch-border rounded-xl sm:rounded-2xl p-3 sm:p-4 mb-5 sm:mb-6 w-full">
+                            <p class="text-arch-muted text-[10px] sm:text-xs leading-relaxed text-center">
                                 <i class="fa-solid fa-circle-info text-arch-accent mr-1"></i>
                                 Materiais <strong>não inclusos</strong>. Valores sujeitos à análise do terreno.
                             </p>
                         </div>
 
-                        <button onclick="zapOrcamento()" class="w-full bg-arch-text hover:bg-arch-muted text-arch-base py-4 rounded-2xl font-bold transition-colors flex items-center justify-center gap-2 shadow-soft text-sm">
-                            <i class="fa-brands fa-whatsapp text-lg"></i> Enviar Proposta para Engenharia
+                        <button onclick="zapOrcamento()" class="w-full bg-arch-text hover:bg-arch-muted text-arch-base py-3.5 sm:py-4 rounded-xl sm:rounded-2xl font-bold transition-colors flex items-center justify-center gap-2 shadow-soft text-sm w-full">
+                            <i class="fa-brands fa-whatsapp text-lg"></i> <span class="truncate">Enviar Proposta</span>
                         </button>
                     </div>
                 </div>
@@ -355,59 +363,59 @@
     </section>
 
     <!-- METODOLOGIA -->
-    <section id="metodologia" class="py-24 bg-arch-surface/30 border-t border-arch-border">
+    <section id="metodologia" class="py-16 sm:py-24 bg-arch-surface/30 border-t border-arch-border">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-16 items-center">
                 
                 <div data-aos="fade-right">
-                    <h2 class="font-display font-extrabold text-4xl text-arch-text mb-6">Engenharia de Resultados.</h2>
-                    <p class="text-arch-muted text-base leading-relaxed mb-10">Nossa gestão foca exclusivamente na performance da mão de obra. Entendemos que em obras comerciais e populares, cada dia de atraso custa muito caro.</p>
+                    <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-arch-text mb-4 sm:mb-6">Engenharia de Resultados.</h2>
+                    <p class="text-arch-muted text-sm sm:text-base leading-relaxed mb-8 sm:mb-10">Nossa gestão foca exclusivamente na performance da mão de obra. Entendemos que em obras comerciais e populares, cada dia de atraso custa muito caro.</p>
                     
-                    <div class="space-y-4">
-                        <div class="ui-card-dark p-5 flex items-center gap-4 hover:border-arch-accent transition-colors cursor-default">
-                            <div class="w-12 h-12 rounded-[12px] bg-arch-surface border border-arch-border flex items-center justify-center text-arch-accent shrink-0">
+                    <div class="space-y-3 sm:space-y-4">
+                        <div class="ui-card-dark p-4 sm:p-5 flex items-center gap-4 hover:border-arch-accent transition-colors cursor-default">
+                            <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-[10px] sm:rounded-[12px] bg-arch-surface border border-arch-border flex items-center justify-center text-arch-accent shrink-0 text-sm sm:text-base font-bold">
                                 01
                             </div>
-                            <div>
-                                <h5 class="text-arch-text font-bold text-sm mb-1">Mão de Obra Alinhada</h5>
-                                <p class="text-arch-muted text-xs">Profissionais que executam o que o projeto técnico determina.</p>
+                            <div class="overflow-hidden w-full">
+                                <h5 class="text-arch-text font-bold text-sm mb-0.5 sm:mb-1 truncate">Mão de Obra Alinhada</h5>
+                                <p class="text-arch-muted text-[10px] sm:text-xs truncate">Profissionais executam o projeto à risca.</p>
                             </div>
                         </div>
                         
-                        <div class="ui-card-dark p-5 flex items-center gap-4 hover:border-arch-accent transition-colors cursor-default">
-                            <div class="w-12 h-12 rounded-[12px] bg-arch-surface border border-arch-border flex items-center justify-center text-arch-accent shrink-0">
+                        <div class="ui-card-dark p-4 sm:p-5 flex items-center gap-4 hover:border-arch-accent transition-colors cursor-default">
+                            <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-[10px] sm:rounded-[12px] bg-arch-surface border border-arch-border flex items-center justify-center text-arch-accent shrink-0 text-sm sm:text-base font-bold">
                                 02
                             </div>
-                            <div>
-                                <h5 class="text-arch-text font-bold text-sm mb-1">Controle de Insumos</h5>
-                                <p class="text-arch-muted text-xs">Metodologia no canteiro para evitar desperdício de material.</p>
+                            <div class="overflow-hidden w-full">
+                                <h5 class="text-arch-text font-bold text-sm mb-0.5 sm:mb-1 truncate">Controle de Insumos</h5>
+                                <p class="text-arch-muted text-[10px] sm:text-xs truncate">Metodologia evita desperdício de material.</p>
                             </div>
                         </div>
                         
-                        <div class="ui-card-dark p-5 flex items-center gap-4 hover:border-arch-accent transition-colors cursor-default">
-                            <div class="w-12 h-12 rounded-[12px] bg-arch-surface border border-arch-border flex items-center justify-center text-arch-accent shrink-0">
+                        <div class="ui-card-dark p-4 sm:p-5 flex items-center gap-4 hover:border-arch-accent transition-colors cursor-default">
+                            <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-[10px] sm:rounded-[12px] bg-arch-surface border border-arch-border flex items-center justify-center text-arch-accent shrink-0 text-sm sm:text-base font-bold">
                                 03
                             </div>
-                            <div>
-                                <h5 class="text-arch-text font-bold text-sm mb-1">Transparência Total</h5>
-                                <p class="text-arch-muted text-xs">Acompanhamento diário da fundação à entrega das chaves.</p>
+                            <div class="overflow-hidden w-full">
+                                <h5 class="text-arch-text font-bold text-sm mb-0.5 sm:mb-1 truncate">Transparência Total</h5>
+                                <p class="text-arch-muted text-[10px] sm:text-xs truncate">Acompanhamento diário até as chaves.</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6" data-aos="fade-left">
-                    <div class="ui-card p-8">
-                        <div class="w-14 h-14 bg-arch-base border border-arch-border rounded-full flex items-center justify-center mb-6">
-                            <i class="fa-solid fa-stopwatch text-2xl text-arch-accent"></i>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6" data-aos="fade-left">
+                    <div class="ui-card p-6 sm:p-8">
+                        <div class="w-12 h-12 sm:w-14 sm:h-14 bg-arch-base border border-arch-border rounded-full flex items-center justify-center mb-5 sm:mb-6">
+                            <i class="fa-solid fa-stopwatch text-xl sm:text-2xl text-arch-accent"></i>
                         </div>
                         <h5 class="font-display font-bold text-lg text-arch-text mb-2">Prazos Cumpridos</h5>
                         <p class="text-arch-muted text-sm leading-relaxed">Foco extremo em produtividade para garantir a entrega sem atrasos.</p>
                     </div>
                     
-                    <div class="ui-card p-8 sm:translate-y-12">
-                        <div class="w-14 h-14 bg-arch-base border border-arch-border rounded-full flex items-center justify-center mb-6">
-                            <i class="fa-solid fa-scale-balanced text-2xl text-arch-accent"></i>
+                    <div class="ui-card p-6 sm:p-8 sm:translate-y-10">
+                        <div class="w-12 h-12 sm:w-14 sm:h-14 bg-arch-base border border-arch-border rounded-full flex items-center justify-center mb-5 sm:mb-6">
+                            <i class="fa-solid fa-scale-balanced text-xl sm:text-2xl text-arch-accent"></i>
                         </div>
                         <h5 class="font-display font-bold text-lg text-arch-text mb-2">Preço Fixo</h5>
                         <p class="text-arch-muted text-sm leading-relaxed">Contratação por empreitada global garante valor exato do início ao fim.</p>
@@ -418,22 +426,22 @@
     </section>
 
     <!-- FOOTER -->
-    <footer class="border-t border-arch-border py-12 bg-arch-base">
+    <footer class="border-t border-arch-border py-8 sm:py-12 bg-arch-base">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
             
-            <div class="flex items-center gap-3">
-                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square" class="text-arch-accent">
+            <div class="flex items-center gap-2 sm:gap-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square" class="text-arch-accent sm:w-7 sm:h-7">
                     <path d="M3 10L12 2.5L21 10V20.5C21 21.3284 20.3284 22 19.5 22H4.5C3.67157 22 3 21.3284 3 20.5V10Z"/>
                 </svg>
                 <div class="flex flex-col text-left">
-                    <span class="font-display font-extrabold text-arch-text text-sm leading-none">ARCH CONSTRUTORA</span>
-                    <span class="text-arch-muted text-[0.55rem] tracking-[0.2em] font-medium mt-1 uppercase">Gestão em Mão de Obra</span>
+                    <span class="font-display font-extrabold text-arch-text text-xs sm:text-sm leading-none">ARCH CONSTRUTORA</span>
+                    <span class="text-arch-muted text-[0.50rem] sm:text-[0.55rem] tracking-[0.15em] sm:tracking-[0.2em] font-medium mt-1 uppercase">Gestão em Mão de Obra</span>
                 </div>
             </div>
             
             <div class="text-center md:text-right">
-                <p class="text-arch-muted text-sm font-medium mb-1">&copy; 2026 ARCH Construtora. Direitos reservados.</p>
-                <p class="text-arch-accent text-xs font-bold uppercase tracking-widest flex items-center justify-center md:justify-end gap-2 mt-2">
+                <p class="text-arch-muted text-xs sm:text-sm font-medium mb-1">&copy; 2026 ARCH Construtora. Direitos reservados.</p>
+                <p class="text-arch-accent text-[10px] sm:text-xs font-bold uppercase tracking-widest flex items-center justify-center md:justify-end gap-1.5 sm:gap-2 mt-2">
                     <i class="fa-solid fa-location-dot"></i> Curvelo e Região - MG
                 </p>
             </div>
@@ -453,9 +461,9 @@
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 20) {
-                navbar.classList.add('shadow-soft', 'bg-arch-base/90');
+                navbar.classList.add('shadow-soft');
             } else {
-                navbar.classList.remove('shadow-soft', 'bg-arch-base/90');
+                navbar.classList.remove('shadow-soft');
             }
         });
 
@@ -476,7 +484,7 @@
             });
         });
 
-        // Gráfico (Chart.js) - Distribuição de Custos
+        // Gráfico (Chart.js)
         const ctx = document.getElementById('costChart').getContext('2d');
         const costChart = new Chart(ctx, {
             type: 'doughnut',
@@ -486,15 +494,15 @@
                     data: [45, 35, 20],
                     backgroundColor: ['#69818D', '#AFB3B7', '#2D4A53'],
                     borderWidth: 0,
-                    hoverOffset: 5
+                    hoverOffset: 3
                 }]
             },
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
-                cutout: '80%', // Deixa o doughnut mais fino
+                cutout: '80%', 
                 plugins: {
-                    legend: { display: false }, // Legenda customizada fora do chart se necessário
+                    legend: { display: false }, 
                     tooltip: {
                         backgroundColor: '#132E35',
                         titleFont: { family: 'Inter', size: 12 },
@@ -524,14 +532,12 @@
             
             areaLabel.innerText = `${area} m²`;
             
-            // Animação leve de opacidade na mudança
             valorTotal.style.opacity = 0.5;
             setTimeout(() => {
                 valorTotal.innerText = formatarMoeda(total);
                 valorTotal.style.opacity = 1;
             }, 150);
             
-            // Dá um refresh sutil no gráfico
             costChart.update();
         }
 
@@ -559,10 +565,10 @@
                 confirmButtonText: '<span style="color:#0D1F23">Ir para WhatsApp</span>',
                 cancelButtonText: 'Cancelar',
                 customClass: {
-                    popup: 'border border-arch-border rounded-[2rem]',
+                    popup: 'border border-arch-border rounded-[2rem] mx-4',
                     input: 'bg-arch-base border-arch-border text-white focus:ring-arch-accent rounded-xl',
-                    confirmButton: 'rounded-full px-6 font-bold',
-                    cancelButton: 'rounded-full px-6 font-bold text-arch-text'
+                    confirmButton: 'rounded-full px-5 sm:px-6 font-bold text-sm sm:text-base',
+                    cancelButton: 'rounded-full px-5 sm:px-6 font-bold text-arch-text text-sm sm:text-base'
                 }
             }).then((result) => {
                 if (result.isConfirmed && result.value) {
