@@ -3,28 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ARCH CONSTRUTORA | Gestão em Mão de Obra</title>
-    <meta name="description" content="Especialistas em mão de obra para construção civil: residências populares e obras comerciais.">
+    <meta name="theme-color" content="#0D1F23">
+    <meta name="color-scheme" content="dark">
 
-    <!-- Favicon -->
+    <title>ARCH CONSTRUTORA | Gestão em Mão de Obra</title>
+    <meta name="description" content="Mão de obra para construção civil em Curvelo e região. Simule o custo estimado da sua obra e fale com a ARCH Construtora pelo WhatsApp.">
+    <meta name="keywords" content="construtora, mão de obra, construção, casa popular, obra comercial, Curvelo, Minas Gerais">
+
+    <meta property="og:title" content="ARCH CONSTRUTORA | Gestão em Mão de Obra">
+    <meta property="og:description" content="Execução de obras com planejamento, previsibilidade e acompanhamento técnico.">
+    <meta property="og:type" content="website">
+
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2369818D' stroke-width='3' stroke-linecap='square' stroke-linejoin='round'%3E%3Cpath d='M3 10L12 2.5L21 10V20.5C21 21.3284 20.3284 22 19.5 22H4.5C3.67157 22 3 21.3284 3 20.5V10Z'/%3E%3C/svg%3E">
 
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- Icons (FontAwesome) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- CSS Libraries -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <!-- Tailwind CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@5/dark.min.css">
+
     <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Tailwind Configuration -->
     <script>
         tailwind.config = {
             theme: {
@@ -33,554 +33,1084 @@
                         arch: {
                             base: '#0D1F23',
                             surface: '#132E35',
+                            surface2: '#173841',
                             border: '#2D4A53',
-                            text: '#ffffff',
-                            muted: '#AFB3B7',
+                            text: '#F8FAFB',
+                            muted: '#AAB4B8',
                             accent: '#69818D',
-                            accentHover: '#5A636A'
+                            accentHover: '#8098A3',
+                            dark: '#09171A'
                         }
                     },
                     fontFamily: {
-                        sans: ['"Inter"', 'sans-serif'],
-                        display: ['"Outfit"', 'sans-serif'],
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif']
                     },
                     boxShadow: {
-                        'soft': '0 10px 40px rgba(13, 31, 35, 0.5)',
-                        'glow': '0 0 20px rgba(105, 129, 141, 0.15)',
+                        soft: '0 18px 60px rgba(0,0,0,.24)',
+                        glow: '0 0 0 1px rgba(105,129,141,.12), 0 20px 55px rgba(0,0,0,.24)'
                     }
                 }
             }
-        }
+        };
     </script>
 
     <style>
-        body {
-            background-color: #0D1F23;
-            color: #ffffff;
-            -webkit-font-smoothing: antialiased;
-            overflow-x: hidden;
-            width: 100%;
+        :root {
+            --base: #0D1F23;
+            --surface: #132E35;
+            --surface-2: #173841;
+            --border: #2D4A53;
+            --text: #F8FAFB;
+            --muted: #AAB4B8;
+            --accent: #69818D;
         }
 
-        ::selection { background-color: #69818D; color: #ffffff; }
+        * { box-sizing: border-box; }
 
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #0D1F23; }
-        ::-webkit-scrollbar-thumb { background: #2D4A53; border-radius: 10px; }
+        html { scroll-padding-top: 96px; }
+
+        body {
+            margin: 0;
+            background:
+                radial-gradient(circle at 85% 0%, rgba(105,129,141,.13), transparent 32%),
+                radial-gradient(circle at 10% 36%, rgba(45,74,83,.12), transparent 25%),
+                var(--base);
+            color: var(--text);
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+            overflow-x: hidden;
+        }
+
+        ::selection { background: var(--accent); color: #fff; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #09171A; }
+        ::-webkit-scrollbar-thumb { background: #2D4A53; border-radius: 999px; }
         ::-webkit-scrollbar-thumb:hover { background: #69818D; }
 
-        /* Custom Range Input */
-        input[type=range] {
-            -webkit-appearance: none; width: 100%; background: transparent;
-        }
-        input[type=range]::-webkit-slider-runnable-track {
-            width: 100%; height: 6px; background: #2D4A53; border-radius: 10px;
-        }
-        input[type=range]::-webkit-slider-thumb {
-            height: 24px; width: 24px; border-radius: 50%; background: #69818D;
-            cursor: pointer; -webkit-appearance: none; margin-top: -9px;
-            border: 4px solid #132E35; box-shadow: 0 0 10px rgba(105, 129, 141, 0.4);
-            transition: transform 0.1s;
-        }
-        input[type=range]::-webkit-slider-thumb:active {
-            transform: scale(1.15); background: #AFB3B7;
+        .glass {
+            background: rgba(19, 46, 53, .72);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
         }
 
-        /* UI Cards */
         .ui-card {
-            background-color: #132E35;
-            border: 1px solid #2D4A53;
+            background: linear-gradient(180deg, rgba(23,56,65,.88), rgba(19,46,53,.95));
+            border: 1px solid rgba(45,74,83,.9);
             border-radius: 1.5rem;
-            transition: all 0.3s ease;
+            transition: transform .28s ease, border-color .28s ease, box-shadow .28s ease;
         }
-        @media (min-width: 640px) {
-            .ui-card { border-radius: 2rem; }
-        }
+
         .ui-card:hover {
-            border-color: #69818D;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
             transform: translateY(-4px);
+            border-color: rgba(105,129,141,.9);
+            box-shadow: 0 18px 50px rgba(0,0,0,.22);
         }
-        
-        .ui-card-dark {
-            background-color: #0D1F23;
-            border: 1px solid #2D4A53;
-            border-radius: 1.5rem;
+
+        .ui-card-flat {
+            background: rgba(19, 46, 53, .72);
+            border: 1px solid var(--border);
+            border-radius: 1.25rem;
         }
-        @media (min-width: 640px) {
-            .ui-card-dark { border-radius: 2rem; }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            padding: .45rem .85rem;
+            border: 1px solid var(--border);
+            background: rgba(19,46,53,.7);
+            border-radius: 999px;
+            color: var(--muted);
+            font-size: .72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: .15em;
+        }
+
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 100%;
+            bottom: -6px;
+            height: 2px;
+            background: var(--accent);
+            border-radius: 2px;
+            transition: right .25s ease;
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after { right: 0; }
+
+        .soft-grid {
+            background-image:
+                linear-gradient(rgba(105,129,141,.055) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(105,129,141,.055) 1px, transparent 1px);
+            background-size: 48px 48px;
+            mask-image: linear-gradient(to bottom, black, transparent 88%);
+            -webkit-mask-image: linear-gradient(to bottom, black, transparent 88%);
+        }
+
+        .hero-glow {
+            position: absolute;
+            width: 440px;
+            height: 440px;
+            border-radius: 50%;
+            filter: blur(75px);
+            background: rgba(105,129,141,.11);
+            pointer-events: none;
+        }
+
+        input[type="range"] {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 6px;
+            border-radius: 999px;
+            background: linear-gradient(to right, #69818D 0%, #69818D 18%, #2D4A53 18%, #2D4A53 100%);
+            outline: none;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: #F8FAFB;
+            border: 5px solid #69818D;
+            box-shadow: 0 4px 18px rgba(0,0,0,.35);
+            cursor: pointer;
+            transition: transform .18s ease;
+        }
+
+        input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.08); }
+
+        input[type="range"]::-moz-range-thumb {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #F8FAFB;
+            border: 5px solid #69818D;
+            cursor: pointer;
+        }
+
+        .service-option {
+            transition: border-color .2s ease, background .2s ease, transform .2s ease;
+        }
+
+        .service-option.active {
+            border-color: #69818D;
+            background: rgba(105,129,141,.10);
+            transform: translateY(-1px);
+        }
+
+        .service-option .check { opacity: 0; transform: scale(.75); transition: .2s ease; }
+        .service-option.active .check { opacity: 1; transform: scale(1); }
+
+        .faq-item .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height .3s ease, opacity .3s ease;
+            opacity: 0;
+        }
+
+        .faq-item.open .faq-answer { opacity: 1; }
+        .faq-item .faq-icon { transition: transform .25s ease; }
+        .faq-item.open .faq-icon { transform: rotate(45deg); }
+
+        #scrollProgress {
+            transform-origin: left center;
+            transform: scaleX(0);
+        }
+
+        .floating-zap {
+            box-shadow: 0 14px 35px rgba(0,0,0,.32), 0 0 0 6px rgba(37,211,102,.08);
+        }
+
+        .pulse-ring::before {
+            content: '';
+            position: absolute;
+            inset: -6px;
+            border-radius: 999px;
+            border: 1px solid rgba(37,211,102,.35);
+            animation: pulseRing 2.2s ease-out infinite;
+        }
+
+        @keyframes pulseRing {
+            0% { transform: scale(.9); opacity: .8; }
+            75%, 100% { transform: scale(1.35); opacity: 0; }
+        }
+
+        .metric-divider > * + * { border-left: 1px solid rgba(45,74,83,.75); }
+
+        .stage-bar {
+            height: 7px;
+            border-radius: 999px;
+            background: #2D4A53;
+            overflow: hidden;
+        }
+
+        .stage-bar > span {
+            display: block;
+            height: 100%;
+            border-radius: inherit;
+            background: linear-gradient(90deg, #69818D, #AAB4B8);
+        }
+
+        .mobile-panel {
+            transition: opacity .25s ease, transform .25s ease;
+        }
+
+        .mobile-panel.hidden-panel {
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(-10px);
+        }
+
+        .focus-ring:focus-visible {
+            outline: 2px solid #AAB4B8;
+            outline-offset: 3px;
+        }
+
+        @media (max-width: 767px) {
+            .metric-divider > * + * { border-left: 0; border-top: 1px solid rgba(45,74,83,.75); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: .01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: .01ms !important;
+                scroll-behavior: auto !important;
+            }
         }
     </style>
 </head>
-<body class="font-sans relative">
 
-    <!-- Fundo Gradiente Sutil -->
-    <div class="fixed inset-0 pointer-events-none z-[-1] bg-[radial-gradient(ellipse_at_top_right,_#2D4A53_0%,_#0D1F23_60%)] opacity-20"></div>
+<body class="font-sans">
+    <div id="scrollProgress" class="fixed top-0 left-0 right-0 h-[3px] bg-arch-accent z-[100]"></div>
 
-    <!-- NAVBAR FIXED -->
-    <nav class="fixed w-full z-50 bg-arch-base/90 backdrop-blur-md border-b border-arch-border transition-all duration-300" id="navbar">
+    <a href="#conteudo" class="sr-only focus:not-sr-only focus:fixed focus:z-[120] focus:top-3 focus:left-3 focus:bg-white focus:text-arch-base focus:px-4 focus:py-2 focus:rounded-lg">
+        Pular para o conteúdo
+    </a>
+
+    <!-- NAVBAR -->
+    <nav id="navbar" class="fixed top-0 inset-x-0 z-50 border-b border-transparent transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                
-                <!-- Logo -->
-                <a href="#" class="flex items-center gap-2 sm:gap-3 group">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square" class="text-arch-accent group-hover:text-arch-text transition-colors flex-shrink-0">
-                        <path d="M3 10L12 2.5L21 10V20.5C21 21.3284 20.3284 22 19.5 22H4.5C3.67157 22 3 21.3284 3 20.5V10Z"/>
-                    </svg>
-                    <div class="flex flex-col">
-                        <span class="font-display font-extrabold text-arch-text text-base sm:text-xl tracking-tight leading-none">ARCH CONSTRUTORA</span>
-                        <span class="text-arch-muted text-[0.60rem] sm:text-[0.65rem] tracking-[0.15em] sm:tracking-[0.2em] font-medium mt-1 uppercase">Gestão em Mão de Obra</span>
+            <div class="h-20 flex items-center justify-between">
+                <a href="#inicio" class="flex items-center gap-3 group focus-ring" aria-label="ARCH Construtora - Início">
+                    <div class="w-10 h-10 rounded-xl bg-arch-surface border border-arch-border flex items-center justify-center text-arch-accent group-hover:text-white group-hover:border-arch-accent transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.7" stroke-linecap="square" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M3 10L12 2.5L21 10V20.5C21 21.3284 20.3284 22 19.5 22H4.5C3.67157 22 3 21.3284 3 20.5V10Z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <span class="block font-display font-extrabold text-white tracking-tight leading-none text-base sm:text-lg">ARCH CONSTRUTORA</span>
+                        <span class="block text-[9px] sm:text-[10px] uppercase tracking-[.22em] text-arch-muted mt-1">Gestão em Mão de Obra</span>
                     </div>
                 </a>
 
-                <!-- Desktop Menu -->
-                <div class="hidden md:flex items-center gap-6 lg:gap-8 bg-arch-surface border border-arch-border px-6 py-2 rounded-full">
-                    <a href="#escopo" class="text-arch-muted hover:text-arch-text text-sm font-semibold transition-colors">Escopo</a>
-                    <a href="#simulador" class="text-arch-muted hover:text-arch-text text-sm font-semibold transition-colors">Simulador</a>
-                    <a href="#metodologia" class="text-arch-muted hover:text-arch-text text-sm font-semibold transition-colors">Metodologia</a>
+                <div class="hidden lg:flex items-center gap-7 text-sm font-semibold text-arch-muted">
+                    <a class="nav-link hover:text-white transition-colors" href="#escopo">Escopo</a>
+                    <a class="nav-link hover:text-white transition-colors" href="#simulador">Simulador</a>
+                    <a class="nav-link hover:text-white transition-colors" href="#processo">Processo</a>
+                    <a class="nav-link hover:text-white transition-colors" href="#faq">FAQ</a>
                 </div>
 
-                <!-- CTA -->
-                <div class="hidden md:flex">
-                    <button onclick="zapOrcamento()" class="bg-arch-text text-arch-base hover:bg-arch-muted px-5 lg:px-6 py-2.5 rounded-full text-sm font-bold transition-all shadow-glow flex items-center gap-2">
-                        <i class="fa-brands fa-whatsapp text-lg"></i> Contato
+                <div class="hidden md:flex items-center gap-3">
+                    <a href="#simulador" class="focus-ring text-sm font-bold text-arch-muted hover:text-white transition-colors px-3 py-2">Simular</a>
+                    <button onclick="abrirWhatsAppContato()" class="focus-ring bg-white text-arch-base hover:bg-arch-muted px-5 py-2.5 rounded-full text-sm font-bold transition-all flex items-center gap-2">
+                        <i class="fa-brands fa-whatsapp text-lg" aria-hidden="true"></i>
+                        Contato
                     </button>
                 </div>
 
-                <!-- Mobile Toggle -->
-                <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-btn" class="text-arch-text p-2 focus:outline-none bg-arch-surface border border-arch-border rounded-xl">
-                        <i class="fa-solid fa-bars-staggered text-lg"></i>
-                    </button>
-                </div>
+                <button id="mobileMenuBtn" aria-label="Abrir menu" aria-expanded="false" class="md:hidden focus-ring w-11 h-11 bg-arch-surface border border-arch-border rounded-xl text-white flex items-center justify-center">
+                    <i class="fa-solid fa-bars-staggered"></i>
+                </button>
             </div>
         </div>
-        
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-arch-surface border-b border-arch-border absolute w-full shadow-xl origin-top transition-transform">
-            <div class="px-6 pt-4 pb-8 space-y-2 flex flex-col">
-                <a href="#escopo" class="text-arch-text font-display font-semibold text-lg py-3 border-b border-arch-border/50">Escopo</a>
-                <a href="#simulador" class="text-arch-text font-display font-semibold text-lg py-3 border-b border-arch-border/50">Simulador</a>
-                <a href="#metodologia" class="text-arch-text font-display font-semibold text-lg py-3 border-b border-arch-border/50">Metodologia</a>
-                <button onclick="zapOrcamento()" class="mt-6 text-center bg-arch-text text-arch-base font-bold py-3.5 rounded-full flex items-center justify-center gap-2 w-full">
-                    <i class="fa-brands fa-whatsapp"></i> Falar com Engenheiro
+
+        <div id="mobileMenu" class="mobile-panel hidden-panel md:hidden absolute top-20 inset-x-0 glass border-y border-arch-border shadow-soft">
+            <div class="max-w-7xl mx-auto px-4 py-5 flex flex-col gap-1">
+                <a href="#escopo" class="mobile-link py-3.5 px-3 rounded-xl text-white font-semibold hover:bg-white/5">Escopo</a>
+                <a href="#simulador" class="mobile-link py-3.5 px-3 rounded-xl text-white font-semibold hover:bg-white/5">Simulador</a>
+                <a href="#processo" class="mobile-link py-3.5 px-3 rounded-xl text-white font-semibold hover:bg-white/5">Processo</a>
+                <a href="#faq" class="mobile-link py-3.5 px-3 rounded-xl text-white font-semibold hover:bg-white/5">Perguntas frequentes</a>
+                <button onclick="abrirWhatsAppContato()" class="mt-3 w-full bg-white text-arch-base rounded-xl py-3.5 font-bold flex items-center justify-center gap-2">
+                    <i class="fa-brands fa-whatsapp"></i> Falar no WhatsApp
                 </button>
             </div>
         </div>
     </nav>
 
-    <!-- HERO SECTION -->
-    <section class="relative pt-32 pb-16 sm:pt-40 sm:pb-24 lg:pt-48 lg:pb-32 overflow-hidden flex items-center min-h-[90vh]">
-        <div class="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-            
-            <div data-aos="fade-up" class="flex flex-col items-center w-full">
-                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-arch-surface border border-arch-border text-arch-muted text-[10px] sm:text-xs font-bold uppercase tracking-widest mb-6 sm:mb-8 shadow-inner">
-                    <span class="w-2 h-2 rounded-full bg-arch-accent animate-pulse"></span>
-                    Especialistas em Casa Popular
-                </div>
-                
-                <h1 class="font-display font-extrabold text-4xl sm:text-6xl lg:text-7xl leading-[1.1] mb-6 text-arch-text tracking-tight w-full">
-                    Construção ágil. <br class="hidden sm:block">
-                    <span class="text-arch-accent">Gestão sem falhas.</span>
-                </h1>
-                
-                <p class="text-base sm:text-lg text-arch-muted mb-8 sm:mb-10 max-w-2xl mx-auto leading-relaxed w-full">
-                    Fornecemos mão de obra altamente qualificada para execução de residências e obras comerciais. Orçamento 100% previsível e entrega garantida no prazo.
-                </p>
-                
-                <div class="flex justify-center w-full">
-                    <a href="#simulador" class="inline-flex justify-center items-center gap-3 bg-arch-accent border border-arch-accent hover:bg-arch-accentHover hover:border-arch-accentHover text-white px-6 sm:px-8 py-3.5 sm:py-4 rounded-full font-bold transition-all shadow-glow w-full max-w-xs sm:w-auto text-sm sm:text-base">
-                        <i class="fa-solid fa-calculator"></i> Calcular Custo de Obra
-                    </a>
-                </div>
+    <main id="conteudo">
+        <!-- HERO -->
+        <section id="inicio" class="relative min-h-screen flex items-center pt-28 pb-16 overflow-hidden">
+            <div class="absolute inset-0 soft-grid pointer-events-none"></div>
+            <div class="hero-glow -top-20 right-[-140px]"></div>
+            <div class="hero-glow bottom-[-160px] left-[-180px]"></div>
 
-                <!-- Estatísticas Hero -->
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mt-12 sm:mt-16 pt-8 border-t border-arch-border w-full max-w-3xl mx-auto">
-                    <div class="ui-card-dark p-6 text-center">
-                        <span class="block font-display font-extrabold text-3xl sm:text-4xl text-arch-text">100%</span>
-                        <span class="text-[10px] sm:text-xs text-arch-muted font-medium uppercase tracking-wider mt-1 block">Empreitada</span>
-                    </div>
-                    <div class="ui-card-dark p-6 text-center">
-                        <span class="block font-display font-extrabold text-3xl sm:text-4xl text-arch-text">R$ 510</span>
-                        <span class="text-[10px] sm:text-xs text-arch-muted font-medium uppercase tracking-wider mt-1 block">Média m²</span>
-                    </div>
-                    <div class="ui-card-dark p-6 text-center">
-                        <span class="block font-display font-extrabold text-3xl sm:text-4xl text-arch-text flex justify-center items-center h-[36px] sm:h-[40px]">
-                            <i class="fa-solid fa-location-dot text-2xl sm:text-3xl text-arch-accent"></i>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
+                <div class="grid lg:grid-cols-[1.08fr_.92fr] gap-12 lg:gap-16 items-center">
+                    <div data-aos="fade-up">
+                        <span class="eyebrow">
+                            <span class="w-2 h-2 rounded-full bg-arch-accent animate-pulse"></span>
+                            Curvelo e região · MG
                         </span>
-                        <span class="text-[10px] sm:text-xs text-arch-muted font-medium uppercase tracking-wider mt-1 block">Curvelo-MG</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- ESCOPO -->
-    <section id="escopo" class="py-16 sm:py-24 bg-arch-surface/30 border-t border-arch-border">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 sm:mb-16 gap-6" data-aos="fade-up">
-                <div class="max-w-2xl">
-                    <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-arch-text mb-4">Nosso Escopo</h2>
-                    <p class="text-arch-muted text-sm sm:text-base">Não vendemos material. Vendemos a garantia técnica de que sua obra será levantada exatamente de acordo com o projeto estrutural.</p>
-                </div>
-                <div class="px-4 py-2 rounded-full border border-arch-border bg-arch-surface text-[10px] sm:text-xs font-bold text-arch-muted uppercase tracking-widest flex items-center gap-2 shrink-0 self-start md:self-auto">
-                    <i class="fa-solid fa-layer-group"></i> 3 Modalidades
-                </div>
-            </div>
+                        <h1 class="font-display font-extrabold tracking-[-.035em] text-4xl sm:text-6xl lg:text-[4.7rem] leading-[1.02] mt-7 max-w-4xl">
+                            Sua obra com execução objetiva e <span class="text-arch-accent">gestão previsível.</span>
+                        </h1>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Card 1 -->
-                <div class="ui-card p-6 sm:p-8 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="0">
-                    <div>
-                        <div class="w-12 h-12 sm:w-14 sm:h-14 bg-arch-base border border-arch-border rounded-xl sm:rounded-[14px] flex items-center justify-center mb-5 sm:mb-6 text-arch-accent">
-                            <i class="fa-solid fa-house text-xl sm:text-2xl"></i>
-                        </div>
-                        <h4 class="font-display font-bold text-lg sm:text-xl mb-3 text-arch-text">Casas Populares</h4>
-                        <p class="text-arch-muted text-sm leading-relaxed mb-6">Execução ágil de casas de baixo padrão. Velocidade na alvenaria, cobertura e acabamentos essenciais para moradia.</p>
-                    </div>
-                    <span class="text-xs font-bold text-arch-text flex items-center gap-2 border-t border-arch-border pt-4">
-                        <i class="fa-solid fa-check text-arch-accent"></i> Especialidade Principal
-                    </span>
-                </div>
-                
-                <!-- Card 2 -->
-                <div class="ui-card p-6 sm:p-8 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="100">
-                    <div>
-                        <div class="w-12 h-12 sm:w-14 sm:h-14 bg-arch-base border border-arch-border rounded-xl sm:rounded-[14px] flex items-center justify-center mb-5 sm:mb-6 text-arch-accent">
-                            <i class="fa-solid fa-industry text-xl sm:text-2xl"></i>
-                        </div>
-                        <h4 class="font-display font-bold text-lg sm:text-xl mb-3 text-arch-text">Obras Comerciais</h4>
-                        <p class="text-arch-muted text-sm leading-relaxed mb-6">Levantamento de lojas, galpões e salas comerciais. Alinhamento total ao cronograma para não atrasar seu negócio.</p>
-                    </div>
-                    <span class="text-xs font-bold text-arch-text flex items-center gap-2 border-t border-arch-border pt-4">
-                        <i class="fa-solid fa-check text-arch-accent"></i> Prazo Rigoroso
-                    </span>
-                </div>
-                
-                <!-- Card 3 -->
-                <div class="ui-card p-6 sm:p-8 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="200">
-                    <div>
-                        <div class="w-12 h-12 sm:w-14 sm:h-14 bg-arch-base border border-arch-border rounded-xl sm:rounded-[14px] flex items-center justify-center mb-5 sm:mb-6 text-arch-accent">
-                            <i class="fa-solid fa-ruler-combined text-xl sm:text-2xl"></i>
-                        </div>
-                        <h4 class="font-display font-bold text-lg sm:text-xl mb-3 text-arch-text">Alvenaria Estrutural</h4>
-                        <p class="text-arch-muted text-sm leading-relaxed mb-6">Fundações seguras, paredes no prumo perfeito, chapisco e reboco. A base sólida para a segurança da edificação.</p>
-                    </div>
-                    <span class="text-xs font-bold text-arch-text flex items-center gap-2 border-t border-arch-border pt-4">
-                        <i class="fa-solid fa-check text-arch-accent"></i> Qualidade Técnica
-                    </span>
-                </div>
-            </div>
-        </div>
-    </section>
+                        <p class="mt-7 text-base sm:text-lg text-arch-muted leading-relaxed max-w-2xl">
+                            Mão de obra para residências e obras comerciais com foco em produtividade, organização e cumprimento do escopo contratado.
+                        </p>
 
-    <!-- SIMULADOR -->
-    <section id="simulador" class="py-16 sm:py-24 w-full">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-            
-            <div class="ui-card overflow-hidden p-0 w-full" data-aos="zoom-in">
-                <div class="flex flex-col lg:flex-row w-full rounded-[1.5rem] sm:rounded-[2rem] overflow-hidden">
-                    
-                    <!-- Controles (Esquerda) -->
-                    <div class="w-full lg:w-[58%] bg-arch-surface p-6 sm:p-8 lg:p-12">
-                        <div class="flex items-center gap-3 mb-6 sm:mb-8 border-b border-arch-border pb-5 sm:pb-6">
-                            <div class="w-10 h-10 sm:w-12 sm:h-12 bg-arch-base rounded-xl sm:rounded-[14px] border border-arch-border flex items-center justify-center text-arch-accent flex-shrink-0">
-                                <i class="fa-solid fa-calculator text-lg sm:text-xl"></i>
+                        <div class="mt-9 flex flex-col sm:flex-row gap-3">
+                            <a href="#simulador" class="focus-ring inline-flex items-center justify-center gap-2.5 bg-arch-accent hover:bg-arch-accentHover text-white font-bold px-6 py-4 rounded-full transition-all shadow-glow">
+                                <i class="fa-solid fa-calculator"></i>
+                                Simular custo da obra
+                            </a>
+                            <button onclick="abrirWhatsAppContato()" class="focus-ring inline-flex items-center justify-center gap-2.5 bg-arch-surface border border-arch-border hover:border-arch-accent text-white font-bold px-6 py-4 rounded-full transition-all">
+                                <i class="fa-brands fa-whatsapp text-lg"></i>
+                                Falar com a ARCH
+                            </button>
+                        </div>
+
+                        <div class="mt-10 flex flex-wrap gap-x-7 gap-y-3 text-sm text-arch-muted">
+                            <span class="flex items-center gap-2"><i class="fa-solid fa-check text-arch-accent"></i> Simulação rápida</span>
+                            <span class="flex items-center gap-2"><i class="fa-solid fa-check text-arch-accent"></i> Contato direto</span>
+                            <span class="flex items-center gap-2"><i class="fa-solid fa-check text-arch-accent"></i> Atendimento regional</span>
+                        </div>
+                    </div>
+
+                    <div data-aos="fade-left" data-aos-delay="100" class="relative">
+                        <div class="ui-card p-5 sm:p-7 shadow-glow relative overflow-hidden">
+                            <div class="absolute top-0 right-0 w-40 h-40 bg-arch-accent/10 blur-3xl rounded-full"></div>
+
+                            <div class="relative z-10 flex items-start justify-between gap-4 mb-7">
+                                <div>
+                                    <span class="text-[11px] uppercase tracking-[.18em] text-arch-muted font-bold">Estimativa de referência</span>
+                                    <h2 class="font-display font-bold text-2xl mt-2">Construção Casa Popular</h2>
+                                </div>
+                                <div class="w-12 h-12 rounded-2xl bg-arch-base border border-arch-border flex items-center justify-center text-arch-accent">
+                                    <i class="fa-solid fa-house"></i>
+                                </div>
                             </div>
-                            <div class="overflow-hidden w-full">
-                                <h2 class="font-display font-extrabold text-xl sm:text-2xl text-arch-text truncate">Orçamento Base</h2>
-                                <p class="text-arch-muted text-[10px] sm:text-xs">Simulador de Mão de Obra</p>
-                            </div>
-                        </div>
 
-                        <div class="space-y-6 sm:space-y-10 w-full">
-                            <!-- Select Tipo -->
-                            <div class="w-full">
-                                <label class="block font-medium text-arch-muted mb-2 sm:mb-3 text-[10px] sm:text-xs uppercase tracking-wider">Perfil Construtivo</label>
-                                <div class="relative w-full">
-                                    <select id="tipoConst" class="w-full bg-arch-base border border-arch-border text-arch-text p-3 sm:p-4 rounded-xl sm:rounded-2xl text-sm sm:text-base font-medium focus:outline-none focus:border-arch-accent appearance-none cursor-pointer truncate pr-10">
-                                        <option value="510">Construção Casa Popular (R$ 510/m²)</option>
-                                        <option value="480">Ponto Comercial / Galpão (R$ 480/m²)</option>
-                                        <option value="350">Apenas Alvenaria e Cobertura (R$ 350/m²)</option>
-                                    </select>
-                                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 sm:px-5 text-arch-muted">
-                                        <i class="fa-solid fa-chevron-down"></i>
+                            <div class="relative z-10 rounded-2xl bg-arch-base border border-arch-border p-5 sm:p-6">
+                                <div class="flex items-end justify-between gap-5">
+                                    <div>
+                                        <p class="text-xs text-arch-muted uppercase tracking-wider font-semibold">Preço base</p>
+                                        <p class="font-display font-extrabold text-4xl sm:text-5xl mt-2">R$ 510<span class="text-base sm:text-lg text-arch-muted font-semibold">/m²</span></p>
+                                    </div>
+                                    <div class="text-right">
+                                        <p class="text-xs text-arch-muted">Exemplo 70 m²</p>
+                                        <p class="font-bold text-lg mt-1">R$ 35.700</p>
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- Slider Área -->
-                            <div class="ui-card-dark p-5 sm:p-6 w-full">
-                                <div class="flex justify-between items-center mb-5 sm:mb-6">
-                                    <label class="font-medium text-arch-muted text-[10px] sm:text-xs uppercase tracking-wider">Área Total</label>
-                                    <div class="bg-arch-surface border border-arch-border px-3 sm:px-4 py-1.5 rounded-lg sm:rounded-xl">
-                                        <span id="areaLabel" class="font-display text-arch-text text-lg sm:text-xl font-bold">70 m²</span>
-                                    </div>
+                            <div class="relative z-10 grid grid-cols-3 gap-3 mt-4">
+                                <div class="rounded-2xl border border-arch-border bg-arch-base/55 p-4">
+                                    <i class="fa-solid fa-trowel-bricks text-arch-accent"></i>
+                                    <p class="text-xs text-arch-muted mt-3">Execução</p>
+                                    <p class="font-semibold text-sm mt-1">Mão de obra</p>
                                 </div>
-                                <input type="range" id="areaRange" min="20" max="300" step="5" value="70" class="w-full">
-                                <div class="flex justify-between text-[10px] text-arch-muted mt-3 sm:mt-4 font-bold uppercase tracking-wider">
-                                    <span>Min 20</span>
-                                    <span>Max 300</span>
+                                <div class="rounded-2xl border border-arch-border bg-arch-base/55 p-4">
+                                    <i class="fa-solid fa-calendar-check text-arch-accent"></i>
+                                    <p class="text-xs text-arch-muted mt-3">Gestão</p>
+                                    <p class="font-semibold text-sm mt-1">Cronograma</p>
+                                </div>
+                                <div class="rounded-2xl border border-arch-border bg-arch-base/55 p-4">
+                                    <i class="fa-solid fa-chart-line text-arch-accent"></i>
+                                    <p class="text-xs text-arch-muted mt-3">Foco</p>
+                                    <p class="font-semibold text-sm mt-1">Produtividade</p>
                                 </div>
                             </div>
+
+                            <a href="#simulador" class="relative z-10 mt-5 flex items-center justify-between gap-3 rounded-2xl bg-white text-arch-base px-5 py-4 font-bold group">
+                                <span>Calcular para minha área</span>
+                                <span class="w-9 h-9 rounded-full bg-arch-base text-white flex items-center justify-center group-hover:translate-x-1 transition-transform"><i class="fa-solid fa-arrow-right"></i></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div data-aos="fade-up" data-aos-delay="160" class="mt-14 lg:mt-20 grid md:grid-cols-3 ui-card-flat metric-divider overflow-hidden">
+                    <div class="p-6 sm:p-7 flex items-center gap-4">
+                        <div class="w-11 h-11 rounded-xl bg-arch-base border border-arch-border text-arch-accent flex items-center justify-center"><i class="fa-solid fa-file-signature"></i></div>
+                        <div><p class="font-display font-extrabold text-xl">Empreitada</p><p class="text-xs text-arch-muted mt-1">Escopo definido em contrato</p></div>
+                    </div>
+                    <div class="p-6 sm:p-7 flex items-center gap-4">
+                        <div class="w-11 h-11 rounded-xl bg-arch-base border border-arch-border text-arch-accent flex items-center justify-center"><i class="fa-solid fa-coins"></i></div>
+                        <div><p class="font-display font-extrabold text-xl">R$ 510/m²</p><p class="text-xs text-arch-muted mt-1">Referência para casa popular</p></div>
+                    </div>
+                    <div class="p-6 sm:p-7 flex items-center gap-4">
+                        <div class="w-11 h-11 rounded-xl bg-arch-base border border-arch-border text-arch-accent flex items-center justify-center"><i class="fa-solid fa-location-dot"></i></div>
+                        <div><p class="font-display font-extrabold text-xl">Curvelo · MG</p><p class="text-xs text-arch-muted mt-1">Atendimento na região</p></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ESCOPO -->
+        <section id="escopo" class="py-20 sm:py-28 border-y border-arch-border bg-arch-surface/20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12" data-aos="fade-up">
+                    <div class="max-w-2xl">
+                        <span class="eyebrow"><i class="fa-solid fa-layer-group"></i> Escopo</span>
+                        <h2 class="font-display font-extrabold text-3xl sm:text-5xl tracking-tight mt-5">Mão de obra alinhada ao tipo de obra.</h2>
+                        <p class="text-arch-muted mt-4 leading-relaxed">Escolha a modalidade mais próxima do seu projeto para ter uma estimativa inicial de custo.</p>
+                    </div>
+                    <a href="#simulador" class="text-sm font-bold text-white flex items-center gap-2 group">Ir para simulador <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i></a>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-5">
+                    <article class="ui-card p-7 sm:p-8" data-aos="fade-up">
+                        <div class="w-14 h-14 rounded-2xl bg-arch-base border border-arch-border flex items-center justify-center text-arch-accent text-xl mb-7"><i class="fa-solid fa-house"></i></div>
+                        <div class="flex items-center justify-between gap-4">
+                            <h3 class="font-display font-bold text-xl">Casas Populares</h3>
+                            <span class="text-xs font-bold text-arch-muted">R$ 510/m²</span>
+                        </div>
+                        <p class="text-sm text-arch-muted leading-relaxed mt-4">Execução de residências com foco em produtividade, organização do canteiro e sequência eficiente dos serviços.</p>
+                        <button onclick="selecionarServico('casa')" class="mt-7 text-sm font-bold flex items-center gap-2 text-white hover:text-arch-muted transition-colors">Simular esta modalidade <i class="fa-solid fa-arrow-right"></i></button>
+                    </article>
+
+                    <article class="ui-card p-7 sm:p-8" data-aos="fade-up" data-aos-delay="80">
+                        <div class="w-14 h-14 rounded-2xl bg-arch-base border border-arch-border flex items-center justify-center text-arch-accent text-xl mb-7"><i class="fa-solid fa-warehouse"></i></div>
+                        <div class="flex items-center justify-between gap-4">
+                            <h3 class="font-display font-bold text-xl">Comercial / Galpão</h3>
+                            <span class="text-xs font-bold text-arch-muted">R$ 480/m²</span>
+                        </div>
+                        <p class="text-sm text-arch-muted leading-relaxed mt-4">Mão de obra para espaços comerciais, lojas e galpões com atenção ao cronograma e às etapas críticas.</p>
+                        <button onclick="selecionarServico('comercial')" class="mt-7 text-sm font-bold flex items-center gap-2 text-white hover:text-arch-muted transition-colors">Simular esta modalidade <i class="fa-solid fa-arrow-right"></i></button>
+                    </article>
+
+                    <article class="ui-card p-7 sm:p-8" data-aos="fade-up" data-aos-delay="160">
+                        <div class="w-14 h-14 rounded-2xl bg-arch-base border border-arch-border flex items-center justify-center text-arch-accent text-xl mb-7"><i class="fa-solid fa-trowel-bricks"></i></div>
+                        <div class="flex items-center justify-between gap-4">
+                            <h3 class="font-display font-bold text-xl">Alvenaria + Cobertura</h3>
+                            <span class="text-xs font-bold text-arch-muted">R$ 350/m²</span>
+                        </div>
+                        <p class="text-sm text-arch-muted leading-relaxed mt-4">Alternativa para quem deseja contratar somente as etapas essenciais de elevação e cobertura da edificação.</p>
+                        <button onclick="selecionarServico('alvenaria')" class="mt-7 text-sm font-bold flex items-center gap-2 text-white hover:text-arch-muted transition-colors">Simular esta modalidade <i class="fa-solid fa-arrow-right"></i></button>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- SIMULADOR -->
+        <section id="simulador" class="py-20 sm:py-28 relative overflow-hidden">
+            <div class="hero-glow top-20 left-[-280px]"></div>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="text-center max-w-3xl mx-auto mb-12" data-aos="fade-up">
+                    <span class="eyebrow"><i class="fa-solid fa-calculator"></i> Simulador</span>
+                    <h2 class="font-display font-extrabold text-3xl sm:text-5xl tracking-tight mt-5">Tenha uma referência em poucos segundos.</h2>
+                    <p class="text-arch-muted mt-4">Selecione a modalidade, informe a área e obtenha uma estimativa inicial de mão de obra.</p>
+                </div>
+
+                <div class="grid lg:grid-cols-[1.05fr_.95fr] gap-6 lg:gap-0 ui-card overflow-hidden shadow-glow" data-aos="zoom-in">
+                    <div class="p-6 sm:p-9 lg:p-10 bg-arch-surface/80">
+                        <div class="flex items-center justify-between gap-4 pb-6 border-b border-arch-border">
+                            <div>
+                                <p class="text-xs uppercase tracking-[.16em] text-arch-muted font-bold">Configuração</p>
+                                <h3 class="font-display font-bold text-2xl mt-1">Sua simulação</h3>
+                            </div>
+                            <button id="resetSimulation" class="focus-ring text-xs font-bold text-arch-muted hover:text-white transition-colors px-3 py-2 rounded-lg border border-arch-border hover:border-arch-accent">
+                                <i class="fa-solid fa-rotate-left mr-1"></i> Limpar
+                            </button>
+                        </div>
+
+                        <div class="mt-7">
+                            <label class="block text-xs font-bold uppercase tracking-[.15em] text-arch-muted mb-3">1. Modalidade</label>
+                            <div id="serviceOptions" class="grid sm:grid-cols-3 gap-3">
+                                <button type="button" data-service="casa" class="service-option active text-left p-4 rounded-2xl border border-arch-border bg-arch-base/45 focus-ring">
+                                    <div class="flex justify-between gap-3 items-start">
+                                        <i class="fa-solid fa-house text-arch-accent"></i>
+                                        <i class="check fa-solid fa-circle-check text-arch-accent"></i>
+                                    </div>
+                                    <p class="font-bold text-sm mt-5">Casa Popular</p>
+                                    <p class="text-xs text-arch-muted mt-1">R$ 510/m²</p>
+                                </button>
+                                <button type="button" data-service="comercial" class="service-option text-left p-4 rounded-2xl border border-arch-border bg-arch-base/45 focus-ring">
+                                    <div class="flex justify-between gap-3 items-start">
+                                        <i class="fa-solid fa-warehouse text-arch-accent"></i>
+                                        <i class="check fa-solid fa-circle-check text-arch-accent"></i>
+                                    </div>
+                                    <p class="font-bold text-sm mt-5">Comercial</p>
+                                    <p class="text-xs text-arch-muted mt-1">R$ 480/m²</p>
+                                </button>
+                                <button type="button" data-service="alvenaria" class="service-option text-left p-4 rounded-2xl border border-arch-border bg-arch-base/45 focus-ring">
+                                    <div class="flex justify-between gap-3 items-start">
+                                        <i class="fa-solid fa-trowel-bricks text-arch-accent"></i>
+                                        <i class="check fa-solid fa-circle-check text-arch-accent"></i>
+                                    </div>
+                                    <p class="font-bold text-sm mt-5">Alvenaria + cobertura</p>
+                                    <p class="text-xs text-arch-muted mt-1">R$ 350/m²</p>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="mt-8">
+                            <div class="flex items-center justify-between gap-4 mb-4">
+                                <label for="areaRange" class="text-xs font-bold uppercase tracking-[.15em] text-arch-muted">2. Área total</label>
+                                <div class="flex items-center gap-2">
+                                    <input id="areaInput" type="number" min="20" max="300" step="5" value="70" inputmode="numeric" class="focus-ring w-20 bg-arch-base border border-arch-border rounded-xl px-3 py-2 text-right font-bold text-white outline-none focus:border-arch-accent">
+                                    <span class="text-sm text-arch-muted font-semibold">m²</span>
+                                </div>
+                            </div>
+                            <input id="areaRange" type="range" min="20" max="300" step="5" value="70" aria-label="Área total da obra">
+                            <div class="flex justify-between mt-3 text-[10px] uppercase tracking-wider text-arch-muted font-bold"><span>20 m²</span><span>300 m²</span></div>
+                        </div>
+
+                        <div class="mt-8 grid sm:grid-cols-2 gap-3">
+                            <div class="ui-card-flat p-5">
+                                <div class="flex items-center gap-3">
+                                    <span class="w-10 h-10 rounded-xl bg-arch-base border border-arch-border flex items-center justify-center text-arch-accent"><i class="fa-solid fa-ruler-combined"></i></span>
+                                    <div><p class="text-xs text-arch-muted">Área considerada</p><p id="summaryArea" class="font-bold mt-1">70 m²</p></div>
+                                </div>
+                            </div>
+                            <div class="ui-card-flat p-5">
+                                <div class="flex items-center gap-3">
+                                    <span class="w-10 h-10 rounded-xl bg-arch-base border border-arch-border flex items-center justify-center text-arch-accent"><i class="fa-solid fa-tag"></i></span>
+                                    <div><p class="text-xs text-arch-muted">Preço de referência</p><p id="summaryPrice" class="font-bold mt-1">R$ 510/m²</p></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-7 p-4 rounded-2xl bg-arch-base/55 border border-arch-border flex gap-3 items-start">
+                            <i class="fa-solid fa-circle-info text-arch-accent mt-0.5"></i>
+                            <p class="text-xs leading-relaxed text-arch-muted">A simulação é uma referência inicial de mão de obra. Materiais não estão incluídos e condições específicas da obra podem alterar a proposta final.</p>
                         </div>
                     </div>
 
-                    <!-- Resultados & Gráfico (Direita) -->
-                    <div class="w-full lg:w-[42%] bg-arch-base p-6 sm:p-8 lg:p-12 flex flex-col relative border-t lg:border-t-0 lg:border-l border-arch-border">
-                        
-                        <div class="flex-1 flex flex-col justify-center items-center text-center relative z-10 mb-6 sm:mb-8 w-full">
-                            <span class="text-arch-muted font-bold text-[10px] sm:text-xs uppercase tracking-widest mb-3 sm:mb-4 w-full truncate">Investimento Estimado</span>
-                            <h2 class="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl text-arch-text mb-6 sm:mb-8 w-full truncate" id="valorTotal">R$ 0</h2>
-                            
-                            <!-- Chart Wrapper -->
-                            <div class="w-[140px] h-[140px] sm:w-[180px] sm:h-[180px] lg:w-[200px] lg:h-[200px] relative mx-auto">
-                                <canvas id="costChart"></canvas>
-                                <!-- Legendas Internas -->
-                                <div class="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
-                                    <span class="text-[8px] sm:text-[10px] text-arch-muted font-bold uppercase">Distribuição</span>
+                    <div class="p-6 sm:p-9 lg:p-10 bg-arch-base border-t lg:border-t-0 lg:border-l border-arch-border flex flex-col">
+                        <div class="flex items-start justify-between gap-4">
+                            <div>
+                                <p class="text-xs uppercase tracking-[.16em] text-arch-muted font-bold">Estimativa</p>
+                                <h3 id="selectedServiceName" class="font-display font-bold text-xl mt-1">Construção Casa Popular</h3>
+                            </div>
+                            <div class="w-11 h-11 rounded-xl bg-arch-surface border border-arch-border text-arch-accent flex items-center justify-center"><i class="fa-solid fa-chart-pie"></i></div>
+                        </div>
+
+                        <div class="my-8 text-center">
+                            <p class="text-sm text-arch-muted">Investimento estimado</p>
+                            <div id="totalValue" class="font-display font-extrabold tracking-tight text-4xl sm:text-5xl lg:text-[3.5rem] mt-2">R$ 35.700</div>
+                            <p id="unitValue" class="text-xs text-arch-muted mt-2">70 m² × R$ 510/m²</p>
+                        </div>
+
+                        <div class="grid grid-cols-[132px_1fr] sm:grid-cols-[150px_1fr] gap-6 items-center">
+                            <div class="relative h-[132px] sm:h-[150px]">
+                                <canvas id="costChart" aria-label="Distribuição estimada das etapas" role="img"></canvas>
+                                <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                                    <div class="text-center"><span class="block text-[9px] uppercase tracking-wider text-arch-muted font-bold">Etapas</span><span class="font-display font-bold text-lg">100%</span></div>
+                                </div>
+                            </div>
+
+                            <div class="space-y-3">
+                                <div>
+                                    <div class="flex justify-between gap-3 text-xs mb-1.5"><span class="text-arch-muted">Alvenaria</span><span id="stageMasonry" class="font-bold">R$ 16.065</span></div>
+                                    <div class="stage-bar"><span style="width:45%"></span></div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between gap-3 text-xs mb-1.5"><span class="text-arch-muted">Fundação</span><span id="stageFoundation" class="font-bold">R$ 12.495</span></div>
+                                    <div class="stage-bar"><span style="width:35%"></span></div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between gap-3 text-xs mb-1.5"><span class="text-arch-muted">Cobertura</span><span id="stageRoof" class="font-bold">R$ 7.140</span></div>
+                                    <div class="stage-bar"><span style="width:20%"></span></div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Info Box -->
-                        <div class="bg-arch-surface/50 border border-arch-border rounded-xl sm:rounded-2xl p-3 sm:p-4 mb-5 sm:mb-6 w-full">
-                            <p class="text-arch-muted text-[10px] sm:text-xs leading-relaxed text-center">
-                                <i class="fa-solid fa-circle-info text-arch-accent mr-1"></i>
-                                Materiais <strong>não inclusos</strong>. Valores sujeitos à análise do terreno.
-                            </p>
+                        <div class="mt-auto pt-8 grid gap-3">
+                            <button onclick="enviarSimulacaoWhatsApp()" class="focus-ring w-full bg-white text-arch-base hover:bg-arch-muted py-4 rounded-2xl font-bold flex items-center justify-center gap-2.5 transition-colors">
+                                <i class="fa-brands fa-whatsapp text-lg"></i> Enviar simulação pelo WhatsApp
+                            </button>
+                            <button id="copySimulation" class="focus-ring w-full bg-arch-surface border border-arch-border hover:border-arch-accent text-white py-3.5 rounded-2xl font-bold text-sm flex items-center justify-center gap-2 transition-colors">
+                                <i class="fa-regular fa-copy"></i> Copiar resumo
+                            </button>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-                        <button onclick="zapOrcamento()" class="w-full bg-arch-text hover:bg-arch-muted text-arch-base py-3.5 sm:py-4 rounded-xl sm:rounded-2xl font-bold transition-colors flex items-center justify-center gap-2 shadow-soft text-sm w-full">
-                            <i class="fa-brands fa-whatsapp text-lg"></i> <span class="truncate">Enviar Proposta</span>
+        <!-- PROCESSO -->
+        <section id="processo" class="py-20 sm:py-28 border-y border-arch-border bg-arch-surface/20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-[.8fr_1.2fr] gap-12 lg:gap-20 items-start">
+                    <div data-aos="fade-right" class="lg:sticky lg:top-28">
+                        <span class="eyebrow"><i class="fa-solid fa-diagram-project"></i> Processo</span>
+                        <h2 class="font-display font-extrabold text-3xl sm:text-5xl tracking-tight mt-5">Da conversa inicial à execução.</h2>
+                        <p class="text-arch-muted mt-5 leading-relaxed">Um fluxo direto para transformar a necessidade da obra em uma proposta clara e uma execução organizada.</p>
+                        <button onclick="abrirWhatsAppContato()" class="mt-8 inline-flex items-center gap-2 font-bold text-sm bg-white text-arch-base px-5 py-3.5 rounded-full">
+                            <i class="fa-brands fa-whatsapp"></i> Solicitar atendimento
+                        </button>
+                    </div>
+
+                    <div class="space-y-4">
+                        <article class="ui-card p-6 sm:p-7 flex gap-5" data-aos="fade-up">
+                            <span class="w-12 h-12 shrink-0 rounded-2xl bg-arch-base border border-arch-border text-arch-accent font-display font-extrabold flex items-center justify-center">01</span>
+                            <div><h3 class="font-display font-bold text-xl">Entendimento do escopo</h3><p class="text-sm text-arch-muted mt-2 leading-relaxed">Levantamento das principais características da obra, área, modalidade de contratação e necessidades do cliente.</p></div>
+                        </article>
+                        <article class="ui-card p-6 sm:p-7 flex gap-5" data-aos="fade-up" data-aos-delay="60">
+                            <span class="w-12 h-12 shrink-0 rounded-2xl bg-arch-base border border-arch-border text-arch-accent font-display font-extrabold flex items-center justify-center">02</span>
+                            <div><h3 class="font-display font-bold text-xl">Validação e proposta</h3><p class="text-sm text-arch-muted mt-2 leading-relaxed">A estimativa do site serve como ponto de partida; a proposta final é validada conforme o projeto e as condições reais da execução.</p></div>
+                        </article>
+                        <article class="ui-card p-6 sm:p-7 flex gap-5" data-aos="fade-up" data-aos-delay="120">
+                            <span class="w-12 h-12 shrink-0 rounded-2xl bg-arch-base border border-arch-border text-arch-accent font-display font-extrabold flex items-center justify-center">03</span>
+                            <div><h3 class="font-display font-bold text-xl">Planejamento da execução</h3><p class="text-sm text-arch-muted mt-2 leading-relaxed">Definição da sequência de serviços e organização das frentes de trabalho para dar fluidez ao cronograma.</p></div>
+                        </article>
+                        <article class="ui-card p-6 sm:p-7 flex gap-5" data-aos="fade-up" data-aos-delay="180">
+                            <span class="w-12 h-12 shrink-0 rounded-2xl bg-arch-base border border-arch-border text-arch-accent font-display font-extrabold flex items-center justify-center">04</span>
+                            <div><h3 class="font-display font-bold text-xl">Execução e acompanhamento</h3><p class="text-sm text-arch-muted mt-2 leading-relaxed">Acompanhamento do andamento dos serviços contratados com foco em produtividade, qualidade e comunicação.</p></div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="py-20 sm:py-28">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="relative overflow-hidden rounded-[2rem] sm:rounded-[2.5rem] border border-arch-border bg-arch-surface p-7 sm:p-10 lg:p-14 shadow-glow" data-aos="fade-up">
+                    <div class="absolute inset-0 soft-grid opacity-60"></div>
+                    <div class="absolute -right-20 -top-20 w-80 h-80 rounded-full bg-arch-accent/10 blur-3xl"></div>
+                    <div class="relative z-10 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
+                        <div class="max-w-2xl">
+                            <span class="text-xs uppercase tracking-[.18em] text-arch-muted font-bold">Próximo passo</span>
+                            <h2 class="font-display font-extrabold text-3xl sm:text-5xl tracking-tight mt-3">Quer transformar a estimativa em uma proposta?</h2>
+                            <p class="text-arch-muted mt-4 leading-relaxed">Envie os dados básicos da sua obra e continue o atendimento diretamente no WhatsApp da ARCH.</p>
+                        </div>
+                        <button onclick="abrirWhatsAppContato()" class="shrink-0 inline-flex items-center justify-center gap-3 bg-white text-arch-base hover:bg-arch-muted rounded-full px-7 py-4 font-bold transition-colors">
+                            <i class="fa-brands fa-whatsapp text-xl"></i> Falar agora
                         </button>
                     </div>
                 </div>
             </div>
+        </section>
 
-        </div>
-    </section>
-
-    <!-- METODOLOGIA -->
-    <section id="metodologia" class="py-16 sm:py-24 bg-arch-surface/30 border-t border-arch-border">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-16 items-center">
-                
-                <div data-aos="fade-right">
-                    <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-arch-text mb-4 sm:mb-6">Engenharia de Resultados.</h2>
-                    <p class="text-arch-muted text-sm sm:text-base leading-relaxed mb-8 sm:mb-10">Nossa gestão foca exclusivamente na performance da mão de obra. Entendemos que em obras comerciais e populares, cada dia de atraso custa muito caro.</p>
-                    
-                    <div class="space-y-3 sm:space-y-4">
-                        <div class="ui-card-dark p-4 sm:p-5 flex items-center gap-4 hover:border-arch-accent transition-colors cursor-default">
-                            <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-[10px] sm:rounded-[12px] bg-arch-surface border border-arch-border flex items-center justify-center text-arch-accent shrink-0 text-sm sm:text-base font-bold">
-                                01
-                            </div>
-                            <div class="overflow-hidden w-full">
-                                <h5 class="text-arch-text font-bold text-sm mb-0.5 sm:mb-1 truncate">Mão de Obra Alinhada</h5>
-                                <p class="text-arch-muted text-[10px] sm:text-xs truncate">Profissionais executam o projeto à risca.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="ui-card-dark p-4 sm:p-5 flex items-center gap-4 hover:border-arch-accent transition-colors cursor-default">
-                            <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-[10px] sm:rounded-[12px] bg-arch-surface border border-arch-border flex items-center justify-center text-arch-accent shrink-0 text-sm sm:text-base font-bold">
-                                02
-                            </div>
-                            <div class="overflow-hidden w-full">
-                                <h5 class="text-arch-text font-bold text-sm mb-0.5 sm:mb-1 truncate">Controle de Insumos</h5>
-                                <p class="text-arch-muted text-[10px] sm:text-xs truncate">Metodologia evita desperdício de material.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="ui-card-dark p-4 sm:p-5 flex items-center gap-4 hover:border-arch-accent transition-colors cursor-default">
-                            <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-[10px] sm:rounded-[12px] bg-arch-surface border border-arch-border flex items-center justify-center text-arch-accent shrink-0 text-sm sm:text-base font-bold">
-                                03
-                            </div>
-                            <div class="overflow-hidden w-full">
-                                <h5 class="text-arch-text font-bold text-sm mb-0.5 sm:mb-1 truncate">Transparência Total</h5>
-                                <p class="text-arch-muted text-[10px] sm:text-xs truncate">Acompanhamento diário até as chaves.</p>
-                            </div>
-                        </div>
-                    </div>
+        <!-- FAQ -->
+        <section id="faq" class="py-20 sm:py-28 border-t border-arch-border bg-arch-surface/20">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-2xl mx-auto mb-12" data-aos="fade-up">
+                    <span class="eyebrow"><i class="fa-regular fa-circle-question"></i> FAQ</span>
+                    <h2 class="font-display font-extrabold text-3xl sm:text-5xl tracking-tight mt-5">Perguntas frequentes</h2>
+                    <p class="text-arch-muted mt-4">Informações rápidas sobre o simulador e o atendimento.</p>
                 </div>
-                
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6" data-aos="fade-left">
-                    <div class="ui-card p-6 sm:p-8">
-                        <div class="w-12 h-12 sm:w-14 sm:h-14 bg-arch-base border border-arch-border rounded-full flex items-center justify-center mb-5 sm:mb-6">
-                            <i class="fa-solid fa-stopwatch text-xl sm:text-2xl text-arch-accent"></i>
-                        </div>
-                        <h5 class="font-display font-bold text-lg text-arch-text mb-2">Prazos Cumpridos</h5>
-                        <p class="text-arch-muted text-sm leading-relaxed">Foco extremo em produtividade para garantir a entrega sem atrasos.</p>
-                    </div>
-                    
-                    <div class="ui-card p-6 sm:p-8 sm:translate-y-10">
-                        <div class="w-12 h-12 sm:w-14 sm:h-14 bg-arch-base border border-arch-border rounded-full flex items-center justify-center mb-5 sm:mb-6">
-                            <i class="fa-solid fa-scale-balanced text-xl sm:text-2xl text-arch-accent"></i>
-                        </div>
-                        <h5 class="font-display font-bold text-lg text-arch-text mb-2">Preço Fixo</h5>
-                        <p class="text-arch-muted text-sm leading-relaxed">Contratação por empreitada global garante valor exato do início ao fim.</p>
-                    </div>
+
+                <div class="space-y-3" id="faqList">
+                    <article class="faq-item ui-card-flat overflow-hidden" data-aos="fade-up">
+                        <button class="faq-button w-full text-left p-5 sm:p-6 flex items-center justify-between gap-5 focus-ring" aria-expanded="false">
+                            <span class="font-display font-bold text-lg">O valor do simulador é o orçamento final?</span>
+                            <i class="faq-icon fa-solid fa-plus text-arch-accent"></i>
+                        </button>
+                        <div class="faq-answer"><p class="px-5 sm:px-6 pb-5 sm:pb-6 text-sm text-arch-muted leading-relaxed">Não. O simulador fornece uma referência inicial baseada na modalidade e na área informada. A proposta final depende da análise das condições e do escopo real da obra.</p></div>
+                    </article>
+
+                    <article class="faq-item ui-card-flat overflow-hidden" data-aos="fade-up" data-aos-delay="50">
+                        <button class="faq-button w-full text-left p-5 sm:p-6 flex items-center justify-between gap-5 focus-ring" aria-expanded="false">
+                            <span class="font-display font-bold text-lg">Os materiais estão incluídos?</span>
+                            <i class="faq-icon fa-solid fa-plus text-arch-accent"></i>
+                        </button>
+                        <div class="faq-answer"><p class="px-5 sm:px-6 pb-5 sm:pb-6 text-sm text-arch-muted leading-relaxed">Não. Os valores exibidos no simulador são apresentados como referência de mão de obra. Materiais não estão incluídos.</p></div>
+                    </article>
+
+                    <article class="faq-item ui-card-flat overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+                        <button class="faq-button w-full text-left p-5 sm:p-6 flex items-center justify-between gap-5 focus-ring" aria-expanded="false">
+                            <span class="font-display font-bold text-lg">Como envio a simulação?</span>
+                            <i class="faq-icon fa-solid fa-plus text-arch-accent"></i>
+                        </button>
+                        <div class="faq-answer"><p class="px-5 sm:px-6 pb-5 sm:pb-6 text-sm text-arch-muted leading-relaxed">Depois de definir modalidade e área, clique em “Enviar simulação pelo WhatsApp”. O site monta a mensagem automaticamente com o resumo da estimativa.</p></div>
+                    </article>
+
+                    <article class="faq-item ui-card-flat overflow-hidden" data-aos="fade-up" data-aos-delay="150">
+                        <button class="faq-button w-full text-left p-5 sm:p-6 flex items-center justify-between gap-5 focus-ring" aria-expanded="false">
+                            <span class="font-display font-bold text-lg">Qual região é atendida?</span>
+                            <i class="faq-icon fa-solid fa-plus text-arch-accent"></i>
+                        </button>
+                        <div class="faq-answer"><p class="px-5 sm:px-6 pb-5 sm:pb-6 text-sm text-arch-muted leading-relaxed">O site informa atendimento em Curvelo e região, em Minas Gerais. Para confirmar a disponibilidade para sua localidade, fale diretamente pelo WhatsApp.</p></div>
+                    </article>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <!-- FOOTER -->
-    <footer class="border-t border-arch-border py-8 sm:py-12 bg-arch-base">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
-            
-            <div class="flex items-center gap-2 sm:gap-3">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square" class="text-arch-accent sm:w-7 sm:h-7">
-                    <path d="M3 10L12 2.5L21 10V20.5C21 21.3284 20.3284 22 19.5 22H4.5C3.67157 22 3 21.3284 3 20.5V10Z"/>
-                </svg>
-                <div class="flex flex-col text-left">
-                    <span class="font-display font-extrabold text-arch-text text-xs sm:text-sm leading-none">ARCH CONSTRUTORA</span>
-                    <span class="text-arch-muted text-[0.50rem] sm:text-[0.55rem] tracking-[0.15em] sm:tracking-[0.2em] font-medium mt-1 uppercase">Gestão em Mão de Obra</span>
+    <footer class="border-t border-arch-border bg-arch-dark py-10 sm:py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-[1.2fr_.8fr] gap-8 items-start">
+                <div>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-arch-surface border border-arch-border flex items-center justify-center text-arch-accent">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.7" stroke-linecap="square" stroke-linejoin="round" aria-hidden="true"><path d="M3 10L12 2.5L21 10V20.5C21 21.3284 20.3284 22 19.5 22H4.5C3.67157 22 3 21.3284 3 20.5V10Z"/></svg>
+                        </div>
+                        <div><p class="font-display font-extrabold">ARCH CONSTRUTORA</p><p class="text-[9px] uppercase tracking-[.22em] text-arch-muted mt-1">Gestão em Mão de Obra</p></div>
+                    </div>
+                    <p class="text-sm text-arch-muted mt-5 max-w-xl leading-relaxed">Execução de mão de obra para construção civil com foco em organização, produtividade e atendimento em Curvelo e região.</p>
+                </div>
+
+                <div class="md:text-right">
+                    <p class="text-xs uppercase tracking-[.16em] text-arch-muted font-bold">Contato</p>
+                    <a href="https://wa.me/5531983143578" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 mt-3 text-white font-bold hover:text-arch-muted transition-colors"><i class="fa-brands fa-whatsapp text-arch-accent"></i> (31) 98314-3578</a>
+                    <p class="text-sm text-arch-muted mt-2"><i class="fa-solid fa-location-dot mr-1 text-arch-accent"></i> Curvelo e região · MG</p>
                 </div>
             </div>
-            
-            <div class="text-center md:text-right">
-                <p class="text-arch-muted text-xs sm:text-sm font-medium mb-1">&copy; 2026 ARCH Construtora. Direitos reservados.</p>
-                <p class="text-arch-accent text-[10px] sm:text-xs font-bold uppercase tracking-widest flex items-center justify-center md:justify-end gap-1.5 sm:gap-2 mt-2">
-                    <i class="fa-solid fa-location-dot"></i> Curvelo e Região - MG
-                </p>
+
+            <div class="mt-9 pt-6 border-t border-arch-border flex flex-col sm:flex-row justify-between gap-3 text-xs text-arch-muted">
+                <p>&copy; <span id="year"></span> ARCH Construtora. Direitos reservados.</p>
+                <a href="#inicio" class="hover:text-white transition-colors">Voltar ao topo <i class="fa-solid fa-arrow-up ml-1"></i></a>
             </div>
         </div>
     </footer>
 
-    <!-- SCRIPTS -->
+    <!-- FLOATING ACTIONS -->
+    <div class="fixed right-4 sm:right-6 bottom-4 sm:bottom-6 z-40 flex flex-col items-end gap-3">
+        <button id="backToTop" aria-label="Voltar ao topo" class="focus-ring opacity-0 pointer-events-none translate-y-2 transition-all w-11 h-11 rounded-full glass border border-arch-border text-white flex items-center justify-center shadow-soft">
+            <i class="fa-solid fa-arrow-up"></i>
+        </button>
+
+        <button onclick="abrirWhatsAppContato()" aria-label="Falar com a ARCH no WhatsApp" class="focus-ring floating-zap pulse-ring relative h-14 px-4 sm:px-5 rounded-full bg-[#25D366] hover:bg-[#20bd5b] text-[#07170d] font-extrabold flex items-center gap-2.5 transition-colors">
+            <i class="fa-brands fa-whatsapp text-2xl"></i>
+            <span class="hidden sm:inline">WhatsApp</span>
+        </button>
+    </div>
+
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
-        // Inicializa AOS
-        AOS.init({ once: true, duration: 800, offset: 50 });
+        const WHATSAPP_NUMBER = '5531983143578';
 
-        // Navbar Scroll Effect
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 20) {
-                navbar.classList.add('shadow-soft');
-            } else {
-                navbar.classList.remove('shadow-soft');
+        const services = {
+            casa: {
+                name: 'Construção Casa Popular',
+                short: 'Casa Popular',
+                price: 510,
+                icon: 'fa-house'
+            },
+            comercial: {
+                name: 'Ponto Comercial / Galpão',
+                short: 'Comercial / Galpão',
+                price: 480,
+                icon: 'fa-warehouse'
+            },
+            alvenaria: {
+                name: 'Apenas Alvenaria e Cobertura',
+                short: 'Alvenaria + Cobertura',
+                price: 350,
+                icon: 'fa-trowel-bricks'
             }
-        });
+        };
 
-        // Mobile Menu Toggle
-        const btnMenu = document.getElementById('mobile-menu-btn');
-        const menu = document.getElementById('mobile-menu');
-        const icon = btnMenu.querySelector('i');
-        
-        btnMenu.addEventListener('click', () => {
-            menu.classList.toggle('hidden');
-            icon.classList.replace(menu.classList.contains('hidden') ? 'fa-xmark' : 'fa-bars-staggered', menu.classList.contains('hidden') ? 'fa-bars-staggered' : 'fa-xmark');
-        });
+        let currentService = 'casa';
 
-        menu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                menu.classList.add('hidden');
-                icon.classList.replace('fa-xmark', 'fa-bars-staggered');
+        const areaRange = document.getElementById('areaRange');
+        const areaInput = document.getElementById('areaInput');
+        const totalValue = document.getElementById('totalValue');
+        const unitValue = document.getElementById('unitValue');
+        const selectedServiceName = document.getElementById('selectedServiceName');
+        const summaryArea = document.getElementById('summaryArea');
+        const summaryPrice = document.getElementById('summaryPrice');
+        const stageMasonry = document.getElementById('stageMasonry');
+        const stageFoundation = document.getElementById('stageFoundation');
+        const stageRoof = document.getElementById('stageRoof');
+        const serviceButtons = document.querySelectorAll('[data-service]');
+
+        function brl(value) {
+            return value.toLocaleString('pt-BR', {
+                style: 'currency',
+                currency: 'BRL',
+                maximumFractionDigits: 0
+            });
+        }
+
+        function getArea() {
+            const raw = Number(areaInput.value || areaRange.value || 70);
+            return Math.min(300, Math.max(20, Math.round(raw / 5) * 5));
+        }
+
+        function updateRangeFill() {
+            const min = Number(areaRange.min);
+            const max = Number(areaRange.max);
+            const value = Number(areaRange.value);
+            const pct = ((value - min) / (max - min)) * 100;
+            areaRange.style.background = `linear-gradient(to right, #69818D 0%, #69818D ${pct}%, #2D4A53 ${pct}%, #2D4A53 100%)`;
+        }
+
+        function getSimulationData() {
+            const area = getArea();
+            const service = services[currentService];
+            const total = area * service.price;
+            return { area, service, total };
+        }
+
+        function updateSimulation() {
+            const { area, service, total } = getSimulationData();
+
+            areaInput.value = area;
+            areaRange.value = area;
+            updateRangeFill();
+
+            selectedServiceName.textContent = service.name;
+            totalValue.textContent = brl(total);
+            unitValue.textContent = `${area} m² × ${brl(service.price)}/m²`;
+            summaryArea.textContent = `${area} m²`;
+            summaryPrice.textContent = `${brl(service.price)}/m²`;
+
+            stageMasonry.textContent = brl(total * 0.45);
+            stageFoundation.textContent = brl(total * 0.35);
+            stageRoof.textContent = brl(total * 0.20);
+
+            serviceButtons.forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.service === currentService);
+                btn.setAttribute('aria-pressed', btn.dataset.service === currentService ? 'true' : 'false');
+            });
+
+            if (costChart) costChart.update('none');
+        }
+
+        function selecionarServico(serviceKey) {
+            if (!services[serviceKey]) return;
+            currentService = serviceKey;
+            updateSimulation();
+            document.getElementById('simulador').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        serviceButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                currentService = btn.dataset.service;
+                updateSimulation();
             });
         });
 
-        // Gráfico (Chart.js)
-        const ctx = document.getElementById('costChart').getContext('2d');
-        const costChart = new Chart(ctx, {
+        areaRange.addEventListener('input', () => {
+            areaInput.value = areaRange.value;
+            updateSimulation();
+        });
+
+        areaInput.addEventListener('input', () => {
+            const value = Number(areaInput.value);
+            if (value >= 20 && value <= 300) {
+                areaRange.value = value;
+                updateRangeFill();
+                updateSimulation();
+            }
+        });
+
+        areaInput.addEventListener('blur', updateSimulation);
+
+        document.getElementById('resetSimulation').addEventListener('click', () => {
+            currentService = 'casa';
+            areaInput.value = 70;
+            areaRange.value = 70;
+            updateSimulation();
+            toast('Simulação restaurada.');
+        });
+
+        function simulationText(includeGreeting = false, name = '') {
+            const { area, service, total } = getSimulationData();
+            const intro = includeGreeting ? `Olá, ARCH Construtora. Meu nome é *${name}*.\n\n` : '';
+            return `${intro}Fiz uma simulação pelo site:\n\n*Modalidade:* ${service.name}\n*Área:* ${area} m²\n*Referência:* ${brl(service.price)}/m²\n*Estimativa de mão de obra:* ${brl(total)}\n\nGostaria de mais informações e de validar uma proposta para a obra.`;
+        }
+
+        function openWhatsApp(message) {
+            const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+            window.open(url, '_blank', 'noopener,noreferrer');
+        }
+
+        function enviarSimulacaoWhatsApp() {
+            Swal.fire({
+                title: 'Enviar simulação',
+                text: 'Informe seu nome para personalizar a mensagem:',
+                input: 'text',
+                inputPlaceholder: 'Seu nome',
+                inputAttributes: { maxlength: 80, autocapitalize: 'words' },
+                showCancelButton: true,
+                confirmButtonText: 'Ir para o WhatsApp',
+                cancelButtonText: 'Cancelar',
+                confirmButtonColor: '#F8FAFB',
+                cancelButtonColor: '#2D4A53',
+                background: '#132E35',
+                color: '#F8FAFB',
+                customClass: {
+                    popup: 'rounded-3xl border border-[#2D4A53]',
+                    confirmButton: 'rounded-full px-5 font-bold',
+                    cancelButton: 'rounded-full px-5 font-bold'
+                },
+                inputValidator: value => !value.trim() ? 'Digite seu nome para continuar.' : undefined
+            }).then(result => {
+                if (result.isConfirmed) openWhatsApp(simulationText(true, result.value.trim()));
+            });
+        }
+
+        function abrirWhatsAppContato() {
+            openWhatsApp('Olá, ARCH Construtora. Gostaria de solicitar informações sobre mão de obra para uma obra.');
+        }
+
+        document.getElementById('copySimulation').addEventListener('click', async () => {
+            try {
+                await navigator.clipboard.writeText(simulationText(false));
+                toast('Resumo copiado para a área de transferência.');
+            } catch (error) {
+                const textarea = document.createElement('textarea');
+                textarea.value = simulationText(false);
+                textarea.style.position = 'fixed';
+                textarea.style.opacity = '0';
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                textarea.remove();
+                toast('Resumo copiado.');
+            }
+        });
+
+        function toast(message) {
+            Swal.fire({
+                toast: true,
+                position: 'bottom-start',
+                icon: 'success',
+                title: message,
+                showConfirmButton: false,
+                timer: 2200,
+                timerProgressBar: true,
+                background: '#132E35',
+                color: '#F8FAFB'
+            });
+        }
+
+        const chartContext = document.getElementById('costChart');
+        const costChart = new Chart(chartContext, {
             type: 'doughnut',
             data: {
-                labels: ['Alvenaria (45%)', 'Fundação (35%)', 'Cobertura (20%)'],
+                labels: ['Alvenaria', 'Fundação', 'Cobertura'],
                 datasets: [{
                     data: [45, 35, 20],
-                    backgroundColor: ['#69818D', '#AFB3B7', '#2D4A53'],
+                    backgroundColor: ['#69818D', '#AAB4B8', '#2D4A53'],
                     borderWidth: 0,
-                    hoverOffset: 3
+                    hoverOffset: 2
                 }]
             },
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
-                cutout: '80%', 
+                cutout: '78%',
+                animation: { duration: 450 },
                 plugins: {
-                    legend: { display: false }, 
+                    legend: { display: false },
                     tooltip: {
                         backgroundColor: '#132E35',
-                        titleFont: { family: 'Inter', size: 12 },
-                        bodyFont: { family: 'Inter', size: 13, weight: 'bold' },
+                        titleColor: '#F8FAFB',
+                        bodyColor: '#F8FAFB',
+                        borderColor: '#2D4A53',
+                        borderWidth: 1,
                         padding: 10,
-                        cornerRadius: 8,
-                        displayColors: true
+                        cornerRadius: 10,
+                        callbacks: {
+                            label: ctx => `${ctx.label}: ${ctx.parsed}%`
+                        }
                     }
                 }
             }
         });
 
-        // Calculadora
-        const areaRange = document.getElementById('areaRange');
-        const areaLabel = document.getElementById('areaLabel');
-        const tipoConst = document.getElementById('tipoConst');
-        const valorTotal = document.getElementById('valorTotal');
-        
-        function formatarMoeda(valor) {
-            return valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL', maximumFractionDigits: 0 });
+        // FAQ
+        document.querySelectorAll('.faq-button').forEach(button => {
+            button.addEventListener('click', () => {
+                const item = button.closest('.faq-item');
+                const answer = item.querySelector('.faq-answer');
+                const isOpen = item.classList.contains('open');
+
+                document.querySelectorAll('.faq-item.open').forEach(openItem => {
+                    if (openItem !== item) {
+                        openItem.classList.remove('open');
+                        openItem.querySelector('.faq-button').setAttribute('aria-expanded', 'false');
+                        openItem.querySelector('.faq-answer').style.maxHeight = '0px';
+                    }
+                });
+
+                item.classList.toggle('open', !isOpen);
+                button.setAttribute('aria-expanded', String(!isOpen));
+                answer.style.maxHeight = !isOpen ? `${answer.scrollHeight}px` : '0px';
+            });
+        });
+
+        // Navbar + progress + back to top
+        const navbar = document.getElementById('navbar');
+        const scrollProgress = document.getElementById('scrollProgress');
+        const backToTop = document.getElementById('backToTop');
+
+        function handleScroll() {
+            const y = window.scrollY;
+            navbar.classList.toggle('glass', y > 10);
+            navbar.classList.toggle('border-arch-border', y > 10);
+            navbar.classList.toggle('shadow-soft', y > 10);
+
+            const max = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = max > 0 ? y / max : 0;
+            scrollProgress.style.transform = `scaleX(${progress})`;
+
+            const showTop = y > 700;
+            backToTop.classList.toggle('opacity-0', !showTop);
+            backToTop.classList.toggle('pointer-events-none', !showTop);
+            backToTop.classList.toggle('translate-y-2', !showTop);
         }
 
-        function atualizarCalculo() {
-            const area = parseFloat(areaRange.value);
-            const custoM2 = parseFloat(tipoConst.value);
-            const total = area * custoM2;
-            
-            areaLabel.innerText = `${area} m²`;
-            
-            valorTotal.style.opacity = 0.5;
-            setTimeout(() => {
-                valorTotal.innerText = formatarMoeda(total);
-                valorTotal.style.opacity = 1;
-            }, 150);
-            
-            costChart.update();
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        handleScroll();
+        backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+        // Mobile menu
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        function toggleMobileMenu(forceClose = false) {
+            const willOpen = forceClose ? false : mobileMenu.classList.contains('hidden-panel');
+            mobileMenu.classList.toggle('hidden-panel', !willOpen);
+            mobileMenuBtn.setAttribute('aria-expanded', String(willOpen));
+            mobileMenuBtn.innerHTML = willOpen ? '<i class="fa-solid fa-xmark"></i>' : '<i class="fa-solid fa-bars-staggered"></i>';
         }
 
-        areaRange.addEventListener('input', atualizarCalculo);
-        tipoConst.addEventListener('change', atualizarCalculo);
-        atualizarCalculo();
+        mobileMenuBtn.addEventListener('click', () => toggleMobileMenu());
+        document.querySelectorAll('.mobile-link').forEach(link => link.addEventListener('click', () => toggleMobileMenu(true)));
 
-        // Integração SweetAlert2 e WhatsApp
-        function zapOrcamento() {
-            const area = areaRange.value;
-            const nomeServicoFull = tipoConst.options[tipoConst.selectedIndex].text;
-            const nomeServico = nomeServicoFull.split(' (')[0]; 
-            const totalEstimado = valorTotal.innerText;
-            
-            Swal.fire({
-                title: 'Nova Simulação',
-                text: 'Por favor, informe seu nome para contato:',
-                input: 'text',
-                inputPlaceholder: 'Digite seu nome...',
-                background: '#132E35',
-                color: '#fff',
-                confirmButtonColor: '#ffffff',
-                cancelButtonColor: '#2D4A53',
-                showCancelButton: true,
-                confirmButtonText: '<span style="color:#0D1F23">Ir para WhatsApp</span>',
-                cancelButtonText: 'Cancelar',
-                customClass: {
-                    popup: 'border border-arch-border rounded-[2rem] mx-4',
-                    input: 'bg-arch-base border-arch-border text-white focus:ring-arch-accent rounded-xl',
-                    confirmButton: 'rounded-full px-5 sm:px-6 font-bold text-sm sm:text-base',
-                    cancelButton: 'rounded-full px-5 sm:px-6 font-bold text-arch-text text-sm sm:text-base'
-                }
-            }).then((result) => {
-                if (result.isConfirmed && result.value) {
-                    const nome = result.value;
-                    const msg = `Olá, ARCH Construtora. Meu nome é *${nome}*.\n\nFiz uma simulação pelo site:\n\n*Modalidade:* ${nomeServico}\n*Área:* ${area}m²\n*Estimativa MO:* ${totalEstimado}\n\nGostaria de falar com o engenheiro.`;
-                    
-                    const phone = "5531983143578"; 
-                    const url = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
-                    window.open(url, '_blank');
+        // Active nav section
+        const sectionIds = ['escopo', 'simulador', 'processo', 'faq'];
+        const navLinks = [...document.querySelectorAll('.nav-link')];
+        const sectionObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    navLinks.forEach(link => link.classList.toggle('active', link.getAttribute('href') === `#${entry.target.id}`));
                 }
             });
-        }
+        }, { rootMargin: '-35% 0px -55% 0px', threshold: 0 });
+
+        sectionIds.forEach(id => {
+            const section = document.getElementById(id);
+            if (section) sectionObserver.observe(section);
+        });
+
+        // Initial state
+        document.getElementById('year').textContent = new Date().getFullYear();
+        updateSimulation();
+
+        AOS.init({
+            once: true,
+            duration: 700,
+            easing: 'ease-out-cubic',
+            offset: 40,
+            disable: window.matchMedia('(prefers-reduced-motion: reduce)').matches
+        });
     </script>
 </body>
 </html>
